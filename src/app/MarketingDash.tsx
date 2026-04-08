@@ -1232,7 +1232,7 @@ export default function MarketingDash() {
               transform: "translateY(-100%)",
               background: "rgba(255,255,255,0.98)",
               backdropFilter: "blur(16px)",
-              boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05)",
+              boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px #E5E7EB",
               zIndex: 99999,
               pointerEvents: "none",
             }}
@@ -1282,7 +1282,7 @@ export default function MarketingDash() {
         </div>
         <div className="flex items-center gap-4">
           {/* Filter dropdowns */}
-          {mainTab === "pago" && (<div className="flex items-center gap-0 bg-black border border-[#E5E7EB] rounded-lg overflow-visible">
+          {mainTab === "pago" && (<div className="flex items-center gap-0 bg-[#F8F9FA] border border-[#E5E7EB] rounded-lg overflow-visible">
             {/* Estratégia */}
             <div ref={estrategiaRef} className="relative">
               <button
@@ -1334,11 +1334,11 @@ export default function MarketingDash() {
               Tráfego Orgânico
             </button>
           </div>
-          <div className="flex items-center gap-2 bg-black border border-[#E5E7EB] px-3 py-1.5 rounded-lg text-xs font-medium text-[#323232]">
+          <div className="flex items-center gap-2 bg-[#F8F9FA] border border-[#E5E7EB] px-3 py-1.5 rounded-lg text-xs font-medium text-[#323232]">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#F59E0B]"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>
             <span>{new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })}</span>
           </div>
-          <div className="flex items-center gap-2 bg-black border border-[#E5E7EB] px-3 py-1.5 rounded-lg text-xs font-medium text-[#323232]">
+          <div className="flex items-center gap-2 bg-[#F8F9FA] border border-[#E5E7EB] px-3 py-1.5 rounded-lg text-xs font-medium text-[#323232]">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#F59E0B]"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
             <span>{new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}</span>
           </div>
@@ -1388,7 +1388,7 @@ export default function MarketingDash() {
                     {/* Tooltip */}
                     <div
                       className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-[#E5E7EB] text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[100] ${isRight ? "right-0" : isLeft ? "left-0" : "left-1/2 -translate-x-1/2"}`}
-                      style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05)" }}
+                      style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px #E5E7EB" }}
                     >
                       <p className="text-[11px] text-[#323232]/90 leading-[1.6] font-normal normal-case tracking-normal">{h.tooltip}</p>
                       <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-[#E5E7EB] ${isRight ? "right-2" : isLeft ? "left-2" : "left-1/2 -translate-x-1/2"}`} style={{ background: "rgba(255,255,255,0.98)" }} />
@@ -1469,7 +1469,7 @@ export default function MarketingDash() {
                         width: `${stage.w}%`,
                         background: stage.highlight
                           ? "linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 100%)"
-                          : "linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.02) 100%)",
+                          : "linear-gradient(135deg, rgba(0,0,0,0.1) 0%, #F8F9FA 100%)",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.background = stage.highlight
@@ -1480,7 +1480,7 @@ export default function MarketingDash() {
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background = stage.highlight
                           ? "linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 100%)"
-                          : "linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.02) 100%)";
+                          : "linear-gradient(135deg, rgba(0,0,0,0.1) 0%, #F8F9FA 100%)";
                         e.currentTarget.style.boxShadow = "none";
                       }}
                     >
@@ -1540,7 +1540,7 @@ export default function MarketingDash() {
               <div
                 key={ad.name}
                 className="flex-shrink-0 w-64 rounded-xl border border-[#E5E7EB] overflow-hidden cursor-pointer hover:border-amber-500/20 transition-all duration-300 group/reel snap-start flex flex-col"
-                style={{ background: "rgba(255,255,255,0.02)" }}
+                style={{ background: "#F8F9FA" }}
                 onClick={() => setSelectedAd(ad)}
               >
                 {/* Cover image */}
@@ -1960,8 +1960,8 @@ export default function MarketingDash() {
                         <stop offset="100%" stopColor="rgb(16,185,129)" stopOpacity="0.6" />
                       </linearGradient>
                       <linearGradient id="donutSlate" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.6" />
-                        <stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4" />
+                        <stop offset="0%" stopColor="#666666" stopOpacity="0.6" />
+                        <stop offset="100%" stopColor="#999999" stopOpacity="0.4" />
                       </linearGradient>
                       <filter id="donutGlow">
                         <feGaussianBlur stdDeviation="2.5" result="blur" />
@@ -2192,7 +2192,7 @@ export default function MarketingDash() {
               <h3 className="font-bold text-sm text-[#323232]">Comportamento On-site<InfoTip title="Comportamento On-site" /></h3>
             </div>
             <div className="grid grid-cols-2 gap-4 relative z-10">
-              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "#F8F9FA" }}>
                 <p className="text-[10px] text-[#666666] uppercase font-bold tracking-wider mb-3">Bounce Rate</p>
                 <div className="space-y-3">
                   <div>
@@ -2213,17 +2213,17 @@ export default function MarketingDash() {
                   </div>
                 </div>
               </div>
-              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "#F8F9FA" }}>
                 <p className="text-[10px] text-[#666666] uppercase font-bold tracking-wider mb-3">Tempo Médio</p>
                 <p className="text-2xl font-bold text-[#F59E0B]">2m 34s</p>
                 <p className="text-[10px] text-[#10B981] font-bold mt-1 flex items-center gap-0.5"><ArrowUp /> +12.3% vs mês ant.</p>
               </div>
-              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "#F8F9FA" }}>
                 <p className="text-[10px] text-[#666666] uppercase font-bold tracking-wider mb-3">Abandono Checkout</p>
                 <p className="text-2xl font-bold text-[#EF4444]">67.8%</p>
                 <p className="text-[10px] text-[#EF4444] font-bold mt-1 flex items-center gap-0.5"><ArrowDown /> +3.2% vs mês ant.</p>
               </div>
-              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "#F8F9FA" }}>
                 <p className="text-[10px] text-[#666666] uppercase font-bold tracking-wider mb-3">Scroll Depth</p>
                 <p className="text-lg font-bold text-[#1A1A1A] mb-2">64%</p>
                 <div className="h-2.5 bg-[#F2F2F2] rounded-full overflow-hidden ring-1 ring-white/5">
@@ -2453,7 +2453,7 @@ export default function MarketingDash() {
                 const dashLen = (ring.rate / 100) * circumference;
                 const statusColors: Record<string, string> = { "Dentro": "text-[#10B981] bg-emerald-400/10 border-emerald-400/20", "Abaixo": "text-[#EF4444] bg-rose-400/10 border-rose-400/20", "Na média": "text-[#F59E0B] bg-amber-400/10 border-amber-400/20" };
                 return (
-                  <div key={i} className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={i} className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                     <p className="text-xs font-bold text-[#323232] mb-4 text-center">{ring.label}</p>
                     <div className="flex justify-center mb-4">
                       <svg width="128" height="128" viewBox="0 0 128 128">
@@ -2580,7 +2580,7 @@ export default function MarketingDash() {
               { name: "Checkout Upsell", revenue: 87200, sales: 61, convRate: 28.7, ticket: 1429, cpa: 412, color: "rgb(251,191,36)", colorFaded: "rgba(251,191,36,0.15)", glowColor: "rgba(251,191,36,0.3)", gradient: "linear-gradient(90deg, rgb(180,130,20), rgb(251,191,36))" },
               { name: "Checkout Hotmart", revenue: 44600, sales: 46, convRate: 19.1, ticket: 969, cpa: 687, color: "rgb(251,113,133)", colorFaded: "rgba(251,113,133,0.15)", glowColor: "rgba(251,113,133,0.3)", gradient: "linear-gradient(90deg, rgb(180,40,60), rgb(251,113,133))" },
             ].map((ck, i) => (
-              <div key={i} className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div key={i} className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                 <div className="flex items-center gap-2 mb-3">
                   <div className="size-2.5 rounded-full" style={{ background: ck.color, boxShadow: `0 0 6px ${ck.glowColor}` }} />
                   <span className="text-xs font-bold text-[#323232]">{ck.name}</span>
@@ -2677,12 +2677,12 @@ export default function MarketingDash() {
                 onClick={() => setSocialNetwork(sn)}
                 className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all duration-200"
                 style={{
-                  background: isActive ? `${color}15` : "rgba(255,255,255,0.02)",
-                  border: `1px solid ${isActive ? `${color}40` : "rgba(255,255,255,0.05)"}`,
-                  color: isActive ? color : "rgb(100,116,139)",
+                  background: isActive ? `${color}15` : "#F8F9FA",
+                  border: `1px solid ${isActive ? `${color}40` : "#E5E7EB"}`,
+                  color: isActive ? color : "#999999",
                 }}
               >
-                <span style={{ color: isActive ? color : "rgb(100,116,139)" }}>{socialNetworkIcons[sn]}</span>
+                <span style={{ color: isActive ? color : "#999999" }}>{socialNetworkIcons[sn]}</span>
                 {socialNetworkLabels[sn]}
               </button>
             );
@@ -2709,7 +2709,7 @@ export default function MarketingDash() {
                 </svg>
                 <div
                   className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-[#E5E7EB] text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[200] ${isRight ? "right-0" : "left-0"}`}
-                  style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05)" }}
+                  style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px #E5E7EB" }}
                 >
                   <p className="text-[11px] text-[#323232]/90 leading-[1.6] font-normal normal-case tracking-normal">{kpi.tooltip}</p>
                   <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-[#E5E7EB] ${isRight ? "right-2" : "left-2"}`} style={{ background: "rgba(255,255,255,0.98)" }} />
@@ -3207,7 +3207,7 @@ export default function MarketingDash() {
               <div
                 key={st.seq}
                 className="flex-shrink-0 w-64 rounded-xl border border-[#E5E7EB] overflow-hidden cursor-pointer transition-all duration-300 group/story snap-start flex flex-col hover:border-rose-500/20"
-                style={{ background: "rgba(255,255,255,0.02)" }}
+                style={{ background: "#F8F9FA" }}
                 onClick={() => setSelectedStory(st)}
               >
                 {/* Cover image */}
@@ -3279,7 +3279,7 @@ export default function MarketingDash() {
               <div
                 key={post.id}
                 className="flex-shrink-0 w-64 rounded-xl border border-[#E5E7EB] overflow-hidden cursor-pointer transition-all duration-300 group/post snap-start flex flex-col hover:border-emerald-500/20"
-                style={{ background: "rgba(255,255,255,0.02)" }}
+                style={{ background: "#F8F9FA" }}
                 onClick={() => setSelectedPost(post)}
               >
                 {/* Cover image */}
@@ -3425,7 +3425,7 @@ export default function MarketingDash() {
                             {isHov && <circle cx={p.x} cy={p.y} r="10" fill="rgba(52,211,153,0.15)" />}
                             {isHov && <line x1={p.x} y1={padTop} x2={p.x} y2={h - padBot} stroke="rgba(52,211,153,0.2)" strokeWidth="1" strokeDasharray="4 3" />}
                             <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.06)"} strokeWidth="1.5" />
-                            <text x={p.x} y={p.y - 10} textAnchor="middle" fill={hoveredRetention === null || isHov ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)"} fontSize="9" fontFamily="monospace">{videoRetention[i].pct}%</text>
+                            <text x={p.x} y={p.y - 10} textAnchor="middle" fill={hoveredRetention === null || isHov ? "rgba(255,255,255,0.5)" : "#E5E7EB"} fontSize="9" fontFamily="monospace">{videoRetention[i].pct}%</text>
                           </g>
                         );
                       })}
@@ -3508,7 +3508,7 @@ export default function MarketingDash() {
                           </div>
                           {/* Tooltip on hover */}
                           <div className="absolute left-1/2 -translate-x-1/2 -top-8 opacity-0 group-hover/bar:opacity-100 transition-opacity duration-200 pointer-events-none z-30">
-                            <div className="bg-black/90 border border-pink-400/30 rounded-lg px-3 py-1.5 text-center whitespace-nowrap backdrop-blur-sm shadow-[0_0_12px_rgba(244,114,182,0.15)]">
+                            <div className="bg-[#F8F9FA]/90 border border-pink-400/30 rounded-lg px-3 py-1.5 text-center whitespace-nowrap backdrop-blur-sm shadow-[0_0_12px_rgba(244,114,182,0.15)]">
                               <span className="text-[11px] font-bold text-[#DB2777]">{item.shares.toLocaleString("pt-BR")}</span>
                               <span className="text-[9px] text-[#666666] ml-1">shares</span>
                             </div>
@@ -3572,7 +3572,7 @@ export default function MarketingDash() {
                 { icon: "🚪", label: "Saídas", value: "1.1k", bad: true },
                 { icon: "🔗", label: "Cliques no Link", value: "340", bad: false },
               ].map((m) => (
-                <div key={m.label} className="text-center p-3 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}>
+                <div key={m.label} className="text-center p-3 rounded-xl" style={{ background: "#F8F9FA", border: "1px solid #E5E7EB" }}>
                   <div className="text-sm mb-1">{m.icon}</div>
                   <div className={`text-sm font-bold ${m.bad ? "text-[#EF4444]" : "text-[#10B981]"}`}>{m.value}</div>
                   <div className="text-[10px] text-[#323232] font-semibold">{m.label}</div>
@@ -3600,7 +3600,7 @@ export default function MarketingDash() {
                   <linearGradient id="roA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(251,191,36)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(245,158,11)" stopOpacity="0.7"/></linearGradient>
                   <linearGradient id="roV" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(167,139,250)" stopOpacity="0.8"/><stop offset="100%" stopColor="rgb(139,92,246)" stopOpacity="0.6"/></linearGradient>
                   <linearGradient id="roC" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(34,211,238)" stopOpacity="0.8"/><stop offset="100%" stopColor="rgb(6,182,212)" stopOpacity="0.6"/></linearGradient>
-                  <linearGradient id="roS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
+                  <linearGradient id="roS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#666666" stopOpacity="0.5"/><stop offset="100%" stopColor="#999999" stopOpacity="0.4"/></linearGradient>
                   <filter id="roGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                 </defs>
                 <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
@@ -3854,7 +3854,7 @@ export default function MarketingDash() {
                   <linearGradient id="agA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(251,191,36)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(245,158,11)" stopOpacity="0.7"/></linearGradient>
                   <linearGradient id="agP" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(244,114,182)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(236,72,153)" stopOpacity="0.7"/></linearGradient>
                   <linearGradient id="agV" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(167,139,250)" stopOpacity="0.8"/><stop offset="100%" stopColor="rgb(139,92,246)" stopOpacity="0.6"/></linearGradient>
-                  <linearGradient id="agS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
+                  <linearGradient id="agS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#666666" stopOpacity="0.5"/><stop offset="100%" stopColor="#999999" stopOpacity="0.4"/></linearGradient>
                   <filter id="agGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                 </defs>
                 <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
@@ -4061,7 +4061,7 @@ export default function MarketingDash() {
                 </svg>
                 <div
                   className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-[#E5E7EB] text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[200] ${isRight ? "right-0" : "left-0"}`}
-                  style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05)" }}
+                  style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px #E5E7EB" }}
                 >
                   <p className="text-[11px] text-[#323232]/90 leading-[1.6] font-normal normal-case tracking-normal">{kpi.tooltip}</p>
                   <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-[#E5E7EB] ${isRight ? "right-2" : "left-2"}`} style={{ background: "rgba(255,255,255,0.98)" }} />
@@ -4143,7 +4143,7 @@ export default function MarketingDash() {
                         <linearGradient id="odA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(251,191,36)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(245,158,11)" stopOpacity="0.7"/></linearGradient>
                         <linearGradient id="odV" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(167,139,250)" stopOpacity="0.8"/><stop offset="100%" stopColor="rgb(139,92,246)" stopOpacity="0.6"/></linearGradient>
                         <linearGradient id="odC" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(34,211,238)" stopOpacity="0.8"/><stop offset="100%" stopColor="rgb(6,182,212)" stopOpacity="0.6"/></linearGradient>
-                        <linearGradient id="odS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
+                        <linearGradient id="odS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#666666" stopOpacity="0.5"/><stop offset="100%" stopColor="#999999" stopOpacity="0.4"/></linearGradient>
                         <filter id="odGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                       </defs>
                       <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
@@ -4428,7 +4428,7 @@ export default function MarketingDash() {
                             {isHov && <circle cx={p.x} cy={p.y} r="10" fill="rgba(52,211,153,0.15)" />}
                             {isHov && <line x1={p.x} y1={padTop} x2={p.x} y2={h - padBot} stroke="rgba(52,211,153,0.2)" strokeWidth="1" strokeDasharray="4 3" />}
                             <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.06)"} strokeWidth="1.5" />
-                            <text x={p.x} y={p.y - 10} textAnchor="middle" fill={hovRet === null || isHov ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)"} fontSize="9" fontFamily="monospace">{retData[i].pct}%</text>
+                            <text x={p.x} y={p.y - 10} textAnchor="middle" fill={hovRet === null || isHov ? "rgba(255,255,255,0.5)" : "#E5E7EB"} fontSize="9" fontFamily="monospace">{retData[i].pct}%</text>
                           </g>
                         );
                       })}
@@ -4539,7 +4539,7 @@ export default function MarketingDash() {
                         <linearGradient id="roA2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(251,191,36)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(245,158,11)" stopOpacity="0.7"/></linearGradient>
                         <linearGradient id="roV2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(167,139,250)" stopOpacity="0.8"/><stop offset="100%" stopColor="rgb(139,92,246)" stopOpacity="0.6"/></linearGradient>
                         <linearGradient id="roC2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(34,211,238)" stopOpacity="0.8"/><stop offset="100%" stopColor="rgb(6,182,212)" stopOpacity="0.6"/></linearGradient>
-                        <linearGradient id="roS2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
+                        <linearGradient id="roS2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#666666" stopOpacity="0.5"/><stop offset="100%" stopColor="#999999" stopOpacity="0.4"/></linearGradient>
                         <filter id="roGlow2"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                       </defs>
                       <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
@@ -4701,7 +4701,7 @@ export default function MarketingDash() {
                       <defs>
                         <linearGradient id="bsP" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(244,114,182)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(236,72,153)" stopOpacity="0.7"/></linearGradient>
                         <linearGradient id="bsA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(251,191,36)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(245,158,11)" stopOpacity="0.7"/></linearGradient>
-                        <linearGradient id="bsS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
+                        <linearGradient id="bsS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#666666" stopOpacity="0.5"/><stop offset="100%" stopColor="#999999" stopOpacity="0.4"/></linearGradient>
                         <filter id="bsGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                       </defs>
                       <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
@@ -4849,7 +4849,7 @@ export default function MarketingDash() {
       {/* ── Story Detail Modal ── */}
       {selectedStory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setSelectedStory(null)}>
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-[#F8F9FA]/70 backdrop-blur-sm" />
           <div
             className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl border border-[#E5E7EB] overflow-hidden flex flex-col md:flex-row"
             style={{ ...glassStyle, background: "linear-gradient(135deg, rgba(20,20,20,0.95) 0%, rgba(10,10,10,0.98) 100%)", animation: "animationIn 0.3s ease-out both" }}
@@ -4860,7 +4860,7 @@ export default function MarketingDash() {
             </button>
 
             {/* Left — Story cover image */}
-            <div className="relative md:w-[420px] shrink-0 bg-black flex items-center justify-center">
+            <div className="relative md:w-[420px] shrink-0 bg-[#F8F9FA] flex items-center justify-center">
               <div className="relative w-full aspect-[9/16]">
                 <img src={selectedStory.cover} alt={`Story ${selectedStory.seq}`} style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover"}} />
               </div>
@@ -4895,7 +4895,7 @@ export default function MarketingDash() {
                 const circ = 2 * Math.PI * r;
                 const filled = (Math.min(rate, 100) / 100) * circ;
                 return (
-                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                     <div className="flex items-center gap-6">
                       <div className="relative shrink-0">
                         <svg className="size-32" viewBox="0 0 120 120">
@@ -4941,7 +4941,7 @@ export default function MarketingDash() {
                   { label: "Reações", value: selectedStory.reactions, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg> },
                   { label: "Shares", value: selectedStory.shares, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> },
                 ].map((m) => (
-                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <span className="text-[#EF4444]/60">{m.icon}</span>
                       <span className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">{m.label}</span>
@@ -4953,7 +4953,7 @@ export default function MarketingDash() {
 
               {/* Interaction results */}
               {selectedStory.interaction && (
-                <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                   <h5 className="text-[10px] text-[#999999] uppercase font-bold tracking-wider mb-4">Resultado da Interação</h5>
                   {(selectedStory.interaction.type === "poll" || selectedStory.interaction.type === "quiz") && "options" in selectedStory.interaction && (
                     <div className="space-y-3">
@@ -4980,7 +4980,7 @@ export default function MarketingDash() {
                                     ? "linear-gradient(90deg, rgb(52,211,153), rgb(16,185,129))"
                                     : selectedStory.interaction!.type === "poll"
                                       ? "linear-gradient(90deg, rgb(244,114,182), rgb(236,72,153))"
-                                      : "linear-gradient(90deg, rgb(148,163,184), rgb(100,116,139))",
+                                      : "linear-gradient(90deg, #666666, #999999)",
                                   boxShadow: isCorrect ? "0 0 12px rgba(52,211,153,0.3)" : undefined,
                                 }}
                               />
@@ -5021,7 +5021,7 @@ export default function MarketingDash() {
 
       {selectedPost && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setSelectedPost(null)}>
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-[#F8F9FA]/70 backdrop-blur-sm" />
           <div
             className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl border border-[#E5E7EB] overflow-hidden flex flex-col md:flex-row"
             style={{ ...glassStyle, background: "linear-gradient(135deg, rgba(20,20,20,0.95) 0%, rgba(10,10,10,0.98) 100%)", animation: "animationIn 0.3s ease-out both" }}
@@ -5032,7 +5032,7 @@ export default function MarketingDash() {
             </button>
 
             {/* Left — Post cover */}
-            <div className="relative md:w-[420px] shrink-0 bg-black flex items-center justify-center">
+            <div className="relative md:w-[420px] shrink-0 bg-[#F8F9FA] flex items-center justify-center">
               <div className="relative w-full aspect-square">
                 <img src={selectedPost.cover} alt={selectedPost.title} style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover"}} />
               </div>
@@ -5069,7 +5069,7 @@ export default function MarketingDash() {
                 const circ = 2 * Math.PI * r;
                 const filled = (Math.min(rate, 100) / 100) * circ;
                 return (
-                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                     <div className="flex items-center gap-6">
                       <div className="relative shrink-0">
                         <svg className="size-32" viewBox="0 0 120 120">
@@ -5117,7 +5117,7 @@ export default function MarketingDash() {
                   { label: "Salvamentos", value: selectedPost.saves, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg> },
                   { label: "Shares", value: selectedPost.shares, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> },
                 ].map((m) => (
-                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <span className="text-[#10B981]/60">{m.icon}</span>
                       <span className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">{m.label}</span>
@@ -5134,7 +5134,7 @@ export default function MarketingDash() {
       {selectedAd && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setSelectedAd(null)}>
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-[#F8F9FA]/70 backdrop-blur-sm" />
 
           {/* Modal – horizontal layout */}
           <div
@@ -5150,7 +5150,7 @@ export default function MarketingDash() {
             </button>
 
             {/* Left – Cover image (full, no crop) */}
-            <div className="relative md:w-[420px] shrink-0 bg-black flex items-center justify-center">
+            <div className="relative md:w-[420px] shrink-0 bg-[#F8F9FA] flex items-center justify-center">
               <div className="relative w-full aspect-[9/16]">
                 <img src={selectedAd.cover} alt={selectedAd.name} style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"contain"}} />
               </div>
@@ -5193,7 +5193,7 @@ export default function MarketingDash() {
                 const circ = 2 * Math.PI * r;
                 const filled = (rate / 100) * circ;
                 return (
-                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                     <div className="flex items-center gap-6">
                       {/* Ring gauge */}
                       <div className="relative shrink-0">
@@ -5247,7 +5247,7 @@ export default function MarketingDash() {
                   { label: "Comentários", value: selectedAd.comments, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> },
                   { label: "Alcance", value: selectedAd.reach, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> },
                 ].map((m) => (
-                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "#F8F9FA" }}>
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <span className="text-[#F59E0B]/60">{m.icon}</span>
                       <span className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">{m.label}</span>
