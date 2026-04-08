@@ -93,36 +93,36 @@ function CardDateFilter({ mode, setMode, single, setSingle, from, setFrom, to, s
   return (
     <div className="relative ml-auto z-30" ref={ref}>
       <div className="flex items-center gap-2">
-        <div className="flex items-center gap-0.5 p-0.5 rounded-lg bg-white/[0.03] border border-white/5">
-          <button onClick={() => { setMode("single"); setPickingStart(true); }} className={`text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md transition-all ${mode === "single" ? "bg-white/[0.08] text-slate-200 border border-white/10" : "text-slate-500 hover:text-slate-400 border border-transparent"}`}>Data</button>
-          <button onClick={() => { setMode("range"); setPickingStart(true); }} className={`text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md transition-all ${mode === "range" ? "bg-white/[0.08] text-slate-200 border border-white/10" : "text-slate-500 hover:text-slate-400 border border-transparent"}`}>Intervalo</button>
+        <div className="flex items-center gap-0.5 p-0.5 rounded-lg bg-[#F8F9FA] border border-[#E5E7EB]">
+          <button onClick={() => { setMode("single"); setPickingStart(true); }} className={`text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md transition-all ${mode === "single" ? "bg-[#E5E7EB] text-[#1A1A1A] border border-[#E5E7EB]" : "text-[#999999] hover:text-[#666666] border border-transparent"}`}>Data</button>
+          <button onClick={() => { setMode("range"); setPickingStart(true); }} className={`text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md transition-all ${mode === "range" ? "bg-[#E5E7EB] text-[#1A1A1A] border border-[#E5E7EB]" : "text-[#999999] hover:text-[#666666] border border-transparent"}`}>Intervalo</button>
         </div>
         <button
           ref={btnRef}
           onClick={() => { setOpen(o => !o); setShowYearGrid(false); }}
-          className="flex items-center gap-1.5 text-[10px] bg-white/[0.04] border border-white/10 rounded-lg px-2.5 py-1.5 text-slate-300 hover:border-white/20 transition-colors"
+          className="flex items-center gap-1.5 text-[10px] bg-[#F2F2F2] border border-[#E5E7EB] rounded-lg px-2.5 py-1.5 text-[#323232] hover:border-[#E5E7EB] transition-colors"
         >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#999999]"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           {displayText}
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={`text-slate-500 transition-transform ${open ? "rotate-180" : ""}`}><polyline points="6 9 12 15 18 9"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={`text-[#999999] transition-transform ${open ? "rotate-180" : ""}`}><polyline points="6 9 12 15 18 9"/></svg>
         </button>
       </div>
 
       {open && mounted && createPortal(
         <div
           ref={dropRef}
-          className="fixed rounded-xl border border-white/10 p-3 select-none"
-          style={{ top: dropPos.top, right: dropPos.right, background: "rgba(8,10,18,0.97)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.6)", minWidth: 260, zIndex: 99999 }}
+          className="fixed rounded-xl border border-[#E5E7EB] p-3 select-none"
+          style={{ top: dropPos.top, right: dropPos.right, background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15)", minWidth: 260, zIndex: 99999 }}
         >
           {/* Header: month/year nav */}
           <div className="flex items-center justify-between mb-2">
-            <button onClick={prevMonth} className="p-1 rounded-md hover:bg-white/[0.06] text-slate-400 transition-colors">
+            <button onClick={prevMonth} className="p-1 rounded-md hover:bg-[#E5E7EB] text-[#666666] transition-colors">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
-            <button onClick={() => setShowYearGrid(g => !g)} className="text-xs font-bold text-slate-200 hover:text-white px-2 py-0.5 rounded-md hover:bg-white/[0.06] transition-colors">
+            <button onClick={() => setShowYearGrid(g => !g)} className="text-xs font-bold text-[#1A1A1A] hover:text-[#1A1A1A] px-2 py-0.5 rounded-md hover:bg-[#E5E7EB] transition-colors">
               {MONTHS_BR[viewMonth]} {viewYear}
             </button>
-            <button onClick={nextMonth} className="p-1 rounded-md hover:bg-white/[0.06] text-slate-400 transition-colors">
+            <button onClick={nextMonth} className="p-1 rounded-md hover:bg-[#E5E7EB] text-[#666666] transition-colors">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
@@ -131,22 +131,22 @@ function CardDateFilter({ mode, setMode, single, setSingle, from, setFrom, to, s
             <>
               <div className="grid grid-cols-4 gap-1 mb-2">
                 {MONTHS_BR.map((m, i) => (
-                  <button key={m} onClick={() => { setViewMonth(i); setShowYearGrid(false); }} className={`text-[10px] py-1.5 rounded-md transition-all ${i === viewMonth ? "bg-amber-500/20 text-amber-400 font-bold" : "text-slate-400 hover:bg-white/[0.06] hover:text-slate-200"}`}>{m}</button>
+                  <button key={m} onClick={() => { setViewMonth(i); setShowYearGrid(false); }} className={`text-[10px] py-1.5 rounded-md transition-all ${i === viewMonth ? "bg-amber-500/20 text-[#F59E0B] font-bold" : "text-[#666666] hover:bg-[#E5E7EB] hover:text-[#1A1A1A]"}`}>{m}</button>
                 ))}
               </div>
-              <div className="border-t border-white/5 pt-2 grid grid-cols-4 gap-1">
-                <button onClick={() => setViewYear(y => y - 12)} className="col-span-4 text-[10px] text-slate-500 hover:text-slate-300 py-0.5 transition-colors">&larr; anos anteriores</button>
+              <div className="border-t border-[#E5E7EB] pt-2 grid grid-cols-4 gap-1">
+                <button onClick={() => setViewYear(y => y - 12)} className="col-span-4 text-[10px] text-[#999999] hover:text-[#323232] py-0.5 transition-colors">&larr; anos anteriores</button>
                 {yearRange.map(y => (
-                  <button key={y} onClick={() => { setViewYear(y); }} className={`text-[10px] py-1.5 rounded-md transition-all ${y === viewYear ? "bg-amber-500/20 text-amber-400 font-bold" : "text-slate-400 hover:bg-white/[0.06] hover:text-slate-200"}`}>{y}</button>
+                  <button key={y} onClick={() => { setViewYear(y); }} className={`text-[10px] py-1.5 rounded-md transition-all ${y === viewYear ? "bg-amber-500/20 text-[#F59E0B] font-bold" : "text-[#666666] hover:bg-[#E5E7EB] hover:text-[#1A1A1A]"}`}>{y}</button>
                 ))}
-                <button onClick={() => setViewYear(y => y + 12)} className="col-span-4 text-[10px] text-slate-500 hover:text-slate-300 py-0.5 transition-colors">anos seguintes &rarr;</button>
+                <button onClick={() => setViewYear(y => y + 12)} className="col-span-4 text-[10px] text-[#999999] hover:text-[#323232] py-0.5 transition-colors">anos seguintes &rarr;</button>
               </div>
             </>
           ) : (
             <>
               <div className="grid grid-cols-7 mb-1">
                 {WEEKDAYS_BR.map((wd, i) => (
-                  <span key={i} className="text-[9px] font-bold text-slate-500 text-center py-0.5">{wd}</span>
+                  <span key={i} className="text-[9px] font-bold text-[#999999] text-center py-0.5">{wd}</span>
                 ))}
               </div>
               <div className="grid grid-cols-7 gap-px">
@@ -157,9 +157,9 @@ function CardDateFilter({ mode, setMode, single, setSingle, from, setFrom, to, s
                     key={d}
                     onClick={() => handleDayClick(d)}
                     className={`text-[10px] h-7 rounded-md transition-all relative
-                      ${isSelected(d) ? "bg-amber-500/25 text-amber-300 font-bold ring-1 ring-amber-500/40" : ""}
+                      ${isSelected(d) ? "bg-amber-500/25 text-[#F59E0B] font-bold ring-1 ring-amber-500/40" : ""}
                       ${isInRange(d) ? "bg-amber-500/10 text-amber-200/80" : ""}
-                      ${!isSelected(d) && !isInRange(d) ? "text-slate-300 hover:bg-white/[0.06]" : ""}
+                      ${!isSelected(d) && !isInRange(d) ? "text-[#323232] hover:bg-[#E5E7EB]" : ""}
                       ${isToday(d) && !isSelected(d) ? "ring-1 ring-white/20" : ""}
                     `}
                   >
@@ -168,8 +168,8 @@ function CardDateFilter({ mode, setMode, single, setSingle, from, setFrom, to, s
                 ))}
               </div>
               {mode === "range" && (
-                <div className="mt-2 pt-2 border-t border-white/5 text-center">
-                  <p className="text-[9px] text-slate-500">
+                <div className="mt-2 pt-2 border-t border-[#E5E7EB] text-center">
+                  <p className="text-[9px] text-[#999999]">
                     {!from ? "Selecione a data inicial" : !to || !pickingStart ? "Selecione a data final" : `${fmtBR(from)} — ${fmtBR(to)}`}
                   </p>
                 </div>
@@ -1058,11 +1058,10 @@ function ArrowDown() {
    ───────────────────────────────────────────── */
 
 const glassStyle: React.CSSProperties = {
-  background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
-  backdropFilter: "blur(6px) saturate(140%)",
-  WebkitBackdropFilter: "blur(6px) saturate(140%)",
-  borderBottom: "1px solid rgba(255,255,255,0.04)",
-  boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
+  background: "#FFFFFF",
+  border: "1px solid #E5E7EB",
+  boxShadow: "0 4px 4px rgba(0,0,0,0.1)",
+  borderRadius: 3,
   overflow: "visible",
 };
 
@@ -1221,25 +1220,25 @@ export default function MarketingDash() {
         onMouseEnter={handleEnter}
         onMouseLeave={() => setShow(false)}
       >
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-colors ${show ? "text-slate-300" : "text-slate-500/40"}`}>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-colors ${show ? "text-[#323232]" : "text-[#999999]/40"}`}>
           <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
         </svg>
         {show && portalRoot && createPortal(
           <div
-            className="fixed w-72 p-3 rounded-lg border border-white/10 text-left"
+            className="fixed w-72 p-3 rounded-lg border border-[#E5E7EB] text-left"
             style={{
               top: pos.top,
               left: pos.left,
               transform: "translateY(-100%)",
-              background: "rgba(8,10,18,0.97)",
+              background: "rgba(255,255,255,0.98)",
               backdropFilter: "blur(16px)",
-              boxShadow: "0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)",
+              boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05)",
               zIndex: 99999,
               pointerEvents: "none",
             }}
           >
-            <p className="text-[11px] text-slate-300/90 leading-[1.6] font-normal normal-case tracking-normal">{tip}</p>
-            <div className="absolute -bottom-[5px] left-3 w-2.5 h-2.5 rotate-45 border-r border-b border-white/10" style={{ background: "rgba(8,10,18,0.97)" }} />
+            <p className="text-[11px] text-[#323232]/90 leading-[1.6] font-normal normal-case tracking-normal">{tip}</p>
+            <div className="absolute -bottom-[5px] left-3 w-2.5 h-2.5 rotate-45 border-r border-b border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.98)" }} />
           </div>,
           portalRoot
         )}
@@ -1252,7 +1251,7 @@ export default function MarketingDash() {
       {/* Background layers – fixed */}
       <div className="pointer-events-none fixed inset-0 flex items-center justify-center" style={{ zIndex: 0 }}>
         <div className="h-[120vh] w-[120vh] rounded-full"
-          style={{ background: "rgba(255, 177, 23, 0.15)", filter: "blur(120px)", animation: "orbPulse 5s ease-in-out infinite" }} />
+          style={{ background: "rgba(27, 66, 102, 0.04)", filter: "blur(120px)", animation: "orbPulse 5s ease-in-out infinite" }} />
       </div>
       <div className="pointer-events-none fixed inset-0 flex items-center justify-center" style={{ zIndex: 0 }}>
         <div style={{position:"absolute",inset:0,opacity:0.04}} />
@@ -1271,40 +1270,40 @@ export default function MarketingDash() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => {}} // navigation removed
-              className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors border border-white/5"
+              className="p-1.5 rounded-lg bg-white/5 hover:bg-[#E5E7EB] text-[#666666] hover:text-[#1A1A1A] transition-colors border border-[#E5E7EB]"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
             </button>
             <div>
-              <h2 className="text-xl font-bold text-white tracking-tight">Dashboard Marketing</h2>
-              <p className="text-xs text-slate-400 uppercase tracking-widest">Resumo de Anúncios Multicanal</p>
+              <h2 className="text-xl font-bold text-[#1A1A1A] tracking-tight">Dashboard Marketing</h2>
+              <p className="text-xs text-[#666666] uppercase tracking-widest">Resumo de Anúncios Multicanal</p>
             </div>
           </div>
         </div>
         <div className="flex items-center gap-4">
           {/* Filter dropdowns */}
-          {mainTab === "pago" && (<div className="flex items-center gap-0 bg-black border border-white/5 rounded-lg overflow-visible">
+          {mainTab === "pago" && (<div className="flex items-center gap-0 bg-black border border-[#E5E7EB] rounded-lg overflow-visible">
             {/* Estratégia */}
             <div ref={estrategiaRef} className="relative">
               <button
                 onClick={() => setShowEstrategia(!showEstrategia)}
-                className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white transition-colors"
+                className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-[#323232] hover:text-[#1A1A1A] transition-colors"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-500"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                <span>Estratégia: <span className="text-white font-semibold">{estrategia.length > 12 ? estrategia.slice(0, 12) + "..." : estrategia}</span></span>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-slate-500"><path d="m6 9 6 6 6-6"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#999999]"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                <span>Estratégia: <span className="text-[#1A1A1A] font-semibold">{estrategia.length > 12 ? estrategia.slice(0, 12) + "..." : estrategia}</span></span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#999999]"><path d="m6 9 6 6 6-6"/></svg>
               </button>
               {showEstrategia && (
-                <div className="absolute top-full left-0 mt-2 w-52 rounded-lg border border-white/10 py-2 z-[9999]" style={{ background: "rgba(8,10,18,0.97)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.5)" }}>
-                  <p className="px-4 py-1.5 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Estratégia ({estrategias.indexOf(estrategia as typeof estrategias[number]) + 1})</p>
+                <div className="absolute top-full left-0 mt-2 w-52 rounded-lg border border-[#E5E7EB] py-2 z-[9999]" style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.1)" }}>
+                  <p className="px-4 py-1.5 text-[10px] font-bold text-[#999999] uppercase tracking-wider">Estratégia ({estrategias.indexOf(estrategia as typeof estrategias[number]) + 1})</p>
                   {estrategias.map((e) => (
                     <button
                       key={e}
                       onClick={() => { setEstrategia(e); setShowEstrategia(false); }}
-                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-white/5 ${estrategia === e ? "text-white" : "text-slate-400"}`}
+                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-[#F2F2F2] ${estrategia === e ? "text-[#1A1A1A]" : "text-[#666666]"}`}
                     >
                       {estrategia === e ? (
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-amber-400"><polyline points="20 6 9 17 4 12"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#F59E0B]"><polyline points="20 6 9 17 4 12"/></svg>
                       ) : <span className="w-[14px]" />}
                       {e}
                     </button>
@@ -1313,13 +1312,13 @@ export default function MarketingDash() {
               )}
             </div>
           </div>)}
-          <div className="flex items-center gap-1 p-0.5 rounded-lg bg-white/[0.03] border border-white/5">
+          <div className="flex items-center gap-1 p-0.5 rounded-lg bg-[#F8F9FA] border border-[#E5E7EB]">
             <button
               onClick={() => setMainTab("pago")}
               className={`text-[10px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-md transition-all ${
                 mainTab === "pago"
-                  ? "bg-amber-500/15 text-amber-400 border border-amber-500/20"
-                  : "text-slate-500 hover:text-slate-400 border border-transparent"
+                  ? "bg-amber-500/15 text-[#F59E0B] border border-amber-500/20"
+                  : "text-[#999999] hover:text-[#666666] border border-transparent"
               }`}
             >
               Tráfego Pago
@@ -1328,19 +1327,19 @@ export default function MarketingDash() {
               onClick={() => setMainTab("organico")}
               className={`text-[10px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-md transition-all ${
                 mainTab === "organico"
-                  ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/20"
-                  : "text-slate-500 hover:text-slate-400 border border-transparent"
+                  ? "bg-emerald-500/15 text-[#10B981] border border-emerald-500/20"
+                  : "text-[#999999] hover:text-[#666666] border border-transparent"
               }`}
             >
               Tráfego Orgânico
             </button>
           </div>
-          <div className="flex items-center gap-2 bg-black border border-white/5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-amber-400"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>
+          <div className="flex items-center gap-2 bg-black border border-[#E5E7EB] px-3 py-1.5 rounded-lg text-xs font-medium text-[#323232]">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#F59E0B]"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>
             <span>{new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })}</span>
           </div>
-          <div className="flex items-center gap-2 bg-black border border-white/5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-amber-400"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+          <div className="flex items-center gap-2 bg-black border border-[#E5E7EB] px-3 py-1.5 rounded-lg text-xs font-medium text-[#323232]">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#F59E0B]"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
             <span>{new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}</span>
           </div>
         </div>
@@ -1362,10 +1361,10 @@ export default function MarketingDash() {
           style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.1s both", overflow: "visible" }}
         >
           <div className="flex items-center gap-2 mb-5 relative z-10 px-[17px]">
-            <span className="text-amber-400/60">
+            <span className="text-[#F59E0B]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Score de Saúde da Conta<InfoTip title="Score de Saúde da Conta" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Score de Saúde da Conta<InfoTip title="Score de Saúde da Conta" /></h3>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10" style={{ overflow: "visible" }}>
             {net.healthScore.map((h, hi) => {
@@ -1383,20 +1382,20 @@ export default function MarketingDash() {
                 >
                   {/* Info icon */}
                   <div className="absolute bottom-2.5 right-2.5 cursor-help group/tip">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500/40 group-hover/tip:text-slate-300 transition-colors">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#999999]/40 group-hover/tip:text-[#323232] transition-colors">
                       <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
                     </svg>
                     {/* Tooltip */}
                     <div
-                      className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-white/10 text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[100] ${isRight ? "right-0" : isLeft ? "left-0" : "left-1/2 -translate-x-1/2"}`}
-                      style={{ background: "rgba(8,10,18,0.97)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)" }}
+                      className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-[#E5E7EB] text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[100] ${isRight ? "right-0" : isLeft ? "left-0" : "left-1/2 -translate-x-1/2"}`}
+                      style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05)" }}
                     >
-                      <p className="text-[11px] text-slate-300/90 leading-[1.6] font-normal normal-case tracking-normal">{h.tooltip}</p>
-                      <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-white/10 ${isRight ? "right-2" : isLeft ? "left-2" : "left-1/2 -translate-x-1/2"}`} style={{ background: "rgba(8,10,18,0.97)" }} />
+                      <p className="text-[11px] text-[#323232]/90 leading-[1.6] font-normal normal-case tracking-normal">{h.tooltip}</p>
+                      <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-[#E5E7EB] ${isRight ? "right-2" : isLeft ? "left-2" : "left-1/2 -translate-x-1/2"}`} style={{ background: "rgba(255,255,255,0.98)" }} />
                     </div>
                   </div>
-                  <p className={`text-2xl font-bold ${color === "emerald" ? "text-emerald-400" : color === "amber" ? "text-amber-400" : "text-rose-400"}`}>{h.value}</p>
-                  <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider mt-1">{h.label}</p>
+                  <p className={`text-2xl font-bold ${color === "emerald" ? "text-[#10B981]" : color === "amber" ? "text-[#F59E0B]" : "text-[#EF4444]"}`}>{h.value}</p>
+                  <p className="text-[10px] text-[#999999] uppercase font-bold tracking-wider mt-1">{h.label}</p>
                   <div className={`size-2 rounded-full mx-auto mt-2 ${color === "emerald" ? "bg-emerald-400" : color === "amber" ? "bg-amber-400" : "bg-rose-400"}`} />
                 </div>
               );
@@ -1414,11 +1413,11 @@ export default function MarketingDash() {
             >
               <div className="absolute -top-6 -right-6 w-20 h-20 bg-amber-500/0 group-hover:bg-amber-500/5 rounded-full blur-[40px] pointer-events-none transition-all duration-500" />
               <div className="flex items-center justify-between mb-1 relative z-10">
-                <p className="text-xs text-neutral-500 font-medium uppercase tracking-wider">{kpi.label}</p>
-                <div className="text-amber-400/60">{kpiIcons[kpi.icon]}</div>
+                <p className="text-xs text-[#999999] font-medium uppercase tracking-wider">{kpi.label}</p>
+                <div className="text-[#F59E0B]/60">{kpiIcons[kpi.icon]}</div>
               </div>
-              <p className="text-2xl font-bold text-amber-400 relative z-10 drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]">{kpi.value}</p>
-              <div className={`mt-2 flex items-center gap-1 text-[10px] font-bold relative z-10 ${kpi.up ? "text-emerald-400" : "text-rose-400"}`}>
+              <p className="text-2xl font-bold text-[#F59E0B] relative z-10 drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]">{kpi.value}</p>
+              <div className={`mt-2 flex items-center gap-1 text-[10px] font-bold relative z-10 ${kpi.up ? "text-[#10B981]" : "text-[#EF4444]"}`}>
                 {kpi.up ? <ArrowUp /> : <ArrowDown />}
                 {kpi.delta} vs mês ant.
               </div>
@@ -1437,10 +1436,10 @@ export default function MarketingDash() {
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-[60px] pointer-events-none" />
 
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Funil de Conversão<InfoTip title="Funil de Conversão" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Funil de Conversão<InfoTip title="Funil de Conversão" /></h3>
             </div>
 
             {/* Funnel stages – centered with side metrics between bars */}
@@ -1451,9 +1450,9 @@ export default function MarketingDash() {
 
                 const renderMetric = (m: { k: string; v: string; d: string; up: boolean }, align: "left" | "right") => (
                   <div>
-                    <p className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">{m.k}</p>
-                    <p className="text-sm font-bold text-white leading-tight">{m.v}</p>
-                    <p className={`text-[9px] font-bold flex items-center ${align === "right" ? "justify-end" : ""} gap-0.5 ${m.up ? "text-emerald-400" : "text-rose-400"}`}>
+                    <p className="text-[9px] text-[#999999] uppercase font-bold tracking-wider">{m.k}</p>
+                    <p className="text-sm font-bold text-[#1A1A1A] leading-tight">{m.v}</p>
+                    <p className={`text-[9px] font-bold flex items-center ${align === "right" ? "justify-end" : ""} gap-0.5 ${m.up ? "text-[#10B981]" : "text-[#EF4444]"}`}>
                       <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         {m.up ? <><path d="M12 19V5" /><path d="m5 12 7-7 7 7" /></> : <><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></>}
                       </svg>
@@ -1465,29 +1464,29 @@ export default function MarketingDash() {
                 const renderBar = (stage: typeof stages[number]) => (
                   <div className="flex items-center justify-center">
                     <div
-                      className={`flex-shrink-0 flex flex-col items-center justify-center rounded-xl transition-all duration-300 cursor-default py-1.5 ${stage.highlight ? "border border-amber-400/30" : "border border-white/[0.06]"}`}
+                      className={`flex-shrink-0 flex flex-col items-center justify-center rounded-xl transition-all duration-300 cursor-default py-1.5 ${stage.highlight ? "border border-amber-400/30" : "border border-[#E5E7EB]"}`}
                       style={{
                         width: `${stage.w}%`,
                         background: stage.highlight
                           ? "linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 100%)"
-                          : "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+                          : "linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.02) 100%)",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.background = stage.highlight
                           ? "linear-gradient(135deg, rgba(245,158,11,0.25) 0%, rgba(245,158,11,0.10) 100%)"
-                          : "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 100%)";
+                          : "linear-gradient(135deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.08) 100%)";
                         if (stage.highlight) e.currentTarget.style.boxShadow = "0 0 20px rgba(251,191,36,0.15)";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background = stage.highlight
                           ? "linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 100%)"
-                          : "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)";
+                          : "linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.02) 100%)";
                         e.currentTarget.style.boxShadow = "none";
                       }}
                     >
-                      <span className={`text-[10px] font-medium ${stage.highlight ? "text-amber-400" : "text-slate-400"}`}>{stage.label}</span>
-                      <span className="text-2xl font-bold text-white leading-tight">{stage.count}</span>
-                      <span className={`text-[10px] font-bold flex items-center gap-0.5 ${stage.up ? "text-emerald-400" : "text-rose-400"}`}>
+                      <span className={`text-[10px] font-medium ${stage.highlight ? "text-[#F59E0B]" : "text-[#666666]"}`}>{stage.label}</span>
+                      <span className="text-2xl font-bold text-[#1A1A1A] leading-tight">{stage.count}</span>
+                      <span className={`text-[10px] font-bold flex items-center gap-0.5 ${stage.up ? "text-[#10B981]" : "text-[#EF4444]"}`}>
                         <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                           {stage.up ? <><path d="M12 19V5" /><path d="m5 12 7-7 7 7" /></> : <><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></>}
                         </svg>
@@ -1510,7 +1509,7 @@ export default function MarketingDash() {
                         </div>
                         {/* Dotted connector */}
                         <div className="flex-shrink-0 flex justify-center" style={{ width: `${(stage.w + stages[i + 1].w) / 2}%` }}>
-                          <div className="w-px h-1.5 border-l border-dashed border-white/10" />
+                          <div className="w-px h-1.5 border-l border-dashed border-[#E5E7EB]" />
                         </div>
                         {/* Right metric */}
                         <div className="flex-1 min-w-0 pl-10">
@@ -1531,16 +1530,16 @@ export default function MarketingDash() {
           >
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-amber-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-5 relative z-10">
-            <span className="text-amber-400/60">
+            <span className="text-[#F59E0B]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Melhores Anúncios<InfoTip title="Melhores Anúncios" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Melhores Anúncios<InfoTip title="Melhores Anúncios" /></h3>
           </div>
           <div className="flex gap-5 overflow-x-auto pb-2 custom-scrollbar relative z-10 snap-x snap-mandatory flex-1 min-h-0">
             {net.ads.map((ad) => (
               <div
                 key={ad.name}
-                className="flex-shrink-0 w-64 rounded-xl border border-white/5 overflow-hidden cursor-pointer hover:border-amber-500/20 transition-all duration-300 group/reel snap-start flex flex-col"
+                className="flex-shrink-0 w-64 rounded-xl border border-[#E5E7EB] overflow-hidden cursor-pointer hover:border-amber-500/20 transition-all duration-300 group/reel snap-start flex flex-col"
                 style={{ background: "rgba(255,255,255,0.02)" }}
                 onClick={() => setSelectedAd(ad)}
               >
@@ -1551,50 +1550,50 @@ export default function MarketingDash() {
                     alt={ad.name}
                     style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",transition:"transform 0.5s"}}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-[#1A1A1A]/10 to-transparent" />
                   <div className="absolute top-3 left-3">
                     <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold backdrop-blur-sm ${
                       ad.status === "ATIVO"
-                        ? "bg-emerald-500/20 border border-emerald-500/30 text-emerald-400"
-                        : "bg-amber-500/20 border border-amber-500/30 text-amber-400"
+                        ? "bg-emerald-500/20 border border-emerald-500/30 text-[#10B981]"
+                        : "bg-amber-500/20 border border-amber-500/30 text-[#F59E0B]"
                     }`}>
                       {ad.status}
                     </span>
                   </div>
                   {ad.type.includes("Video") && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="size-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover/reel:bg-white/20 transition-colors">
+                      <div className="size-12 rounded-full bg-white/10 backdrop-blur-sm border border-[#E5E7EB] flex items-center justify-center group-hover/reel:bg-white/20 transition-colors">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="white" className="ml-0.5"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                       </div>
                     </div>
                   )}
                   <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="text-xs font-bold text-white truncate mb-1.5">{ad.name}</p>
-                    <p className="text-[10px] text-slate-400">{ad.type}</p>
+                    <p className="text-xs font-bold text-[#1A1A1A] truncate mb-1.5">{ad.name}</p>
+                    <p className="text-[10px] text-[#666666]">{ad.type}</p>
                   </div>
                 </div>
                 <div className="p-3 space-y-2">
                   <div className="grid grid-cols-2 gap-2">
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-500" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-                      <span className="text-[10px] font-bold text-white">{ad.views}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#999999]" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{ad.views}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-rose-400/60" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                      <span className="text-[10px] font-bold text-white">{ad.likes}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#EF4444]/60" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{ad.likes}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-500" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-                      <span className="text-[10px] font-bold text-white">{ad.comments}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#999999]" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{ad.comments}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-500" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                      <span className="text-[10px] font-bold text-white">{ad.reach}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#999999]" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{ad.reach}</span>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                    <span className={`text-xs font-bold ${ad.roasGood ? "text-emerald-400" : "text-slate-500"}`}>ROAS {ad.roas}</span>
-                    <span className="text-[10px] text-slate-500">CPC {ad.cpc}</span>
+                  <div className="flex items-center justify-between pt-2 border-t border-[#E5E7EB]">
+                    <span className={`text-xs font-bold ${ad.roasGood ? "text-[#10B981]" : "text-[#999999]"}`}>ROAS {ad.roas}</span>
+                    <span className="text-[10px] text-[#999999]">CPC {ad.cpc}</span>
                   </div>
                 </div>
               </div>
@@ -1613,10 +1612,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Engajamento por Público<InfoTip title="Engajamento por Público" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Engajamento por Público<InfoTip title="Engajamento por Público" /></h3>
             </div>
             <div className="relative flex justify-center items-center py-4 z-10" onMouseLeave={() => setHoveredEngagement(null)}>
               <svg className="size-40" viewBox="0 0 200 200">
@@ -1634,7 +1633,7 @@ export default function MarketingDash() {
                     <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
                   </filter>
                 </defs>
-                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="18" />
+                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="18" />
                 {(() => {
                   const r = 70;
                   const circ = 2 * Math.PI * r;
@@ -1665,24 +1664,24 @@ export default function MarketingDash() {
                 const e = net.engagement.find((x) => x.label === hoveredEngagement)!;
                 return (
                   <div className="absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none z-30">
-                    <div className="rounded-xl border border-white/10 px-4 py-3 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.5)" }}>
-                      <p className="text-xs font-bold text-white mb-2">{e.label}</p>
+                    <div className="rounded-xl border border-[#E5E7EB] px-4 py-3 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}>
+                      <p className="text-xs font-bold text-[#1A1A1A] mb-2">{e.label}</p>
                       <div className="space-y-1.5">
                         <div className="flex items-center justify-between gap-5">
-                          <span className="text-[10px] text-slate-400">CTR</span>
-                          <span className="text-xs font-bold text-amber-400">{e.value}</span>
+                          <span className="text-[10px] text-[#666666]">CTR</span>
+                          <span className="text-xs font-bold text-[#F59E0B]">{e.value}</span>
                         </div>
                         <div className="flex items-center justify-between gap-5">
-                          <span className="text-[10px] text-slate-400">Impressões</span>
-                          <span className="text-xs font-bold text-white">{e.impressoes}</span>
+                          <span className="text-[10px] text-[#666666]">Impressões</span>
+                          <span className="text-xs font-bold text-[#1A1A1A]">{e.impressoes}</span>
                         </div>
                         <div className="flex items-center justify-between gap-5">
-                          <span className="text-[10px] text-slate-400">Cliques</span>
-                          <span className="text-xs font-bold text-slate-300">{e.cliques}</span>
+                          <span className="text-[10px] text-[#666666]">Cliques</span>
+                          <span className="text-xs font-bold text-[#323232]">{e.cliques}</span>
                         </div>
                         <div className="flex items-center justify-between gap-5">
-                          <span className="text-[10px] text-slate-400">Conversões</span>
-                          <span className="text-xs font-bold text-emerald-400">{e.conversoes}</span>
+                          <span className="text-[10px] text-[#666666]">Conversões</span>
+                          <span className="text-xs font-bold text-[#10B981]">{e.conversoes}</span>
                         </div>
                       </div>
                     </div>
@@ -1693,8 +1692,8 @@ export default function MarketingDash() {
             <div className="mt-4 grid grid-cols-2 gap-4 relative z-10">
               {net.engagement.map((e) => (
                 <div key={e.label} className="text-center cursor-default" onMouseEnter={() => setHoveredEngagement(e.label)} onMouseLeave={() => setHoveredEngagement(null)}>
-                  <p className="text-xs text-slate-400 mb-1">{e.label}</p>
-                  <p className="font-bold text-amber-400 text-base">{e.value}</p>
+                  <p className="text-xs text-[#666666] mb-1">{e.label}</p>
+                  <p className="font-bold text-[#F59E0B] text-base">{e.value}</p>
                 </div>
               ))}
             </div>
@@ -1708,19 +1707,19 @@ export default function MarketingDash() {
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-amber-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center justify-between mb-6 relative z-10">
             <div className="flex items-center gap-2">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 6-6"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Evolução Temporal<InfoTip title="Evolução Temporal" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Evolução Temporal<InfoTip title="Evolução Temporal" /></h3>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
                 <div className="size-2.5 rounded-full bg-amber-400" />
-                <span className="text-xs font-semibold text-slate-300">Impressões</span>
+                <span className="text-xs font-semibold text-[#323232]">Impressões</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="size-2.5 rounded-full bg-slate-400" />
-                <span className="text-xs font-semibold text-slate-300">Cliques</span>
+                <span className="text-xs font-semibold text-[#323232]">Cliques</span>
               </div>
             </div>
           </div>
@@ -1782,7 +1781,7 @@ export default function MarketingDash() {
                     </defs>
                     {/* Grid lines */}
                     {[0, 0.25, 0.5, 0.75, 1].map((f) => (
-                      <line key={f} x1={pad} x2={w - pad} y1={pad + f * (h - pad * 2)} y2={pad + f * (h - pad * 2)} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+                      <line key={f} x1={pad} x2={w - pad} y1={pad + f * (h - pad * 2)} y2={pad + f * (h - pad * 2)} stroke="rgba(0,0,0,0.08)" strokeWidth="1" />
                     ))}
                     {/* Animated chart group */}
                     <g clipPath="url(#chartReveal)">
@@ -1797,8 +1796,8 @@ export default function MarketingDash() {
                           {hoveredEvolution === i && (
                             <circle cx={impPts[i].x} cy={impPts[i].y} r="12" fill="rgba(251,191,36,0.15)" />
                           )}
-                          <circle cx={impPts[i].x} cy={impPts[i].y} r={hoveredEvolution === i ? 5 : 3} fill={hoveredEvolution === i ? "#fbbf24" : "rgba(251,191,36,0.8)"} stroke={hoveredEvolution === i ? "rgba(0,0,0,0.4)" : "none"} strokeWidth="2" style={{ transition: "all 0.2s ease" }} />
-                          <circle cx={clkPts[i].x} cy={clkPts[i].y} r={hoveredEvolution === i ? 4 : 2.5} fill={hoveredEvolution === i ? "rgba(148,163,184,0.8)" : "rgba(148,163,184,0.4)"} stroke={hoveredEvolution === i ? "rgba(0,0,0,0.3)" : "none"} strokeWidth="1.5" style={{ transition: "all 0.2s ease" }} />
+                          <circle cx={impPts[i].x} cy={impPts[i].y} r={hoveredEvolution === i ? 5 : 3} fill={hoveredEvolution === i ? "#fbbf24" : "rgba(251,191,36,0.8)"} stroke={hoveredEvolution === i ? "rgba(0,0,0,0.08)" : "none"} strokeWidth="2" style={{ transition: "all 0.2s ease" }} />
+                          <circle cx={clkPts[i].x} cy={clkPts[i].y} r={hoveredEvolution === i ? 4 : 2.5} fill={hoveredEvolution === i ? "rgba(148,163,184,0.8)" : "rgba(148,163,184,0.4)"} stroke={hoveredEvolution === i ? "rgba(0,0,0,0.06)" : "none"} strokeWidth="1.5" style={{ transition: "all 0.2s ease" }} />
                         </g>
                       ))}
                     </g>
@@ -1818,30 +1817,30 @@ export default function MarketingDash() {
                     const xPct = (impPts[hoveredEvolution].x / w) * 100;
                     return (
                       <div className="absolute top-0 pointer-events-none z-30" style={{ left: `${xPct}%`, transform: "translateX(-50%)" }}>
-                        <div className="rounded-xl border border-white/10 px-4 py-3 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.5)" }}>
-                          <p className="text-xs font-bold text-white mb-2">{d.date}</p>
+                        <div className="rounded-xl border border-[#E5E7EB] px-4 py-3 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}>
+                          <p className="text-xs font-bold text-[#1A1A1A] mb-2">{d.date}</p>
                           <div className="space-y-1.5">
                             <div className="flex items-center justify-between gap-5">
                               <div className="flex items-center gap-1.5">
                                 <div className="size-2 rounded-full bg-amber-400" />
-                                <span className="text-[10px] text-slate-400">Impressões</span>
+                                <span className="text-[10px] text-[#666666]">Impressões</span>
                               </div>
-                              <span className="text-xs font-bold text-amber-400">{d.impressoes.toLocaleString("pt-BR")}</span>
+                              <span className="text-xs font-bold text-[#F59E0B]">{d.impressoes.toLocaleString("pt-BR")}</span>
                             </div>
                             <div className="flex items-center justify-between gap-5">
                               <div className="flex items-center gap-1.5">
                                 <div className="size-2 rounded-full bg-slate-400" />
-                                <span className="text-[10px] text-slate-400">Cliques</span>
+                                <span className="text-[10px] text-[#666666]">Cliques</span>
                               </div>
-                              <span className="text-xs font-bold text-slate-300">{d.cliques.toLocaleString("pt-BR")}</span>
+                              <span className="text-xs font-bold text-[#323232]">{d.cliques.toLocaleString("pt-BR")}</span>
                             </div>
-                            <div className="border-t border-white/5 pt-1.5 mt-1.5 flex items-center justify-between gap-5">
-                              <span className="text-[10px] text-slate-500">CPC</span>
-                              <span className="text-xs font-bold text-white">{d.cpc}</span>
+                            <div className="border-t border-[#E5E7EB] pt-1.5 mt-1.5 flex items-center justify-between gap-5">
+                              <span className="text-[10px] text-[#999999]">CPC</span>
+                              <span className="text-xs font-bold text-[#1A1A1A]">{d.cpc}</span>
                             </div>
                             <div className="flex items-center justify-between gap-5">
-                              <span className="text-[10px] text-slate-500">CTR</span>
-                              <span className="text-xs font-bold text-emerald-400">{d.ctr}</span>
+                              <span className="text-[10px] text-[#999999]">CTR</span>
+                              <span className="text-xs font-bold text-[#10B981]">{d.ctr}</span>
                             </div>
                           </div>
                         </div>
@@ -1851,7 +1850,7 @@ export default function MarketingDash() {
                 </>
               );
             })()}
-            <div className="flex justify-between mt-3 mb-4 px-2 text-[10px] text-slate-500 font-bold tracking-widest uppercase">
+            <div className="flex justify-between mt-3 mb-4 px-2 text-[10px] text-[#999999] font-bold tracking-widest uppercase">
               {net.evolutionData.map((d) => <span key={d.date}>{d.date}</span>)}
             </div>
           </div>
@@ -1867,19 +1866,19 @@ export default function MarketingDash() {
           >
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Investimento vs Retorno por Campanha<InfoTip title="Investimento vs Retorno por Campanha" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Investimento vs Retorno por Campanha<InfoTip title="Investimento vs Retorno por Campanha" /></h3>
             </div>
             <div className="space-y-6 relative z-10">
               {net.campaigns.map((c, i) => (
                 <div key={c.name} className="space-y-2 group/bar cursor-pointer">
                   <div className="flex justify-between text-xs font-semibold">
-                    <span className="text-slate-300">{c.name}</span>
-                    <span className="text-emerald-400">{c.returned} retornado</span>
+                    <span className="text-[#323232]">{c.name}</span>
+                    <span className="text-[#10B981]">{c.returned} retornado</span>
                   </div>
-                  <div className="relative h-3.5 rounded-full overflow-hidden bg-white/[0.04] ring-1 ring-white/5">
+                  <div className="relative h-3.5 rounded-full overflow-hidden bg-[#F2F2F2] ring-1 ring-white/5">
                     {/* Invest bar */}
                     <div
                       className="absolute top-0 left-0 h-full rounded-full transition-all duration-500 group-hover/bar:brightness-110 overflow-hidden animate-bar-enter"
@@ -1906,8 +1905,8 @@ export default function MarketingDash() {
                     />
                   </div>
                   <div className="flex justify-between text-xs">
-                    <span className="text-slate-400">Gasto: <span className="text-rose-400 font-semibold">{c.spent}</span></span>
-                    <span className="text-slate-400">ROAS: <span className="text-white font-semibold">{c.roas}</span></span>
+                    <span className="text-[#666666]">Gasto: <span className="text-[#EF4444] font-semibold">{c.spent}</span></span>
+                    <span className="text-[#666666]">ROAS: <span className="text-[#1A1A1A] font-semibold">{c.roas}</span></span>
                   </div>
                 </div>
               ))}
@@ -1922,13 +1921,13 @@ export default function MarketingDash() {
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-amber-500/5 rounded-full blur-[60px] pointer-events-none" />
 
             {/* Tab switcher */}
-            <div className="flex items-center gap-1 p-0.5 rounded-lg bg-white/[0.03] border border-white/5 mb-5 relative z-10">
+            <div className="flex items-center gap-1 p-0.5 rounded-lg bg-[#F8F9FA] border border-[#E5E7EB] mb-5 relative z-10">
               <button
                 onClick={() => setChannelTab("metricas")}
                 className={`flex-1 text-[10px] font-bold uppercase tracking-wider py-1.5 rounded-md transition-all ${
                   channelTab === "metricas"
-                    ? "bg-amber-500/15 text-amber-400 border border-amber-500/20"
-                    : "text-slate-500 hover:text-slate-400 border border-transparent"
+                    ? "bg-amber-500/15 text-[#F59E0B] border border-amber-500/20"
+                    : "text-[#999999] hover:text-[#666666] border border-transparent"
                 }`}
               >
                 Métricas de Página
@@ -1937,8 +1936,8 @@ export default function MarketingDash() {
                 onClick={() => setChannelTab("canal")}
                 className={`flex-1 text-[10px] font-bold uppercase tracking-wider py-1.5 rounded-md transition-all ${
                   channelTab === "canal"
-                    ? "bg-amber-500/15 text-amber-400 border border-amber-500/20"
-                    : "text-slate-500 hover:text-slate-400 border border-transparent"
+                    ? "bg-amber-500/15 text-[#F59E0B] border border-amber-500/20"
+                    : "text-[#999999] hover:text-[#666666] border border-transparent"
                 }`}
               >
                 Canal / Dispositivo
@@ -1970,7 +1969,7 @@ export default function MarketingDash() {
                       </filter>
                     </defs>
                     {/* Background track */}
-                    <circle cx="100" cy="100" r="75" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="18" />
+                    <circle cx="100" cy="100" r="75" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="18" />
                     {(() => {
                       const r = 75;
                       const circ = 2 * Math.PI * r;
@@ -2025,19 +2024,19 @@ export default function MarketingDash() {
                     })()}
                   </svg>
                   <div className="absolute text-center pointer-events-none">
-                    <p className="text-2xl font-bold text-white">1.2k</p>
-                    <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Total</p>
+                    <p className="text-2xl font-bold text-[#1A1A1A]">1.2k</p>
+                    <p className="text-[10px] text-[#999999] uppercase font-bold tracking-tighter">Total</p>
                   </div>
                   {/* Tooltip over donut */}
                   {hoveredChannel && (() => {
                     const ch = channels.find((c) => c.name === hoveredChannel)!;
                     return (
                       <div className="absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none z-30">
-                        <div className="rounded-xl border border-white/10 px-4 py-3 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.5)" }}>
-                          <p className="text-xs font-bold text-white">{ch.name}</p>
+                        <div className="rounded-xl border border-[#E5E7EB] px-4 py-3 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}>
+                          <p className="text-xs font-bold text-[#1A1A1A]">{ch.name}</p>
                           <div className="flex items-center gap-4 mt-1.5">
-                            <span className="text-sm font-bold text-amber-400">{ch.value} conversões</span>
-                            <span className="text-xs text-slate-400">({ch.pct}%)</span>
+                            <span className="text-sm font-bold text-[#F59E0B]">{ch.value} conversões</span>
+                            <span className="text-xs text-[#666666]">({ch.pct}%)</span>
                           </div>
                         </div>
                       </div>
@@ -2049,9 +2048,9 @@ export default function MarketingDash() {
                     <div key={ch.name} className="flex items-center justify-between text-sm cursor-default" onMouseEnter={() => setHoveredChannel(ch.name)} onMouseLeave={() => setHoveredChannel(null)}>
                       <div className="flex items-center gap-2">
                         <div className={`size-2.5 rounded-full ${ch.color}`} />
-                        <span className="text-slate-400 text-xs">{ch.name}</span>
+                        <span className="text-[#666666] text-xs">{ch.name}</span>
                       </div>
-                      <span className="font-bold text-white text-xs">{ch.pct}%</span>
+                      <span className="font-bold text-[#1A1A1A] text-xs">{ch.pct}%</span>
                     </div>
                   ))}
                 </div>
@@ -2068,16 +2067,16 @@ export default function MarketingDash() {
               const maxVal = pageMetrics[0].value;
               const tooltips: Record<string, { lines: { label: string; value: string; color: string }[] }> = {
                 PageViews: { lines: [
-                  { label: "→ Checkout", value: "8.0%", color: "text-amber-400" },
-                  { label: "→ Compras", value: "2.6%", color: "text-white" },
+                  { label: "→ Checkout", value: "8.0%", color: "text-[#F59E0B]" },
+                  { label: "→ Compras", value: "2.6%", color: "text-[#1A1A1A]" },
                 ]},
                 Checkout: { lines: [
-                  { label: "de PageViews →", value: "8.0%", color: "text-amber-400" },
-                  { label: "→ Compras", value: "31.9%", color: "text-emerald-400" },
+                  { label: "de PageViews →", value: "8.0%", color: "text-[#F59E0B]" },
+                  { label: "→ Compras", value: "31.9%", color: "text-[#10B981]" },
                 ]},
                 Compras: { lines: [
-                  { label: "de PageViews →", value: "2.6%", color: "text-white" },
-                  { label: "de Checkout →", value: "31.9%", color: "text-emerald-400" },
+                  { label: "de PageViews →", value: "2.6%", color: "text-[#1A1A1A]" },
+                  { label: "de Checkout →", value: "31.9%", color: "text-[#10B981]" },
                 ]},
               };
               return (
@@ -2089,7 +2088,7 @@ export default function MarketingDash() {
                       return (
                         <div key={m.label} className="flex flex-col items-center flex-1 group relative">
                           {/* Value above bar */}
-                          <p className="text-sm font-bold text-white mb-2">{m.value.toLocaleString("pt-BR")}</p>
+                          <p className="text-sm font-bold text-[#1A1A1A] mb-2">{m.value.toLocaleString("pt-BR")}</p>
                           {/* Bar */}
                           <div
                             className="w-full rounded-t-lg bg-gradient-to-t from-amber-600 to-amber-400 relative overflow-hidden animate-bar-enter"
@@ -2102,16 +2101,16 @@ export default function MarketingDash() {
                             </div>
                           </div>
                           {/* Label */}
-                          <p className="text-[10px] text-slate-400 font-medium mt-2">{m.label}</p>
+                          <p className="text-[10px] text-[#666666] font-medium mt-2">{m.label}</p>
 
                           {/* Tooltip on hover */}
                           <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-30">
-                            <div className="rounded-xl border border-white/10 px-5 py-4 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.5)" }}>
-                              <p className="text-sm font-bold text-white mb-3">{m.label}</p>
+                            <div className="rounded-xl border border-[#E5E7EB] px-5 py-4 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}>
+                              <p className="text-sm font-bold text-[#1A1A1A] mb-3">{m.label}</p>
                               <div className="space-y-2">
                                 {tooltips[m.label].lines.map((l) => (
                                   <div key={l.label} className="flex items-center justify-between gap-6">
-                                    <span className="text-xs text-slate-400">{l.label}</span>
+                                    <span className="text-xs text-[#666666]">{l.label}</span>
                                     <span className={`text-sm font-bold ${l.color}`}>{l.value}</span>
                                   </div>
                                 ))}
@@ -2135,10 +2134,10 @@ export default function MarketingDash() {
         >
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-6 relative z-10">
-            <span className="text-amber-400/60">
+            <span className="text-[#F59E0B]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Budget Pace por Campanha<InfoTip title="Budget Pace por Campanha" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Budget Pace por Campanha<InfoTip title="Budget Pace por Campanha" /></h3>
           </div>
           <div className="space-y-5 relative z-10">
             {net.budgetPace.map((b, i) => {
@@ -2155,10 +2154,10 @@ export default function MarketingDash() {
               return (
                 <div key={b.name}>
                   <div className="flex justify-between mb-2">
-                    <span className="text-xs font-semibold text-slate-300">{b.name}</span>
-                    <span className={`text-xs font-bold ${b.status === "ok" ? "text-emerald-400" : b.status === "over" ? "text-rose-400" : "text-blue-400"}`}>{b.amount}</span>
+                    <span className="text-xs font-semibold text-[#323232]">{b.name}</span>
+                    <span className={`text-xs font-bold ${b.status === "ok" ? "text-[#10B981]" : b.status === "over" ? "text-[#EF4444]" : "text-[#3B82F6]"}`}>{b.amount}</span>
                   </div>
-                  <div className="h-3 bg-white/[0.04] rounded-full overflow-hidden ring-1 ring-white/5 relative">
+                  <div className="h-3 bg-[#F2F2F2] rounded-full overflow-hidden ring-1 ring-white/5 relative">
                     <div
                       className="h-full rounded-full relative overflow-hidden animate-bar-enter"
                       style={{
@@ -2187,26 +2186,26 @@ export default function MarketingDash() {
             style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.55s both" }}
           >
             <div className="flex items-center gap-2 mb-5 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Comportamento On-site<InfoTip title="Comportamento On-site" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Comportamento On-site<InfoTip title="Comportamento On-site" /></h3>
             </div>
             <div className="grid grid-cols-2 gap-4 relative z-10">
-              <div className="rounded-xl p-4 border border-white/5 ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
-                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-3">Bounce Rate</p>
+              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                <p className="text-[10px] text-[#666666] uppercase font-bold tracking-wider mb-3">Bounce Rate</p>
                 <div className="space-y-3">
                   <div>
-                    <div className="flex justify-between text-[10px] mb-1.5"><span className="text-slate-300 font-medium">Pago</span><span className="text-rose-400 font-bold">68%</span></div>
-                    <div className="h-2 bg-white/[0.04] rounded-full overflow-hidden ring-1 ring-white/5">
+                    <div className="flex justify-between text-[10px] mb-1.5"><span className="text-[#323232] font-medium">Pago</span><span className="text-[#EF4444] font-bold">68%</span></div>
+                    <div className="h-2 bg-[#F2F2F2] rounded-full overflow-hidden ring-1 ring-white/5">
                       <div className="h-full rounded-full relative overflow-hidden" style={{ width: "68%", background: "linear-gradient(90deg, rgb(180,40,60), rgb(251,113,133))", boxShadow: "0 0 12px rgba(251,113,133,0.2)" }}>
                         <div className="particles-wrapper-h"><i className="particle" /><i className="particle" /><i className="particle" /></div>
                       </div>
                     </div>
                   </div>
                   <div>
-                    <div className="flex justify-between text-[10px] mb-1.5"><span className="text-slate-300 font-medium">Orgânico</span><span className="text-emerald-400 font-bold">42%</span></div>
-                    <div className="h-2 bg-white/[0.04] rounded-full overflow-hidden ring-1 ring-white/5">
+                    <div className="flex justify-between text-[10px] mb-1.5"><span className="text-[#323232] font-medium">Orgânico</span><span className="text-[#10B981] font-bold">42%</span></div>
+                    <div className="h-2 bg-[#F2F2F2] rounded-full overflow-hidden ring-1 ring-white/5">
                       <div className="h-full rounded-full relative overflow-hidden" style={{ width: "42%", background: "linear-gradient(90deg, rgb(6,120,80), rgb(52,211,153))", boxShadow: "0 0 12px rgba(52,211,153,0.2)" }}>
                         <div className="particles-wrapper-h"><i className="particle" /><i className="particle" /><i className="particle" /></div>
                       </div>
@@ -2214,20 +2213,20 @@ export default function MarketingDash() {
                   </div>
                 </div>
               </div>
-              <div className="rounded-xl p-4 border border-white/5 ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
-                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-3">Tempo Médio</p>
-                <p className="text-2xl font-bold text-amber-400">2m 34s</p>
-                <p className="text-[10px] text-emerald-400 font-bold mt-1 flex items-center gap-0.5"><ArrowUp /> +12.3% vs mês ant.</p>
+              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                <p className="text-[10px] text-[#666666] uppercase font-bold tracking-wider mb-3">Tempo Médio</p>
+                <p className="text-2xl font-bold text-[#F59E0B]">2m 34s</p>
+                <p className="text-[10px] text-[#10B981] font-bold mt-1 flex items-center gap-0.5"><ArrowUp /> +12.3% vs mês ant.</p>
               </div>
-              <div className="rounded-xl p-4 border border-white/5 ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
-                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-3">Abandono Checkout</p>
-                <p className="text-2xl font-bold text-rose-400">67.8%</p>
-                <p className="text-[10px] text-rose-400 font-bold mt-1 flex items-center gap-0.5"><ArrowDown /> +3.2% vs mês ant.</p>
+              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                <p className="text-[10px] text-[#666666] uppercase font-bold tracking-wider mb-3">Abandono Checkout</p>
+                <p className="text-2xl font-bold text-[#EF4444]">67.8%</p>
+                <p className="text-[10px] text-[#EF4444] font-bold mt-1 flex items-center gap-0.5"><ArrowDown /> +3.2% vs mês ant.</p>
               </div>
-              <div className="rounded-xl p-4 border border-white/5 ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
-                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-3">Scroll Depth</p>
-                <p className="text-lg font-bold text-white mb-2">64%</p>
-                <div className="h-2.5 bg-white/[0.04] rounded-full overflow-hidden ring-1 ring-white/5">
+              <div className="rounded-xl p-4 border border-[#E5E7EB] ring-1 ring-white/[0.03]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                <p className="text-[10px] text-[#666666] uppercase font-bold tracking-wider mb-3">Scroll Depth</p>
+                <p className="text-lg font-bold text-[#1A1A1A] mb-2">64%</p>
+                <div className="h-2.5 bg-[#F2F2F2] rounded-full overflow-hidden ring-1 ring-white/5">
                   <div className="h-full rounded-full relative overflow-hidden" style={{ width: "64%", background: "linear-gradient(90deg, rgb(180,120,0), rgb(251,191,36))", boxShadow: "0 0 12px rgba(251,191,36,0.2)" }}>
                     <div className="particles-wrapper-h"><i className="particle" /><i className="particle" /><i className="particle" /></div>
                   </div>
@@ -2300,10 +2299,10 @@ export default function MarketingDash() {
               onMouseLeave={() => animateGauge(gaugeRestAngle)}
             >
               <div className="flex items-center gap-2 mb-5 relative z-10">
-                <span className="text-amber-400/60">
+                <span className="text-[#F59E0B]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">Frequência do Anúncio<InfoTip title="Frequência do Anúncio" /></h3>
+                <h3 className="font-bold text-sm text-[#323232]">Frequência do Anúncio<InfoTip title="Frequência do Anúncio" /></h3>
               </div>
               <div className="flex items-center justify-center py-6 relative z-10">
                 <svg width="280" height="165" viewBox="0 0 280 165" style={{ overflow: "visible" }}>
@@ -2311,7 +2310,7 @@ export default function MarketingDash() {
                     <filter id="ndlGlow"><feGaussianBlur stdDeviation="3" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                   </defs>
                   {/* Background track */}
-                  <path d={`M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth={sw} />
+                  <path d={`M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`} fill="none" stroke="rgba(0,0,0,0.08)" strokeWidth={sw} />
                   {/* Ticks */}
                   {ticks.map((t, i) => (
                     <line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke={t.major ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.07)"} strokeWidth={t.major ? 1.5 : 0.75} />
@@ -2322,7 +2321,7 @@ export default function MarketingDash() {
                   ))}
                   {/* Value text */}
                   <text x={cx} y={cy - 36} textAnchor="middle" fill="white" fontSize="34" fontWeight="800" fontFamily="system-ui">{realValue}x</text>
-                  <text x={cx} y={cy - 18} textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontFamily="monospace" fontWeight="700" letterSpacing="2">FREQUÊNCIA</text>
+                  <text x={cx} y={cy - 18} textAnchor="middle" fill="rgba(0,0,0,0.7)" fontSize="10" fontFamily="monospace" fontWeight="700" letterSpacing="2">FREQUÊNCIA</text>
                   {/* Labels */}
                   {labels.map((l) => {
                     const d = r + 20;
@@ -2342,9 +2341,9 @@ export default function MarketingDash() {
                 </svg>
               </div>
               <div className="flex justify-center gap-6 relative z-10">
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-slate-300">Saudável</span></div>
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-amber-400" /><span className="text-xs font-semibold text-slate-300">Atenção</span></div>
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-rose-400" /><span className="text-xs font-semibold text-slate-300">Fadiga</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-[#323232]">Saudável</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-amber-400" /><span className="text-xs font-semibold text-[#323232]">Atenção</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-rose-400" /><span className="text-xs font-semibold text-[#323232]">Fadiga</span></div>
               </div>
             </div>
             );
@@ -2357,10 +2356,10 @@ export default function MarketingDash() {
           style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.6s both", overflow: "visible" }}
         >
           <div className="flex items-center gap-2 mb-5 relative z-10">
-            <span className="text-amber-400/60">
+            <span className="text-[#F59E0B]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Mapa de Calor — Conversões por Hora × Dia<InfoTip title="Mapa de Calor — Conversões por Hora × Dia" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Mapa de Calor — Conversões por Hora × Dia<InfoTip title="Mapa de Calor — Conversões por Hora × Dia" /></h3>
           </div>
           <div className="relative z-10 overflow-x-auto overflow-y-visible" style={{ overflow: "visible" }} onMouseLeave={() => setHoveredHeat(null)}>
             <div className="min-w-[700px]">
@@ -2368,13 +2367,13 @@ export default function MarketingDash() {
               <div className="flex mb-2">
                 <div className="w-12 shrink-0" />
                 {Array.from({ length: 24 }, (_, i) => (
-                  <div key={i} className="flex-1 text-center text-[9px] text-slate-400 font-mono font-bold">{String(i).padStart(2, "0")}h</div>
+                  <div key={i} className="flex-1 text-center text-[9px] text-[#666666] font-mono font-bold">{String(i).padStart(2, "0")}h</div>
                 ))}
               </div>
               {/* Rows */}
               {heatmapData.map((row) => (
                 <div key={row.day} className="flex items-center mb-1">
-                  <div className="w-12 shrink-0 text-[11px] text-slate-400 font-bold">{row.day}</div>
+                  <div className="w-12 shrink-0 text-[11px] text-[#666666] font-bold">{row.day}</div>
                   {row.hours.map((val, h) => (
                     <div
                       key={h}
@@ -2405,25 +2404,25 @@ export default function MarketingDash() {
                     transform: isTopRows ? "translate(-50%, 0)" : "translate(-50%, -100%)",
                   }}
                 >
-                  <div className="rounded-xl border border-white/10 px-4 py-3 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.5)" }}>
-                    <p className="text-xs font-bold text-white mb-1">{hoveredHeat.day} · {String(hoveredHeat.hour).padStart(2, "0")}:00h</p>
+                  <div className="rounded-xl border border-[#E5E7EB] px-4 py-3 whitespace-nowrap" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}>
+                    <p className="text-xs font-bold text-[#1A1A1A] mb-1">{hoveredHeat.day} · {String(hoveredHeat.hour).padStart(2, "0")}:00h</p>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1.5">
                         <div className="size-2 rounded-full" style={{ background: `rgba(251,191,36,${hoveredHeat.val.toFixed(2)})` }} />
-                        <span className="text-[10px] text-slate-400">Intensidade</span>
+                        <span className="text-[10px] text-[#666666]">Intensidade</span>
                       </div>
-                      <span className="text-sm font-bold text-amber-400">{Math.round(hoveredHeat.val * 100)}%</span>
+                      <span className="text-sm font-bold text-[#F59E0B]">{Math.round(hoveredHeat.val * 100)}%</span>
                     </div>
-                    <p className="text-[10px] text-slate-500 mt-1">~{Math.round(hoveredHeat.val * 47)} conversões</p>
+                    <p className="text-[10px] text-[#999999] mt-1">~{Math.round(hoveredHeat.val * 47)} conversões</p>
                   </div>
                 </div>
                 );
               })()}
               {/* Legend */}
               <div className="flex items-center gap-2 mt-4 justify-end">
-                <span className="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">baixo</span>
-                <div className="w-32 h-3 rounded-full border border-white/10" style={{ background: "linear-gradient(90deg, rgba(251,191,36,0.05), rgba(251,191,36,0.3), rgba(251,191,36,0.6), rgba(251,191,36,1))" }} />
-                <span className="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">alto</span>
+                <span className="text-[10px] text-[#666666] font-mono font-bold uppercase tracking-wider">baixo</span>
+                <div className="w-32 h-3 rounded-full border border-[#E5E7EB]" style={{ background: "linear-gradient(90deg, rgba(251,191,36,0.05), rgba(251,191,36,0.3), rgba(251,191,36,0.6), rgba(251,191,36,1))" }} />
+                <span className="text-[10px] text-[#666666] font-mono font-bold uppercase tracking-wider">alto</span>
               </div>
             </div>
           </div>
@@ -2431,15 +2430,15 @@ export default function MarketingDash() {
 
         {/* ── B13 — Métricas de Conversão (3 SVG rings) ── */}
         <div
-          className="glass-panel rounded-2xl p-6 border border-white/[0.04]"
+          className="glass-panel rounded-2xl p-6 border border-[#E5E7EB]"
           style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.65s both" }}
         >
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-cyan-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-6 relative z-10">
-            <span className="text-cyan-400/60">
+            <span className="text-[#0EA5E9]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Métricas de Conversão<InfoTip title="Métricas de Conversão" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Métricas de Conversão<InfoTip title="Métricas de Conversão" /></h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
             {/* Ring 1: Página → Checkout */}
@@ -2452,13 +2451,13 @@ export default function MarketingDash() {
               return rings.map((ring, i) => {
                 const circumference = 2 * Math.PI * 54;
                 const dashLen = (ring.rate / 100) * circumference;
-                const statusColors: Record<string, string> = { "Dentro": "text-emerald-400 bg-emerald-400/10 border-emerald-400/20", "Abaixo": "text-rose-400 bg-rose-400/10 border-rose-400/20", "Na média": "text-amber-400 bg-amber-400/10 border-amber-400/20" };
+                const statusColors: Record<string, string> = { "Dentro": "text-[#10B981] bg-emerald-400/10 border-emerald-400/20", "Abaixo": "text-[#EF4444] bg-rose-400/10 border-rose-400/20", "Na média": "text-[#F59E0B] bg-amber-400/10 border-amber-400/20" };
                 return (
-                  <div key={i} className="rounded-xl p-5 border border-white/[0.04]" style={{ background: "rgba(255,255,255,0.02)" }}>
-                    <p className="text-xs font-bold text-slate-300 mb-4 text-center">{ring.label}</p>
+                  <div key={i} className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                    <p className="text-xs font-bold text-[#323232] mb-4 text-center">{ring.label}</p>
                     <div className="flex justify-center mb-4">
                       <svg width="128" height="128" viewBox="0 0 128 128">
-                        <circle cx="64" cy="64" r="54" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="8" />
+                        <circle cx="64" cy="64" r="54" fill="none" stroke="rgba(0,0,0,0.08)" strokeWidth="8" />
                         <circle
                           cx="64" cy="64" r="54" fill="none"
                           stroke={ring.color} strokeWidth="8" strokeLinecap="round"
@@ -2472,9 +2471,9 @@ export default function MarketingDash() {
                     </div>
                     <div className="text-center space-y-2">
                       <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full border ${statusColors[ring.status]}`}>{ring.status}</span>
-                      <p className="text-[10px] text-slate-500">Benchmark: {ring.benchMin}% – {ring.benchMax}%</p>
-                      <p className="text-[10px] text-slate-400">{ring.from} → {ring.to}</p>
-                      {ring.alert && <p className="text-[10px] text-rose-400 font-semibold">⚠ {ring.alert}</p>}
+                      <p className="text-[10px] text-[#999999]">Benchmark: {ring.benchMin}% – {ring.benchMax}%</p>
+                      <p className="text-[10px] text-[#666666]">{ring.from} → {ring.to}</p>
+                      {ring.alert && <p className="text-[10px] text-[#EF4444] font-semibold">⚠ {ring.alert}</p>}
                     </div>
                   </div>
                 );
@@ -2485,22 +2484,22 @@ export default function MarketingDash() {
 
         {/* ── B14 — Performance por Página de Destino ── */}
         <div
-          className="glass-panel rounded-2xl p-6 border border-white/[0.04]"
+          className="glass-panel rounded-2xl p-6 border border-[#E5E7EB]"
           style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.7s both" }}
         >
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-6 relative z-10">
-            <span className="text-emerald-400/60">
+            <span className="text-[#10B981]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Performance por Página de Destino<InfoTip title="Performance por Página de Destino" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Performance por Página de Destino<InfoTip title="Performance por Página de Destino" /></h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
             {/* Top converting */}
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="size-2 rounded-full bg-emerald-400" />
-                <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Mais convertem</span>
+                <span className="text-xs font-bold text-[#10B981] uppercase tracking-wider">Mais convertem</span>
               </div>
               <div className="space-y-2.5">
                 {[
@@ -2511,16 +2510,16 @@ export default function MarketingDash() {
                   { page: "/produto/colecao-inverno", rate: 5.7, delta: "-0.4%" },
                 ].map((row, i) => (
                   <div key={i} className="flex items-center gap-3 group">
-                    <span className="text-[10px] font-bold text-slate-500 w-4 text-right">{i + 1}</span>
+                    <span className="text-[10px] font-bold text-[#999999] w-4 text-right">{i + 1}</span>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs text-slate-300 truncate font-mono">{row.page}</span>
+                        <span className="text-xs text-[#323232] truncate font-mono">{row.page}</span>
                         <div className="flex items-center gap-2 shrink-0 ml-2">
-                          <span className="text-xs font-bold text-white">{row.rate}%</span>
-                          <span className={`text-[10px] font-bold ${row.delta.startsWith("+") ? "text-emerald-400" : row.delta.startsWith("-") ? "text-rose-400" : "text-slate-500"}`}>▲{row.delta.replace("+","")}</span>
+                          <span className="text-xs font-bold text-[#1A1A1A]">{row.rate}%</span>
+                          <span className={`text-[10px] font-bold ${row.delta.startsWith("+") ? "text-[#10B981]" : row.delta.startsWith("-") ? "text-[#EF4444]" : "text-[#999999]"}`}>▲{row.delta.replace("+","")}</span>
                         </div>
                       </div>
-                      <div className="h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+                      <div className="h-1.5 rounded-full bg-[#F2F2F2] overflow-hidden">
                         <div className="h-full rounded-full" style={{ width: `${(row.rate / 18.4) * 100}%`, background: "linear-gradient(90deg, rgb(6,120,80), rgb(52,211,153))", boxShadow: "0 0 8px rgba(52,211,153,0.3)", transition: "width 1s ease-out" }} />
                       </div>
                     </div>
@@ -2532,7 +2531,7 @@ export default function MarketingDash() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="size-2 rounded-full bg-rose-400" />
-                <span className="text-xs font-bold text-rose-400 uppercase tracking-wider">Menos convertem</span>
+                <span className="text-xs font-bold text-[#EF4444] uppercase tracking-wider">Menos convertem</span>
               </div>
               <div className="space-y-2.5">
                 {[
@@ -2543,16 +2542,16 @@ export default function MarketingDash() {
                   { page: "/categoria/moda", rate: 4.2, delta: "-0.1%" },
                 ].map((row, i) => (
                   <div key={i} className="flex items-center gap-3 group">
-                    <span className="text-[10px] font-bold text-slate-500 w-4 text-right">{i + 1}</span>
+                    <span className="text-[10px] font-bold text-[#999999] w-4 text-right">{i + 1}</span>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs text-slate-300 truncate font-mono">{row.page}</span>
+                        <span className="text-xs text-[#323232] truncate font-mono">{row.page}</span>
                         <div className="flex items-center gap-2 shrink-0 ml-2">
-                          <span className="text-xs font-bold text-white">{row.rate}%</span>
-                          <span className="text-[10px] font-bold text-rose-400">▼{row.delta.replace("-","")}</span>
+                          <span className="text-xs font-bold text-[#1A1A1A]">{row.rate}%</span>
+                          <span className="text-[10px] font-bold text-[#EF4444]">▼{row.delta.replace("-","")}</span>
                         </div>
                       </div>
-                      <div className="h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+                      <div className="h-1.5 rounded-full bg-[#F2F2F2] overflow-hidden">
                         <div className="h-full rounded-full" style={{ width: `${(row.rate / 4.2) * 100}%`, background: "linear-gradient(90deg, rgb(180,40,60), rgb(251,113,133))", boxShadow: "0 0 8px rgba(251,113,133,0.3)", transition: "width 1s ease-out" }} />
                       </div>
                     </div>
@@ -2565,15 +2564,15 @@ export default function MarketingDash() {
 
         {/* ── B15 — Performance por Checkout ── */}
         <div
-          className="glass-panel rounded-2xl p-6 border border-white/[0.04]"
+          className="glass-panel rounded-2xl p-6 border border-[#E5E7EB]"
           style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.75s both" }}
         >
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-6 relative z-10">
-            <span className="text-amber-400/60">
+            <span className="text-[#F59E0B]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Performance por Checkout<InfoTip title="Performance por Checkout" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Performance por Checkout<InfoTip title="Performance por Checkout" /></h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
             {[
@@ -2581,14 +2580,14 @@ export default function MarketingDash() {
               { name: "Checkout Upsell", revenue: 87200, sales: 61, convRate: 28.7, ticket: 1429, cpa: 412, color: "rgb(251,191,36)", colorFaded: "rgba(251,191,36,0.15)", glowColor: "rgba(251,191,36,0.3)", gradient: "linear-gradient(90deg, rgb(180,130,20), rgb(251,191,36))" },
               { name: "Checkout Hotmart", revenue: 44600, sales: 46, convRate: 19.1, ticket: 969, cpa: 687, color: "rgb(251,113,133)", colorFaded: "rgba(251,113,133,0.15)", glowColor: "rgba(251,113,133,0.3)", gradient: "linear-gradient(90deg, rgb(180,40,60), rgb(251,113,133))" },
             ].map((ck, i) => (
-              <div key={i} className="rounded-xl p-5 border border-white/[0.04]" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div key={i} className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
                 <div className="flex items-center gap-2 mb-3">
                   <div className="size-2.5 rounded-full" style={{ background: ck.color, boxShadow: `0 0 6px ${ck.glowColor}` }} />
-                  <span className="text-xs font-bold text-slate-300">{ck.name}</span>
+                  <span className="text-xs font-bold text-[#323232]">{ck.name}</span>
                 </div>
-                <p className="text-2xl font-black text-white mb-1">R$ {(ck.revenue / 1000).toFixed(1).replace(".", ",")}k</p>
-                <p className="text-[10px] text-slate-500 mb-4">{ck.sales} vendas realizadas</p>
-                <div className="h-2 rounded-full bg-white/[0.04] overflow-hidden mb-5">
+                <p className="text-2xl font-black text-[#1A1A1A] mb-1">R$ {(ck.revenue / 1000).toFixed(1).replace(".", ",")}k</p>
+                <p className="text-[10px] text-[#999999] mb-4">{ck.sales} vendas realizadas</p>
+                <div className="h-2 rounded-full bg-[#F2F2F2] overflow-hidden mb-5">
                   <div className="h-full rounded-full" style={{ width: `${(ck.revenue / 198400) * 100}%`, background: ck.gradient, boxShadow: `0 0 10px ${ck.glowColor}`, transition: "width 1s ease-out" }} />
                 </div>
                 <div className="grid grid-cols-3 gap-2">
@@ -2598,8 +2597,8 @@ export default function MarketingDash() {
                     { label: "CPA", value: `R$ ${ck.cpa}` },
                   ].map((stat, si) => (
                     <div key={si} className="text-center">
-                      <p className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider mb-0.5">{stat.label}</p>
-                      <p className="text-xs font-bold text-slate-300">{stat.value}</p>
+                      <p className="text-[9px] text-[#999999] font-bold uppercase tracking-wider mb-0.5">{stat.label}</p>
+                      <p className="text-xs font-bold text-[#323232]">{stat.value}</p>
                     </div>
                   ))}
                 </div>
@@ -2610,22 +2609,22 @@ export default function MarketingDash() {
 
         {/* ── B16 — Performance por UTM ── */}
         <div
-          className="glass-panel rounded-2xl p-6 border border-white/[0.04]"
+          className="glass-panel rounded-2xl p-6 border border-[#E5E7EB]"
           style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.8s both" }}
         >
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-violet-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-6 relative z-10">
-            <span className="text-violet-400/60">
+            <span className="text-[#7C3AED]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Performance por UTM<InfoTip title="Performance por UTM" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Performance por UTM<InfoTip title="Performance por UTM" /></h3>
           </div>
           <div className="overflow-x-auto relative z-10">
             <table className="w-full text-left">
               <thead>
-                <tr className="border-b border-white/[0.06]">
+                <tr className="border-b border-[#E5E7EB]">
                   {["Source", "Medium", "Campaign", "Content", "Sessões", "Conversões", "Conv. Rate", "Receita", "ROAS", "CPA"].map((col) => (
-                    <th key={col} className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider pb-3 pr-4 whitespace-nowrap">{col}</th>
+                    <th key={col} className="text-[10px] font-bold text-[#999999] uppercase tracking-wider pb-3 pr-4 whitespace-nowrap">{col}</th>
                   ))}
                 </tr>
               </thead>
@@ -2637,21 +2636,21 @@ export default function MarketingDash() {
                   { source: "instagram", medium: "cpc", campaign: "prospeccao-topo", content: "static-banner", sessions: "4.210", conversions: "87", convRate: "2.1%", revenue: "R$ 14.700", roas: 1.2, cpa: "R$ 2,15" },
                   { source: "tiktok", medium: "cpc", campaign: "verao-2026", content: "reels-30s", sessions: "5.640", conversions: "312", convRate: "5.5%", revenue: "R$ 52.800", roas: 5.8, cpa: "R$ 0,72" },
                 ].map((row, i) => (
-                  <tr key={i} className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors">
-                    <td className="py-3 pr-4"><span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-400/10 text-cyan-400 border border-cyan-400/20">{row.source}</span></td>
-                    <td className="py-3 pr-4"><span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-400/10 text-violet-400 border border-violet-400/20">{row.medium}</span></td>
-                    <td className="py-3 pr-4"><span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400/10 text-amber-400 border border-amber-400/20">{row.campaign}</span></td>
-                    <td className="py-3 pr-4"><span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">{row.content}</span></td>
-                    <td className="py-3 pr-4 text-xs text-slate-300 font-mono font-bold">{row.sessions}</td>
-                    <td className="py-3 pr-4 text-xs text-slate-300 font-mono font-bold">{row.conversions}</td>
-                    <td className="py-3 pr-4 text-xs text-white font-bold">{row.convRate}</td>
-                    <td className="py-3 pr-4 text-xs text-slate-300 font-mono font-bold">{row.revenue}</td>
+                  <tr key={i} className="border-b border-white/[0.03] hover:bg-[#F8F9FA] transition-colors">
+                    <td className="py-3 pr-4"><span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-400/10 text-[#0EA5E9] border border-cyan-400/20">{row.source}</span></td>
+                    <td className="py-3 pr-4"><span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-400/10 text-[#7C3AED] border border-violet-400/20">{row.medium}</span></td>
+                    <td className="py-3 pr-4"><span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400/10 text-[#F59E0B] border border-amber-400/20">{row.campaign}</span></td>
+                    <td className="py-3 pr-4"><span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-400/10 text-[#10B981] border border-emerald-400/20">{row.content}</span></td>
+                    <td className="py-3 pr-4 text-xs text-[#323232] font-mono font-bold">{row.sessions}</td>
+                    <td className="py-3 pr-4 text-xs text-[#323232] font-mono font-bold">{row.conversions}</td>
+                    <td className="py-3 pr-4 text-xs text-[#1A1A1A] font-bold">{row.convRate}</td>
+                    <td className="py-3 pr-4 text-xs text-[#323232] font-mono font-bold">{row.revenue}</td>
                     <td className="py-3 pr-4">
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${row.roas >= 3 ? "bg-emerald-400/10 text-emerald-400 border-emerald-400/20" : row.roas < 2 ? "bg-rose-400/10 text-rose-400 border-rose-400/20" : "bg-amber-400/10 text-amber-400 border-amber-400/20"}`}>
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${row.roas >= 3 ? "bg-emerald-400/10 text-[#10B981] border-emerald-400/20" : row.roas < 2 ? "bg-rose-400/10 text-[#EF4444] border-rose-400/20" : "bg-amber-400/10 text-[#F59E0B] border-amber-400/20"}`}>
                         {row.roas.toFixed(1)}x
                       </span>
                     </td>
-                    <td className="py-3 pr-4 text-xs text-slate-400 font-mono">{row.cpa}</td>
+                    <td className="py-3 pr-4 text-xs text-[#666666] font-mono">{row.cpa}</td>
                   </tr>
                 ))}
               </tbody>
@@ -2705,23 +2704,23 @@ export default function MarketingDash() {
             >
               {/* Info icon */}
               <div className="absolute bottom-3 right-3 cursor-help group/tip z-20">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500/40 group-hover/tip:text-slate-300 transition-colors">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#999999]/40 group-hover/tip:text-[#323232] transition-colors">
                   <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
                 </svg>
                 <div
-                  className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-white/10 text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[200] ${isRight ? "right-0" : "left-0"}`}
-                  style={{ background: "rgba(8,10,18,0.97)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)" }}
+                  className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-[#E5E7EB] text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[200] ${isRight ? "right-0" : "left-0"}`}
+                  style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05)" }}
                 >
-                  <p className="text-[11px] text-slate-300/90 leading-[1.6] font-normal normal-case tracking-normal">{kpi.tooltip}</p>
-                  <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-white/10 ${isRight ? "right-2" : "left-2"}`} style={{ background: "rgba(8,10,18,0.97)" }} />
+                  <p className="text-[11px] text-[#323232]/90 leading-[1.6] font-normal normal-case tracking-normal">{kpi.tooltip}</p>
+                  <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-[#E5E7EB] ${isRight ? "right-2" : "left-2"}`} style={{ background: "rgba(255,255,255,0.98)" }} />
                 </div>
               </div>
               <div className="flex items-center justify-between mb-1 relative z-10">
-                <p className="text-xs text-neutral-500 font-medium uppercase tracking-wider">{kpi.label}</p>
-                <div className="text-amber-400/60">{kpiIcons[kpi.icon]}</div>
+                <p className="text-xs text-[#999999] font-medium uppercase tracking-wider">{kpi.label}</p>
+                <div className="text-[#F59E0B]/60">{kpiIcons[kpi.icon]}</div>
               </div>
-              <p className="text-2xl font-bold text-amber-400 relative z-10 drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]">{kpi.value}</p>
-              <div className={`mt-2 flex items-center gap-1 text-[10px] font-bold relative z-10 ${kpi.up ? "text-emerald-400" : "text-rose-400"}`}>
+              <p className="text-2xl font-bold text-[#F59E0B] relative z-10 drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]">{kpi.value}</p>
+              <div className={`mt-2 flex items-center gap-1 text-[10px] font-bold relative z-10 ${kpi.up ? "text-[#10B981]" : "text-[#EF4444]"}`}>
                 {kpi.up ? <ArrowUp /> : <ArrowDown />}
                 {kpi.delta} vs mês ant.
               </div>
@@ -2740,10 +2739,10 @@ export default function MarketingDash() {
 
           <div className="flex items-center justify-between mb-6 relative z-10">
             <div className="flex items-center gap-2">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Sessões por Canal — Mensal<InfoTip title="Sessões por Canal — Mensal" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Sessões por Canal — Mensal<InfoTip title="Sessões por Canal — Mensal" /></h3>
             </div>
             <div className="flex items-center gap-4">
               {[
@@ -2754,7 +2753,7 @@ export default function MarketingDash() {
               ].map((l) => (
                 <div key={l.label} className="flex items-center gap-1.5">
                   <div className={`size-2.5 rounded-full ${l.color}`} />
-                  <span className="text-xs font-semibold text-slate-300">{l.label}</span>
+                  <span className="text-xs font-semibold text-[#323232]">{l.label}</span>
                 </div>
               ))}
             </div>
@@ -2772,10 +2771,10 @@ export default function MarketingDash() {
             return (
               <div className="h-64 flex items-end justify-between gap-10 relative mt-1 z-10">
                 {/* Grid lines */}
-                <div className="absolute top-0 left-0 right-0 h-px border-t border-dashed border-white/10 w-full z-0" />
-                <div className="absolute top-1/4 left-0 right-0 h-px border-t border-dashed border-white/[0.04] w-full z-0" />
-                <div className="absolute top-1/2 left-0 right-0 h-px border-t border-dashed border-white/[0.04] w-full z-0" />
-                <div className="absolute top-3/4 left-0 right-0 h-px border-t border-dashed border-white/[0.04] w-full z-0" />
+                <div className="absolute top-0 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
+                <div className="absolute top-1/4 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
+                <div className="absolute top-1/2 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
+                <div className="absolute top-3/4 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
 
                 {sessionsByChannel.map((d, mi) => (
                   <div key={d.month} className="flex flex-col items-center gap-2 w-full h-full z-10">
@@ -2788,7 +2787,7 @@ export default function MarketingDash() {
                         return (
                           <div key={ch.key} className="relative w-1/4 h-full flex flex-col items-center justify-end group/bar cursor-pointer">
                             <span className="text-[11px] font-extrabold mb-1 whitespace-nowrap drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]" style={{ color }}>{(val / 1000).toFixed(1)}k</span>
-                            <div className="relative w-full rounded-t-md overflow-hidden bg-white/[0.02] ring-1 ring-white/5" style={{ height: `${pct}%` }}>
+                            <div className="relative w-full rounded-t-md overflow-hidden bg-[#F8F9FA] ring-1 ring-white/5" style={{ height: `${pct}%` }}>
                               <div
                                 className="absolute bottom-0 left-0 right-0 h-full rounded-t-md transition-all duration-500 group-hover/bar:brightness-125 overflow-hidden animate-bar-enter"
                                 style={{
@@ -2808,7 +2807,7 @@ export default function MarketingDash() {
                         );
                       })}
                     </div>
-                    <span className="text-xs text-neutral-500 transition-colors">{d.month}</span>
+                    <span className="text-xs text-[#999999] transition-colors">{d.month}</span>
                   </div>
                 ))}
               </div>
@@ -2825,36 +2824,36 @@ export default function MarketingDash() {
             style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.35s both" }}
           >
             <div className="flex items-center gap-2 mb-5 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Top Keywords Orgânicas<InfoTip title="Top Keywords Orgânicas" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Top Keywords Orgânicas<InfoTip title="Top Keywords Orgânicas" /></h3>
             </div>
             <div className="relative z-10 overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-white/5">
-                    <th className="text-[10px] text-slate-500 uppercase tracking-wider font-bold pb-3 pr-4">Keyword</th>
-                    <th className="text-[10px] text-slate-500 uppercase tracking-wider font-bold pb-3 pr-4 text-center">Pos.</th>
-                    <th className="text-[10px] text-slate-500 uppercase tracking-wider font-bold pb-3 pr-4 text-right">Volume</th>
-                    <th className="text-[10px] text-slate-500 uppercase tracking-wider font-bold pb-3 pr-4 text-right">Cliques</th>
-                    <th className="text-[10px] text-slate-500 uppercase tracking-wider font-bold pb-3 text-right">CTR</th>
+                  <tr className="border-b border-[#E5E7EB]">
+                    <th className="text-[10px] text-[#999999] uppercase tracking-wider font-bold pb-3 pr-4">Keyword</th>
+                    <th className="text-[10px] text-[#999999] uppercase tracking-wider font-bold pb-3 pr-4 text-center">Pos.</th>
+                    <th className="text-[10px] text-[#999999] uppercase tracking-wider font-bold pb-3 pr-4 text-right">Volume</th>
+                    <th className="text-[10px] text-[#999999] uppercase tracking-wider font-bold pb-3 pr-4 text-right">Cliques</th>
+                    <th className="text-[10px] text-[#999999] uppercase tracking-wider font-bold pb-3 text-right">CTR</th>
                   </tr>
                 </thead>
                 <tbody>
                   {topKeywords.map((kw) => (
-                    <tr key={kw.keyword} className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors">
-                      <td className="py-3 pr-4 text-xs font-medium text-slate-300">{kw.keyword}</td>
+                    <tr key={kw.keyword} className="border-b border-white/[0.03] hover:bg-[#F8F9FA] transition-colors">
+                      <td className="py-3 pr-4 text-xs font-medium text-[#323232]">{kw.keyword}</td>
                       <td className="py-3 pr-4 text-center">
                         <span className={`inline-flex items-center justify-center size-6 rounded-md text-[10px] font-bold ${
-                          kw.posicao <= 3 ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/20" :
-                          kw.posicao <= 10 ? "bg-amber-500/15 text-amber-400 border border-amber-500/20" :
-                          "bg-rose-500/15 text-rose-400 border border-rose-500/20"
+                          kw.posicao <= 3 ? "bg-emerald-500/15 text-[#10B981] border border-emerald-500/20" :
+                          kw.posicao <= 10 ? "bg-amber-500/15 text-[#F59E0B] border border-amber-500/20" :
+                          "bg-rose-500/15 text-[#EF4444] border border-rose-500/20"
                         }`}>{kw.posicao}</span>
                       </td>
-                      <td className="py-3 pr-4 text-xs text-slate-400 text-right font-mono">{kw.volume}</td>
-                      <td className="py-3 pr-4 text-xs text-white font-bold text-right font-mono">{kw.cliques}</td>
-                      <td className="py-3 text-xs text-emerald-400 font-bold text-right font-mono">{kw.ctr}</td>
+                      <td className="py-3 pr-4 text-xs text-[#666666] text-right font-mono">{kw.volume}</td>
+                      <td className="py-3 pr-4 text-xs text-[#1A1A1A] font-bold text-right font-mono">{kw.cliques}</td>
+                      <td className="py-3 text-xs text-[#10B981] font-bold text-right font-mono">{kw.ctr}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -2870,14 +2869,14 @@ export default function MarketingDash() {
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center justify-between mb-4 relative z-10">
               <div className="flex items-center gap-2">
-                <span className="text-amber-400/60">
+                <span className="text-[#F59E0B]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 6-6"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">Conversões: Pago vs Orgânico<InfoTip title="Conversões: Pago vs Orgânico" /></h3>
+                <h3 className="font-bold text-sm text-[#323232]">Conversões: Pago vs Orgânico<InfoTip title="Conversões: Pago vs Orgânico" /></h3>
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-amber-400" /><span className="text-xs font-semibold text-slate-300">Pago</span></div>
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-slate-300">Orgânico</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-amber-400" /><span className="text-xs font-semibold text-[#323232]">Pago</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-[#323232]">Orgânico</span></div>
               </div>
             </div>
             {(() => {
@@ -2893,8 +2892,8 @@ export default function MarketingDash() {
                         <div key={d.month} className="flex items-end gap-2 w-full h-full">
                           {/* Pago bar */}
                           <div className="relative w-1/2 h-full flex flex-col justify-end group/bar cursor-pointer">
-                            <div className="text-[11px] font-extrabold text-amber-400 text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.pago}</div>
-                            <div className="relative w-full rounded-t-lg overflow-hidden bg-white/[0.02]" style={{ height: `${hPago}%` }}>
+                            <div className="text-[11px] font-extrabold text-[#F59E0B] text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.pago}</div>
+                            <div className="relative w-full rounded-t-lg overflow-hidden bg-[#F8F9FA]" style={{ height: `${hPago}%` }}>
                               <div
                                 className="absolute bottom-0 left-0 right-0 h-full rounded-t-lg transition-all duration-500 group-hover/bar:brightness-110 shadow-[0_0_15px_rgba(251,191,36,0.15)] animate-bar-enter overflow-hidden"
                                 style={{ background: "linear-gradient(to top, rgb(180,120,0), rgb(251,191,36))", animationDelay: `${i * 100}ms` }}
@@ -2909,8 +2908,8 @@ export default function MarketingDash() {
                           </div>
                           {/* Orgânico bar */}
                           <div className="relative w-1/2 h-full flex flex-col justify-end group/bar cursor-pointer">
-                            <div className="text-[11px] font-extrabold text-emerald-400 text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.organico}</div>
-                            <div className="relative w-full rounded-t-lg overflow-hidden bg-white/[0.02]" style={{ height: `${hOrg}%` }}>
+                            <div className="text-[11px] font-extrabold text-[#10B981] text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.organico}</div>
+                            <div className="relative w-full rounded-t-lg overflow-hidden bg-[#F8F9FA]" style={{ height: `${hOrg}%` }}>
                               <div
                                 className="absolute bottom-0 left-0 right-0 h-full rounded-t-lg transition-all duration-500 group-hover/bar:brightness-110 shadow-[0_0_15px_rgba(52,211,153,0.15)] animate-bar-enter overflow-hidden"
                                 style={{ background: "linear-gradient(to top, rgb(6,120,80), rgb(52,211,153))", animationDelay: `${i * 100 + 50}ms` }}
@@ -2928,9 +2927,9 @@ export default function MarketingDash() {
                     })}
                   </div>
                   {/* Month labels — pinned at bottom */}
-                  <div className="flex justify-between gap-6 -mx-6 px-6 py-2 border-t border-white/5">
+                  <div className="flex justify-between gap-6 -mx-6 px-6 py-2 border-t border-[#E5E7EB]">
                     {paidVsOrganicConversions.map((d) => (
-                      <span key={d.month} className="text-xs text-neutral-500 text-center w-full">{d.month}</span>
+                      <span key={d.month} className="text-xs text-[#999999] text-center w-full">{d.month}</span>
                     ))}
                   </div>
                 </div>
@@ -2950,14 +2949,14 @@ export default function MarketingDash() {
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center justify-between mb-4 relative z-10">
               <div className="flex items-center gap-2">
-                <span className="text-amber-400/60">
+                <span className="text-[#F59E0B]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 6-6"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">Evolução Impressões Orgânicas<InfoTip title="Evolução Impressões Orgânicas" /></h3>
+                <h3 className="font-bold text-sm text-[#323232]">Evolução Impressões Orgânicas<InfoTip title="Evolução Impressões Orgânicas" /></h3>
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-slate-300">Impressões</span></div>
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-slate-400" /><span className="text-xs font-semibold text-slate-300">Cliques</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-[#323232]">Impressões</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-slate-400" /><span className="text-xs font-semibold text-[#323232]">Cliques</span></div>
               </div>
             </div>
             <div className="relative z-10 flex-1">
@@ -3013,7 +3012,7 @@ export default function MarketingDash() {
                     </defs>
                     {/* Grid lines */}
                     {[0, 0.25, 0.5, 0.75, 1].map((f) => (
-                      <line key={f} x1={0} x2={w} y1={padTop + f * (h - padTop - padBot)} y2={padTop + f * (h - padTop - padBot)} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+                      <line key={f} x1={0} x2={w} y1={padTop + f * (h - padTop - padBot)} y2={padTop + f * (h - padTop - padBot)} stroke="rgba(0,0,0,0.08)" strokeWidth="1" />
                     ))}
                     <g clipPath="url(#orgChartReveal)">
                       <path d={impArea} fill="url(#orgAreaGrad)" />
@@ -3025,7 +3024,7 @@ export default function MarketingDash() {
                           <g key={`imp-${i}`}>
                             {isHov && <line x1={p.x} y1={padTop} x2={p.x} y2={h - padBot} stroke="rgba(52,211,153,0.2)" strokeWidth="1" strokeDasharray="4 3" />}
                             {isHov && <circle cx={p.x} cy={p.y} r="10" fill="rgba(52,211,153,0.12)" />}
-                            <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.3)"} strokeWidth="1.5" />
+                            <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.06)"} strokeWidth="1.5" />
                           </g>
                         );
                       })}
@@ -3077,7 +3076,7 @@ export default function MarketingDash() {
                 </>);
               })()}
             </div>
-            <div className="flex justify-between -mx-6 px-6 py-2 border-t border-white/5 text-[10px] text-slate-400 font-bold tracking-widest uppercase relative z-10">
+            <div className="flex justify-between -mx-6 px-6 py-2 border-t border-[#E5E7EB] text-[10px] text-[#666666] font-bold tracking-widest uppercase relative z-10">
               {organicEvolution.map((d) => <span key={d.month}>{d.month}</span>)}
             </div>
           </div>
@@ -3089,10 +3088,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Novos Usuários por Canal<InfoTip title="Novos Usuários por Canal" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Novos Usuários por Canal<InfoTip title="Novos Usuários por Canal" /></h3>
             </div>
             <div className="relative flex justify-center items-center py-4 z-10" onMouseLeave={() => setHoveredNewUsers(null)}>
               <svg className="size-44" viewBox="0 0 200 200">
@@ -3103,7 +3102,7 @@ export default function MarketingDash() {
                   <linearGradient id="nuPurple" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(168,85,247)" stopOpacity="0.8"/><stop offset="100%" stopColor="rgb(139,92,246)" stopOpacity="0.6"/></linearGradient>
                   <filter id="nuGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                 </defs>
-                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="18" />
+                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="18" />
                 {(() => {
                   const r = 70, circ = 2 * Math.PI * r;
                   const gapAngle = 4; // degrees
@@ -3136,14 +3135,14 @@ export default function MarketingDash() {
                   const ch = newUsersByChannel.find((c) => c.name === hoveredNewUsers)!;
                   return (
                     <>
-                      <p className="text-2xl font-bold text-white">{ch.value}</p>
-                      <p className="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">{ch.name}</p>
+                      <p className="text-2xl font-bold text-[#1A1A1A]">{ch.value}</p>
+                      <p className="text-[10px] text-[#666666] uppercase font-bold tracking-tighter">{ch.name}</p>
                     </>
                   );
                 })() : (
                   <>
-                    <p className="text-2xl font-bold text-white">18.4k</p>
-                    <p className="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Total</p>
+                    <p className="text-2xl font-bold text-[#1A1A1A]">18.4k</p>
+                    <p className="text-[10px] text-[#666666] uppercase font-bold tracking-tighter">Total</p>
                   </>
                 )}
               </div>
@@ -3153,9 +3152,9 @@ export default function MarketingDash() {
                 <div key={ch.name} className="flex items-center justify-between text-sm cursor-default" onMouseEnter={() => setHoveredNewUsers(ch.name)} onMouseLeave={() => setHoveredNewUsers(null)}>
                   <div className="flex items-center gap-2">
                     <div className={`size-2.5 rounded-full ${ch.color}`} />
-                    <span className="text-slate-300 text-xs font-medium">{ch.name}</span>
+                    <span className="text-[#323232] text-xs font-medium">{ch.name}</span>
                   </div>
-                  <span className="font-bold text-white text-xs">{ch.pct}%</span>
+                  <span className="font-bold text-[#1A1A1A] text-xs">{ch.pct}%</span>
                 </div>
               ))}
             </div>
@@ -3169,7 +3168,7 @@ export default function MarketingDash() {
         {/* ── Section Separator ── */}
         <div className="flex items-center gap-4 mt-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-400/25 to-transparent" />
-          <span className="text-xs font-bold text-amber-400 uppercase tracking-[4px]">Instagram Analytics</span>
+          <span className="text-xs font-bold text-[#F59E0B] uppercase tracking-[4px]">Instagram Analytics</span>
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-400/25 to-transparent" />
         </div>
 
@@ -3181,9 +3180,9 @@ export default function MarketingDash() {
               className="glass-panel p-4 rounded-2xl cursor-default text-center"
               style={{ ...glassStyle, animation: `animationIn 0.8s ease-out ${0.55 + idx * 0.05}s both` }}
             >
-              <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider mb-1">{kpi.label}</p>
-              <p className="text-xl font-bold text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.3)]">{kpi.value}</p>
-              <div className={`mt-1 flex items-center justify-center gap-1 text-[10px] font-bold ${kpi.up ? "text-emerald-400" : "text-rose-400"}`}>
+              <p className="text-[10px] text-[#999999] font-bold uppercase tracking-wider mb-1">{kpi.label}</p>
+              <p className="text-xl font-bold text-[#10B981] drop-shadow-[0_0_8px_rgba(52,211,153,0.3)]">{kpi.value}</p>
+              <div className={`mt-1 flex items-center justify-center gap-1 text-[10px] font-bold ${kpi.up ? "text-[#10B981]" : "text-[#EF4444]"}`}>
                 {kpi.up ? <ArrowUp /> : <ArrowDown />}
                 {kpi.delta}
               </div>
@@ -3198,36 +3197,36 @@ export default function MarketingDash() {
         >
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-rose-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-5 relative z-10">
-            <span className="text-rose-400/60">
+            <span className="text-[#EF4444]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Stories em Tempo Real<InfoTip title="Stories em Tempo Real" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Stories em Tempo Real<InfoTip title="Stories em Tempo Real" /></h3>
           </div>
           <div className="flex gap-5 overflow-x-auto pb-2 custom-scrollbar relative z-10 snap-x snap-mandatory flex-1 min-h-0">
             {liveStories.map((st) => (
               <div
                 key={st.seq}
-                className="flex-shrink-0 w-64 rounded-xl border border-white/5 overflow-hidden cursor-pointer transition-all duration-300 group/story snap-start flex flex-col hover:border-rose-500/20"
+                className="flex-shrink-0 w-64 rounded-xl border border-[#E5E7EB] overflow-hidden cursor-pointer transition-all duration-300 group/story snap-start flex flex-col hover:border-rose-500/20"
                 style={{ background: "rgba(255,255,255,0.02)" }}
                 onClick={() => setSelectedStory(st)}
               >
                 {/* Cover image */}
                 <div className="relative h-[200px] overflow-hidden">
                   <img src={st.cover} alt={`Story ${st.seq}`} style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover"}} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-[#1A1A1A]/10 to-transparent" />
                   {st.type.includes("Video") && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="size-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover/story:bg-white/20 transition-colors">
+                      <div className="size-12 rounded-full bg-white/10 backdrop-blur-sm border border-[#E5E7EB] flex items-center justify-center group-hover/story:bg-white/20 transition-colors">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="white" className="ml-0.5"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                       </div>
                     </div>
                   )}
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <div className="flex items-center justify-between mb-1">
-                      <p className="text-xs font-bold text-white">Story {st.seq}</p>
-                      <span className="text-[10px] font-bold text-amber-400">{st.time}</span>
+                      <p className="text-xs font-bold text-[#1A1A1A]">Story {st.seq}</p>
+                      <span className="text-[10px] font-bold text-[#F59E0B]">{st.time}</span>
                     </div>
-                    <p className="text-[10px] text-slate-300 font-medium">{st.type}</p>
+                    <p className="text-[10px] text-[#323232] font-medium">{st.type}</p>
                   </div>
                 </div>
 
@@ -3235,26 +3234,26 @@ export default function MarketingDash() {
                 <div className="p-3 space-y-2">
                   <div className="grid grid-cols-2 gap-2">
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-500" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-                      <span className="text-[10px] font-bold text-white">{st.views}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#999999]" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{st.views}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-rose-400/60" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                      <span className="text-[10px] font-bold text-white">{st.likes}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#EF4444]/60" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{st.likes}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-amber-400/60" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
-                      <span className="text-[10px] font-bold text-white">{st.reactions}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#F59E0B]/60" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{st.reactions}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-cyan-400/60" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                      <span className="text-[10px] font-bold text-white">{st.shares}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#0EA5E9]/60" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{st.shares}</span>
                     </div>
                   </div>
                   {st.interaction && (
-                    <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                      <span className="text-[9px] text-rose-400 font-bold uppercase">{st.interaction.type === "poll" ? "Enquete" : st.interaction.type === "quiz" ? "Quiz" : st.interaction.type === "slider" ? "Slider" : "Countdown"}</span>
-                      <span className="text-[9px] text-slate-500">Clique para ver</span>
+                    <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between">
+                      <span className="text-[9px] text-[#EF4444] font-bold uppercase">{st.interaction.type === "poll" ? "Enquete" : st.interaction.type === "quiz" ? "Quiz" : st.interaction.type === "slider" ? "Slider" : "Countdown"}</span>
+                      <span className="text-[9px] text-[#999999]">Clique para ver</span>
                     </div>
                   )}
                 </div>
@@ -3270,36 +3269,36 @@ export default function MarketingDash() {
         >
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-5 relative z-10">
-            <span className="text-emerald-400/60">
+            <span className="text-[#10B981]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Posts com Maior Engajamento<InfoTip title="Posts com Maior Engajamento" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Posts com Maior Engajamento<InfoTip title="Posts com Maior Engajamento" /></h3>
           </div>
           <div className="flex gap-5 overflow-x-auto pb-2 custom-scrollbar relative z-10 snap-x snap-mandatory flex-1 min-h-0">
             {topPosts.map((post) => (
               <div
                 key={post.id}
-                className="flex-shrink-0 w-64 rounded-xl border border-white/5 overflow-hidden cursor-pointer transition-all duration-300 group/post snap-start flex flex-col hover:border-emerald-500/20"
+                className="flex-shrink-0 w-64 rounded-xl border border-[#E5E7EB] overflow-hidden cursor-pointer transition-all duration-300 group/post snap-start flex flex-col hover:border-emerald-500/20"
                 style={{ background: "rgba(255,255,255,0.02)" }}
                 onClick={() => setSelectedPost(post)}
               >
                 {/* Cover image */}
                 <div className="relative h-[200px] overflow-hidden">
                   <img src={post.cover} alt={post.title} style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover"}} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-[#1A1A1A]/10 to-transparent" />
                   {post.type.includes("Reels") && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="size-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover/post:bg-white/20 transition-colors">
+                      <div className="size-12 rounded-full bg-white/10 backdrop-blur-sm border border-[#E5E7EB] flex items-center justify-center group-hover/post:bg-white/20 transition-colors">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="white" className="ml-0.5"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                       </div>
                     </div>
                   )}
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <div className="flex items-center justify-between mb-1">
-                      <p className="text-xs font-bold text-white">{post.title}</p>
-                      <span className="text-[10px] font-bold text-amber-400">{post.time}</span>
+                      <p className="text-xs font-bold text-[#1A1A1A]">{post.title}</p>
+                      <span className="text-[10px] font-bold text-[#F59E0B]">{post.time}</span>
                     </div>
-                    <p className="text-[10px] text-slate-300 font-medium">{post.type}</p>
+                    <p className="text-[10px] text-[#323232] font-medium">{post.type}</p>
                   </div>
                 </div>
 
@@ -3307,25 +3306,25 @@ export default function MarketingDash() {
                 <div className="p-3 space-y-2">
                   <div className="grid grid-cols-2 gap-2">
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-500" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-                      <span className="text-[10px] font-bold text-white">{post.views}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#999999]" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{post.views}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-rose-400/60" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                      <span className="text-[10px] font-bold text-white">{post.likes}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#EF4444]/60" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{post.likes}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-amber-400/60" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-                      <span className="text-[10px] font-bold text-white">{post.comments}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#F59E0B]/60" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{post.comments}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-cyan-400/60" strokeLinecap="round" strokeLinejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                      <span className="text-[10px] font-bold text-white">{post.saves}</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#0EA5E9]/60" strokeLinecap="round" strokeLinejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                      <span className="text-[10px] font-bold text-[#1A1A1A]">{post.saves}</span>
                     </div>
                   </div>
-                  <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                    <span className="text-[9px] text-emerald-400 font-bold uppercase">Engajamento {post.engagementRate}</span>
-                    <span className="text-[9px] text-slate-500">Clique para ver</span>
+                  <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between">
+                    <span className="text-[9px] text-[#10B981] font-bold uppercase">Engajamento {post.engagementRate}</span>
+                    <span className="text-[9px] text-[#999999]">Clique para ver</span>
                   </div>
                 </div>
               </div>
@@ -3344,23 +3343,23 @@ export default function MarketingDash() {
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center justify-between mb-4 relative z-10">
               <div className="flex items-center gap-2">
-                <span className="text-amber-400/60">
+                <span className="text-[#F59E0B]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">Curva de Retenção de Vídeo<InfoTip title="Curva de Retenção de Vídeo" /></h3>
+                <h3 className="font-bold text-sm text-[#323232]">Curva de Retenção de Vídeo<InfoTip title="Curva de Retenção de Vídeo" /></h3>
               </div>
               <div className="flex gap-3">
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg" style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.15)" }}>
-                  <span className="text-xs font-bold text-emerald-400">68%</span>
-                  <span className="text-[9px] text-slate-500">Conclusão</span>
+                  <span className="text-xs font-bold text-[#10B981]">68%</span>
+                  <span className="text-[9px] text-[#999999]">Conclusão</span>
                 </div>
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg" style={{ background: "rgba(251,113,133,0.08)", border: "1px solid rgba(251,113,133,0.15)" }}>
-                  <span className="text-xs font-bold text-rose-400">42%</span>
-                  <span className="text-[9px] text-slate-500">Perda 0-3s</span>
+                  <span className="text-xs font-bold text-[#EF4444]">42%</span>
+                  <span className="text-[9px] text-[#999999]">Perda 0-3s</span>
                 </div>
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg" style={{ background: "rgba(167,139,250,0.08)", border: "1px solid rgba(167,139,250,0.15)" }}>
-                  <span className="text-xs font-bold text-violet-400">1.4x</span>
-                  <span className="text-[9px] text-slate-500">Replay</span>
+                  <span className="text-xs font-bold text-[#7C3AED]">1.4x</span>
+                  <span className="text-[9px] text-[#999999]">Replay</span>
                 </div>
               </div>
             </div>
@@ -3407,7 +3406,7 @@ export default function MarketingDash() {
                       </clipPath>
                     </defs>
                     {[0, 0.25, 0.5, 0.75, 1].map((f) => (
-                      <line key={f} x1={0} x2={w} y1={padTop + f * (h - padTop - padBot)} y2={padTop + f * (h - padTop - padBot)} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+                      <line key={f} x1={0} x2={w} y1={padTop + f * (h - padTop - padBot)} y2={padTop + f * (h - padTop - padBot)} stroke="rgba(0,0,0,0.08)" strokeWidth="1" />
                     ))}
                     {[100, 75, 50, 25, 0].map((v, i) => (
                       <text key={v} x={padX - 8} y={padTop + (i / 4) * (h - padTop - padBot) + 4} textAnchor="end" fill="rgba(255,255,255,0.25)" fontSize="10" fontFamily="monospace">{v}%</text>
@@ -3425,7 +3424,7 @@ export default function MarketingDash() {
                             <circle cx={p.x} cy={p.y} r="16" fill="transparent" />
                             {isHov && <circle cx={p.x} cy={p.y} r="10" fill="rgba(52,211,153,0.15)" />}
                             {isHov && <line x1={p.x} y1={padTop} x2={p.x} y2={h - padBot} stroke="rgba(52,211,153,0.2)" strokeWidth="1" strokeDasharray="4 3" />}
-                            <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.3)"} strokeWidth="1.5" />
+                            <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.06)"} strokeWidth="1.5" />
                             <text x={p.x} y={p.y - 10} textAnchor="middle" fill={hoveredRetention === null || isHov ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)"} fontSize="9" fontFamily="monospace">{videoRetention[i].pct}%</text>
                           </g>
                         );
@@ -3452,7 +3451,7 @@ export default function MarketingDash() {
                 </>);
               })()}
             </div>
-            <div className="flex justify-between -mx-6 px-6 py-2 border-t border-white/5 text-[10px] text-slate-400 font-bold tracking-widest uppercase relative z-10">
+            <div className="flex justify-between -mx-6 px-6 py-2 border-t border-[#E5E7EB] text-[10px] text-[#666666] font-bold tracking-widest uppercase relative z-10">
               <span>0s</span><span>5s</span><span>10s</span><span>15s</span><span>20s</span><span>25s</span><span>30s</span>
             </div>
           </div>
@@ -3465,10 +3464,10 @@ export default function MarketingDash() {
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-pink-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center justify-between mb-2 px-2 relative z-10">
               <div className="flex items-center gap-2">
-                <span className="text-pink-400/60">
+                <span className="text-[#DB2777]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">Share Rate por Conteúdo<InfoTip title="Share Rate por Conteúdo" /></h3>
+                <h3 className="font-bold text-sm text-[#323232]">Share Rate por Conteúdo<InfoTip title="Share Rate por Conteúdo" /></h3>
               </div>
             </div>
             {(() => {
@@ -3479,16 +3478,16 @@ export default function MarketingDash() {
                   {/* Meta 1% vertical line spanning all bars */}
                   <div className="absolute top-0 bottom-0 z-20 pointer-events-none" style={{ left: `calc(96px + (100% - 96px - 48px) * ${metaPct / 100})` }}>
                     <div className="w-0.5 h-full bg-amber-400/50" style={{ boxShadow: "0 0 6px rgba(251,191,36,0.3)" }} />
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/25 rounded px-1.5 py-0.5 backdrop-blur-sm">META 1%</div>
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-[#F59E0B] bg-amber-400/10 border border-amber-400/25 rounded px-1.5 py-0.5 backdrop-blur-sm">META 1%</div>
                   </div>
                   {shareRateByContent.map((item, i) => {
                     const pct = (item.rate / maxRate) * 100;
                     const isAboveMeta = item.rate >= 1;
                     return (
                       <div key={item.name} className="flex items-center gap-2 group/bar cursor-pointer flex-1 min-h-0 relative">
-                        <span className="text-[10px] font-medium text-slate-400 w-20 shrink-0 truncate">{item.name}</span>
+                        <span className="text-[10px] font-medium text-[#666666] w-20 shrink-0 truncate">{item.name}</span>
                         <div className="flex-1 h-full py-[7px] relative">
-                          <div className="h-full relative rounded-sm overflow-hidden bg-white/[0.02] ring-1 ring-white/5">
+                          <div className="h-full relative rounded-sm overflow-hidden bg-[#F8F9FA] ring-1 ring-white/5">
                             <div
                               className="absolute top-0 left-0 h-full rounded-sm transition-all duration-500 group-hover/bar:brightness-125 overflow-hidden animate-bar-enter"
                               style={{
@@ -3510,12 +3509,12 @@ export default function MarketingDash() {
                           {/* Tooltip on hover */}
                           <div className="absolute left-1/2 -translate-x-1/2 -top-8 opacity-0 group-hover/bar:opacity-100 transition-opacity duration-200 pointer-events-none z-30">
                             <div className="bg-black/90 border border-pink-400/30 rounded-lg px-3 py-1.5 text-center whitespace-nowrap backdrop-blur-sm shadow-[0_0_12px_rgba(244,114,182,0.15)]">
-                              <span className="text-[11px] font-bold text-pink-400">{item.shares.toLocaleString("pt-BR")}</span>
-                              <span className="text-[9px] text-slate-400 ml-1">shares</span>
+                              <span className="text-[11px] font-bold text-[#DB2777]">{item.shares.toLocaleString("pt-BR")}</span>
+                              <span className="text-[9px] text-[#666666] ml-1">shares</span>
                             </div>
                           </div>
                         </div>
-                        <span className="text-xs font-extrabold text-pink-400 w-10 text-right shrink-0 drop-shadow-[0_0_6px_rgba(244,114,182,0.3)]">{item.rate}%</span>
+                        <span className="text-xs font-extrabold text-[#DB2777] w-10 text-right shrink-0 drop-shadow-[0_0_6px_rgba(244,114,182,0.3)]">{item.rate}%</span>
                       </div>
                     );
                   })}
@@ -3535,17 +3534,17 @@ export default function MarketingDash() {
           >
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-5 relative z-10">
-              <span className="text-cyan-400/60">
+              <span className="text-[#0EA5E9]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Funil de Stories — Sequência<InfoTip title="Funil de Stories — Sequência" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Funil de Stories — Sequência<InfoTip title="Funil de Stories — Sequência" /></h3>
               <CardDateFilter mode={storiesDateMode} setMode={setStoriesDateMode} single={storiesDate} setSingle={setStoriesDate} from={storiesDateFrom} setFrom={setStoriesDateFrom} to={storiesDateTo} setTo={setStoriesDateTo} />
             </div>
             <div className="flex flex-col gap-3 relative z-10">
               {storiesFunnel.map((s, i) => (
                 <div key={s.label} className="flex items-center gap-3">
-                  <span className="text-[10px] font-medium text-slate-500 w-20 shrink-0">{s.label}</span>
-                  <div className="flex-1 h-7 relative rounded-md overflow-hidden bg-white/[0.02] ring-1 ring-white/5">
+                  <span className="text-[10px] font-medium text-[#999999] w-20 shrink-0">{s.label}</span>
+                  <div className="flex-1 h-7 relative rounded-md overflow-hidden bg-[#F8F9FA] ring-1 ring-white/5">
                     <div
                       className="absolute top-0 left-0 h-full rounded-md transition-all duration-500 hover:brightness-125 overflow-hidden animate-bar-enter"
                       style={{
@@ -3562,7 +3561,7 @@ export default function MarketingDash() {
                       </div>
                     </div>
                   </div>
-                  <span className="text-xs font-extrabold text-white w-10 text-right drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">{s.pct}%</span>
+                  <span className="text-xs font-extrabold text-[#1A1A1A] w-10 text-right drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">{s.pct}%</span>
                 </div>
               ))}
             </div>
@@ -3575,8 +3574,8 @@ export default function MarketingDash() {
               ].map((m) => (
                 <div key={m.label} className="text-center p-3 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}>
                   <div className="text-sm mb-1">{m.icon}</div>
-                  <div className={`text-sm font-bold ${m.bad ? "text-rose-400" : "text-emerald-400"}`}>{m.value}</div>
-                  <div className="text-[10px] text-slate-300 font-semibold">{m.label}</div>
+                  <div className={`text-sm font-bold ${m.bad ? "text-[#EF4444]" : "text-[#10B981]"}`}>{m.value}</div>
+                  <div className="text-[10px] text-[#323232] font-semibold">{m.label}</div>
                 </div>
               ))}
             </div>
@@ -3589,10 +3588,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-pink-400/60">
+              <span className="text-[#DB2777]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Origem do Alcance<InfoTip title="Origem do Alcance" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Origem do Alcance<InfoTip title="Origem do Alcance" /></h3>
             </div>
             <div className="relative flex justify-center items-center py-2 z-10" onMouseLeave={() => setHoveredReach(null)}>
               <svg className="size-40" viewBox="0 0 200 200">
@@ -3604,7 +3603,7 @@ export default function MarketingDash() {
                   <linearGradient id="roS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
                   <filter id="roGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                 </defs>
-                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="16" />
+                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
                 {(() => {
                   const r = 70, circ = 2 * Math.PI * r;
                   const gapAngle = 4;
@@ -3639,14 +3638,14 @@ export default function MarketingDash() {
                   const val = Math.round(total * ch.pct / 100);
                   return (
                     <>
-                      <p className="text-xl font-bold text-white">{(val / 1000).toFixed(1)}k</p>
-                      <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">{ch.name}</p>
+                      <p className="text-xl font-bold text-[#1A1A1A]">{(val / 1000).toFixed(1)}k</p>
+                      <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">{ch.name}</p>
                     </>
                   );
                 })() : (
                   <>
-                    <p className="text-xl font-bold text-white">142k</p>
-                    <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">Alcance Total</p>
+                    <p className="text-xl font-bold text-[#1A1A1A]">142k</p>
+                    <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">Alcance Total</p>
                   </>
                 )}
               </div>
@@ -3656,9 +3655,9 @@ export default function MarketingDash() {
                 <div key={ch.name} className="flex items-center justify-between text-sm cursor-default" onMouseEnter={() => setHoveredReach(ch.name)} onMouseLeave={() => setHoveredReach(null)}>
                   <div className="flex items-center gap-2">
                     <div className={`size-2.5 rounded-full ${ch.color}`} />
-                    <span className="text-slate-300 text-xs font-medium">{ch.name}</span>
+                    <span className="text-[#323232] text-xs font-medium">{ch.name}</span>
                   </div>
-                  <span className="font-bold text-white text-xs">{ch.pct}%</span>
+                  <span className="font-bold text-[#1A1A1A] text-xs">{ch.pct}%</span>
                 </div>
               ))}
             </div>
@@ -3676,14 +3675,14 @@ export default function MarketingDash() {
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center justify-between mb-4 relative z-10">
               <div className="flex items-center gap-2">
-                <span className="text-amber-400/60">
+                <span className="text-[#F59E0B]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">Crescimento Líquido de Seguidores<InfoTip title="Crescimento Líquido de Seguidores" /></h3>
+                <h3 className="font-bold text-sm text-[#323232]">Crescimento Líquido de Seguidores<InfoTip title="Crescimento Líquido de Seguidores" /></h3>
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-slate-300">Novos</span></div>
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-rose-400" /><span className="text-xs font-semibold text-slate-300">Unfollows</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-[#323232]">Novos</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-rose-400" /><span className="text-xs font-semibold text-[#323232]">Unfollows</span></div>
               </div>
             </div>
             {(() => {
@@ -3691,17 +3690,17 @@ export default function MarketingDash() {
               return (
                 <div className="flex flex-col relative z-10 flex-1">
                   <div className="flex-1 flex items-end justify-between gap-8 relative">
-                    <div className="absolute top-0 left-0 right-0 h-px border-t border-dashed border-white/10 w-full z-0" />
-                    <div className="absolute top-1/3 left-0 right-0 h-px border-t border-dashed border-white/[0.04] w-full z-0" />
-                    <div className="absolute top-2/3 left-0 right-0 h-px border-t border-dashed border-white/[0.04] w-full z-0" />
+                    <div className="absolute top-0 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
+                    <div className="absolute top-1/3 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
+                    <div className="absolute top-2/3 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
                     {followerGrowth.map((d, mi) => {
                       const hNovos = (d.novos / maxVal) * 100;
                       const hUn = (d.unfollows / maxVal) * 100;
                       return (
                         <div key={d.week} className="flex items-end gap-2 w-full h-full z-10">
                           <div className="relative w-1/2 h-full flex flex-col justify-end group/bar cursor-pointer">
-                            <div className="text-[11px] font-extrabold text-emerald-400 text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.novos}</div>
-                            <div className="relative w-full rounded-t-lg overflow-hidden bg-white/[0.02] ring-1 ring-white/5" style={{ height: `${hNovos}%` }}>
+                            <div className="text-[11px] font-extrabold text-[#10B981] text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.novos}</div>
+                            <div className="relative w-full rounded-t-lg overflow-hidden bg-[#F8F9FA] ring-1 ring-white/5" style={{ height: `${hNovos}%` }}>
                               <div
                                 className="absolute bottom-0 left-0 right-0 h-full rounded-t-lg transition-all duration-500 group-hover/bar:brightness-125 overflow-hidden animate-bar-enter"
                                 style={{ background: "linear-gradient(to top, rgb(6,120,80), rgb(52,211,153))", boxShadow: "0 0 12px rgba(52,211,153,0.15)", animationDelay: `${mi * 100}ms` }}
@@ -3713,8 +3712,8 @@ export default function MarketingDash() {
                             </div>
                           </div>
                           <div className="relative w-1/2 h-full flex flex-col justify-end group/bar cursor-pointer">
-                            <div className="text-[11px] font-extrabold text-rose-400 text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.unfollows}</div>
-                            <div className="relative w-full rounded-t-lg overflow-hidden bg-white/[0.02] ring-1 ring-white/5" style={{ height: `${hUn}%` }}>
+                            <div className="text-[11px] font-extrabold text-[#EF4444] text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.unfollows}</div>
+                            <div className="relative w-full rounded-t-lg overflow-hidden bg-[#F8F9FA] ring-1 ring-white/5" style={{ height: `${hUn}%` }}>
                               <div
                                 className="absolute bottom-0 left-0 right-0 h-full rounded-t-lg transition-all duration-500 group-hover/bar:brightness-125 overflow-hidden animate-bar-enter"
                                 style={{ background: "linear-gradient(to top, rgb(150,40,50), rgb(251,113,133))", boxShadow: "0 0 12px rgba(251,113,133,0.15)", animationDelay: `${mi * 100 + 50}ms` }}
@@ -3729,9 +3728,9 @@ export default function MarketingDash() {
                       );
                     })}
                   </div>
-                  <div className="flex justify-between gap-8 -mx-6 px-6 py-2 border-t border-white/5">
+                  <div className="flex justify-between gap-8 -mx-6 px-6 py-2 border-t border-[#E5E7EB]">
                     {followerGrowth.map((d) => (
-                      <span key={d.week} className="text-xs text-neutral-500 text-center w-full">{d.week}</span>
+                      <span key={d.week} className="text-xs text-[#999999] text-center w-full">{d.week}</span>
                     ))}
                   </div>
                 </div>
@@ -3746,10 +3745,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-5 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Análise de Sentimento<InfoTip title="Análise de Sentimento" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Análise de Sentimento<InfoTip title="Análise de Sentimento" /></h3>
               <CardDateFilter mode={sentimentDateMode} setMode={setSentimentDateMode} single={sentimentDate} setSingle={setSentimentDate} from={sentimentDateFrom} setFrom={setSentimentDateFrom} to={sentimentDateTo} setTo={setSentimentDateTo} />
             </div>
             <div className="relative flex justify-center items-center py-4 z-10" onMouseLeave={() => setHoveredSentiment(null)}>
@@ -3760,7 +3759,7 @@ export default function MarketingDash() {
                   <linearGradient id="stRo" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(251,113,133)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(244,63,94)" stopOpacity="0.7"/></linearGradient>
                   <filter id="stGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                 </defs>
-                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="16" />
+                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
                 {(() => {
                   const r = 70, circ = 2 * Math.PI * r;
                   const gapAngle = 5;
@@ -3791,17 +3790,17 @@ export default function MarketingDash() {
               <div className="absolute text-center pointer-events-none">
                 {hoveredSentiment ? (() => {
                   const ch = sentimentData.find((c) => c.label === hoveredSentiment)!;
-                  const colorMap: Record<string, string> = { "bg-emerald-400": "text-emerald-400", "bg-amber-400": "text-amber-400", "bg-rose-400": "text-rose-400" };
+                  const colorMap: Record<string, string> = { "bg-emerald-400": "text-[#10B981]", "bg-amber-400": "text-[#F59E0B]", "bg-rose-400": "text-[#EF4444]" };
                   return (
                     <>
-                      <p className={`text-lg font-bold ${colorMap[ch.color] || "text-white"}`}>{ch.pct}%</p>
-                      <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">{ch.label}</p>
+                      <p className={`text-lg font-bold ${colorMap[ch.color] || "text-[#1A1A1A]"}`}>{ch.pct}%</p>
+                      <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">{ch.label}</p>
                     </>
                   );
                 })() : (
                   <>
-                    <p className="text-lg font-bold text-emerald-400">56%</p>
-                    <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">Positivo</p>
+                    <p className="text-lg font-bold text-[#10B981]">56%</p>
+                    <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">Positivo</p>
                   </>
                 )}
               </div>
@@ -3811,22 +3810,22 @@ export default function MarketingDash() {
                 <div key={s.label} className="flex items-center justify-between cursor-default" onMouseEnter={() => setHoveredSentiment(s.label)} onMouseLeave={() => setHoveredSentiment(null)}>
                   <div className="flex items-center gap-2">
                     <div className={`size-2.5 rounded-full ${s.color}`} />
-                    <span className="text-xs font-semibold text-slate-300">{s.label}</span>
+                    <span className="text-xs font-semibold text-[#323232]">{s.label}</span>
                   </div>
-                  <span className="text-xs font-bold text-white">{s.pct}%</span>
+                  <span className="text-xs font-bold text-[#1A1A1A]">{s.pct}%</span>
                 </div>
               ))}
             </div>
-            <div className="mt-5 pt-4 border-t border-white/5 relative z-10">
-              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-3">Taxa de Resposta</p>
+            <div className="mt-5 pt-4 border-t border-[#E5E7EB] relative z-10">
+              <p className="text-[10px] text-[#999999] font-bold uppercase tracking-wider mb-3">Taxa de Resposta</p>
               <div className="grid grid-cols-2 gap-3">
                 <div className="text-center p-3 rounded-xl" style={{ background: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.12)" }}>
-                  <div className="text-lg font-bold text-emerald-400">68%</div>
-                  <div className="text-[9px] text-slate-500">Respondidos</div>
+                  <div className="text-lg font-bold text-[#10B981]">68%</div>
+                  <div className="text-[9px] text-[#999999]">Respondidos</div>
                 </div>
                 <div className="text-center p-3 rounded-xl" style={{ background: "rgba(251,191,36,0.06)", border: "1px solid rgba(251,191,36,0.12)" }}>
-                  <div className="text-lg font-bold text-amber-400">2.4h</div>
-                  <div className="text-[9px] text-slate-500">Tempo Médio</div>
+                  <div className="text-lg font-bold text-[#F59E0B]">2.4h</div>
+                  <div className="text-[9px] text-[#999999]">Tempo Médio</div>
                 </div>
               </div>
             </div>
@@ -3843,10 +3842,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-cyan-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-cyan-400/60">
+              <span className="text-[#0EA5E9]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Faixa Etária<InfoTip title="Faixa Etária" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Faixa Etária<InfoTip title="Faixa Etária" /></h3>
             </div>
             <div className="relative flex justify-center items-center py-2 z-10" onMouseLeave={() => setHoveredAge(null)}>
               <svg className="size-40" viewBox="0 0 200 200">
@@ -3858,7 +3857,7 @@ export default function MarketingDash() {
                   <linearGradient id="agS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
                   <filter id="agGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                 </defs>
-                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="16" />
+                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
                 {(() => {
                   const r = 70, circ = 2 * Math.PI * r;
                   const gapAngle = 4;
@@ -3891,14 +3890,14 @@ export default function MarketingDash() {
                   const ch = ageRangeData.find((c) => c.label === hoveredAge)!;
                   return (
                     <>
-                      <p className="text-xl font-bold text-white">{ch.pct}%</p>
-                      <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">{ch.label}</p>
+                      <p className="text-xl font-bold text-[#1A1A1A]">{ch.pct}%</p>
+                      <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">{ch.label}</p>
                     </>
                   );
                 })() : (
                   <>
-                    <p className="text-xl font-bold text-white">25-34</p>
-                    <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">Maior Faixa</p>
+                    <p className="text-xl font-bold text-[#1A1A1A]">25-34</p>
+                    <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">Maior Faixa</p>
                   </>
                 )}
               </div>
@@ -3908,9 +3907,9 @@ export default function MarketingDash() {
                 <div key={ch.label} className="flex items-center justify-between text-sm cursor-default" onMouseEnter={() => setHoveredAge(ch.label)} onMouseLeave={() => setHoveredAge(null)}>
                   <div className="flex items-center gap-2">
                     <div className={`size-2.5 rounded-full ${ch.color}`} />
-                    <span className="text-slate-300 text-xs font-medium">{ch.label}</span>
+                    <span className="text-[#323232] text-xs font-medium">{ch.label}</span>
                   </div>
-                  <span className="font-bold text-white text-xs">{ch.pct}%</span>
+                  <span className="font-bold text-[#1A1A1A] text-xs">{ch.pct}%</span>
                 </div>
               ))}
             </div>
@@ -3923,10 +3922,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-pink-400/60">
+              <span className="text-[#DB2777]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Sexo<InfoTip title="Sexo" /></h3>
+              <h3 className="font-bold text-sm text-[#323232]">Sexo<InfoTip title="Sexo" /></h3>
             </div>
             <div className="relative flex justify-center items-center py-2 z-10" onMouseLeave={() => setHoveredGender(null)}>
               <svg className="size-40" viewBox="0 0 200 200">
@@ -3936,7 +3935,7 @@ export default function MarketingDash() {
                   <linearGradient id="gnA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(251,191,36)" stopOpacity="0.9"/><stop offset="100%" stopColor="rgb(245,158,11)" stopOpacity="0.7"/></linearGradient>
                   <filter id="gnGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                 </defs>
-                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="16" />
+                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
                 {(() => {
                   const r = 70, circ = 2 * Math.PI * r;
                   const gapAngle = 5;
@@ -3969,14 +3968,14 @@ export default function MarketingDash() {
                   const ch = genderData.find((c) => c.label === hoveredGender)!;
                   return (
                     <>
-                      <p className="text-xl font-bold text-white">{ch.pct}%</p>
-                      <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">{ch.label}</p>
+                      <p className="text-xl font-bold text-[#1A1A1A]">{ch.pct}%</p>
+                      <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">{ch.label}</p>
                     </>
                   );
                 })() : (
                   <>
-                    <p className="text-xl font-bold text-white">58%</p>
-                    <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">Feminino</p>
+                    <p className="text-xl font-bold text-[#1A1A1A]">58%</p>
+                    <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">Feminino</p>
                   </>
                 )}
               </div>
@@ -3986,9 +3985,9 @@ export default function MarketingDash() {
                 <div key={ch.label} className="flex items-center justify-between text-sm cursor-default" onMouseEnter={() => setHoveredGender(ch.label)} onMouseLeave={() => setHoveredGender(null)}>
                   <div className="flex items-center gap-2">
                     <div className={`size-2.5 rounded-full ${ch.color}`} />
-                    <span className="text-slate-300 text-xs font-medium">{ch.label}</span>
+                    <span className="text-[#323232] text-xs font-medium">{ch.label}</span>
                   </div>
-                  <span className="font-bold text-white text-xs">{ch.pct}%</span>
+                  <span className="font-bold text-[#1A1A1A] text-xs">{ch.pct}%</span>
                 </div>
               ))}
             </div>
@@ -4002,36 +4001,36 @@ export default function MarketingDash() {
         >
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-violet-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center gap-2 mb-5 relative z-10">
-            <span className="text-violet-400/60">
+            <span className="text-[#7C3AED]/60">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
             </span>
-            <h3 className="font-bold text-sm text-slate-300">Conversão Perfil → Follow<InfoTip title="Conversão Perfil → Follow" /></h3>
+            <h3 className="font-bold text-sm text-[#323232]">Conversão Perfil → Follow<InfoTip title="Conversão Perfil → Follow" /></h3>
             <CardDateFilter mode={convDateMode} setMode={setConvDateMode} single={convDate} setSingle={setConvDate} from={convDateFrom} setFrom={setConvDateFrom} to={convDateTo} setTo={setConvDateTo} />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
             <div className="rounded-xl p-4 flex items-center justify-between" style={{ background: "rgba(244,114,182,0.06)", border: "1px solid rgba(244,114,182,0.15)" }}>
               <div>
-                <p className="text-xs font-medium text-slate-400">Visitas ao Perfil</p>
-                <p className="text-2xl font-bold text-pink-400 mt-1">3.840</p>
+                <p className="text-xs font-medium text-[#666666]">Visitas ao Perfil</p>
+                <p className="text-2xl font-bold text-[#DB2777] mt-1">3.840</p>
               </div>
-              <div className="text-pink-400/40">
+              <div className="text-[#DB2777]/40">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
               </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
-              <div className="text-slate-500">
+              <div className="text-[#999999]">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </div>
-              <span className="text-sm font-bold text-white">8.6%</span>
-              <span className="text-[9px] text-slate-500 uppercase tracking-wider">Taxa de Conversão</span>
-              <span className="text-[9px] text-emerald-400/70">Meta: 5-15%</span>
+              <span className="text-sm font-bold text-[#1A1A1A]">8.6%</span>
+              <span className="text-[9px] text-[#999999] uppercase tracking-wider">Taxa de Conversão</span>
+              <span className="text-[9px] text-[#10B981]/70">Meta: 5-15%</span>
             </div>
             <div className="rounded-xl p-4 flex items-center justify-between" style={{ background: "rgba(167,139,250,0.06)", border: "1px solid rgba(167,139,250,0.15)" }}>
               <div>
-                <p className="text-xs font-medium text-slate-400">Novos Seguidores</p>
-                <p className="text-2xl font-bold text-violet-400 mt-1">330</p>
+                <p className="text-xs font-medium text-[#666666]">Novos Seguidores</p>
+                <p className="text-2xl font-bold text-[#7C3AED] mt-1">330</p>
               </div>
-              <div className="text-violet-400/40">
+              <div className="text-[#7C3AED]/40">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
               </div>
             </div>
@@ -4057,23 +4056,23 @@ export default function MarketingDash() {
               style={{ ...glassStyle, animation: `animationIn 0.8s ease-out ${0.2 + idx * 0.05}s both`, overflow: "visible" }}
             >
               <div className="absolute bottom-3 right-3 cursor-help group/tip z-20">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500/40 group-hover/tip:text-slate-300 transition-colors">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#999999]/40 group-hover/tip:text-[#323232] transition-colors">
                   <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
                 </svg>
                 <div
-                  className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-white/10 text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[200] ${isRight ? "right-0" : "left-0"}`}
-                  style={{ background: "rgba(8,10,18,0.97)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)" }}
+                  className={`absolute bottom-full mb-3 w-64 p-3 rounded-lg border border-[#E5E7EB] text-left opacity-0 scale-95 pointer-events-none group-hover/tip:opacity-100 group-hover/tip:scale-100 group-hover/tip:pointer-events-auto transition-all duration-200 origin-bottom z-[200] ${isRight ? "right-0" : "left-0"}`}
+                  style={{ background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", boxShadow: "0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05)" }}
                 >
-                  <p className="text-[11px] text-slate-300/90 leading-[1.6] font-normal normal-case tracking-normal">{kpi.tooltip}</p>
-                  <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-white/10 ${isRight ? "right-2" : "left-2"}`} style={{ background: "rgba(8,10,18,0.97)" }} />
+                  <p className="text-[11px] text-[#323232]/90 leading-[1.6] font-normal normal-case tracking-normal">{kpi.tooltip}</p>
+                  <div className={`absolute -bottom-[5px] w-2.5 h-2.5 rotate-45 border-r border-b border-[#E5E7EB] ${isRight ? "right-2" : "left-2"}`} style={{ background: "rgba(255,255,255,0.98)" }} />
                 </div>
               </div>
               <div className="flex items-center justify-between mb-1 relative z-10">
-                <p className="text-xs text-neutral-500 font-medium uppercase tracking-wider">{kpi.label}</p>
-                <div className="text-amber-400/60">{kpiIcons[kpi.icon]}</div>
+                <p className="text-xs text-[#999999] font-medium uppercase tracking-wider">{kpi.label}</p>
+                <div className="text-[#F59E0B]/60">{kpiIcons[kpi.icon]}</div>
               </div>
-              <p className="text-2xl font-bold text-amber-400 relative z-10 drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]">{kpi.value}</p>
-              <div className={`mt-2 flex items-center gap-1 text-[10px] font-bold relative z-10 ${kpi.up ? "text-emerald-400" : "text-rose-400"}`}>
+              <p className="text-2xl font-bold text-[#F59E0B] relative z-10 drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]">{kpi.value}</p>
+              <div className={`mt-2 flex items-center gap-1 text-[10px] font-bold relative z-10 ${kpi.up ? "text-[#10B981]" : "text-[#EF4444]"}`}>
                 {kpi.up ? <ArrowUp /> : <ArrowDown />}
                 {kpi.delta} vs mês ant.
               </div>
@@ -4091,26 +4090,26 @@ export default function MarketingDash() {
             style={{ ...glassStyle, animation: "animationIn 0.8s ease-out 0.3s both" }}
           >
             <div className="flex items-center gap-2 mb-5 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Top Conteúdo Orgânico</h3>
+              <h3 className="font-bold text-sm text-[#323232]">Top Conteúdo Orgânico</h3>
             </div>
             <div className="relative z-10 overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-white/5">
+                  <tr className="border-b border-[#E5E7EB]">
                     {net.topContent.columns.map((col, ci) => (
-                      <th key={col} className={`text-[10px] text-slate-500 uppercase tracking-wider font-bold pb-3 pr-4 ${ci === 0 ? "" : "text-right"}`}>{col}</th>
+                      <th key={col} className={`text-[10px] text-[#999999] uppercase tracking-wider font-bold pb-3 pr-4 ${ci === 0 ? "" : "text-right"}`}>{col}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {net.topContent.rows.map((row, ri) => (
-                    <tr key={ri} className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors">
+                    <tr key={ri} className="border-b border-white/[0.03] hover:bg-[#F8F9FA] transition-colors">
                       {net.topContent.columns.map((col, ci) => (
-                        <td key={col} className={`py-3 pr-4 text-xs ${ci === 0 ? "font-medium text-slate-300" : "text-right font-mono"} ${
-                          ci === net.topContent.columns.length - 1 ? "text-emerald-400 font-bold" : ci === 0 ? "" : "text-white font-bold"
+                        <td key={col} className={`py-3 pr-4 text-xs ${ci === 0 ? "font-medium text-[#323232]" : "text-right font-mono"} ${
+                          ci === net.topContent.columns.length - 1 ? "text-[#10B981] font-bold" : ci === 0 ? "" : "text-[#1A1A1A] font-bold"
                         }`}>{row[col]}</td>
                       ))}
                     </tr>
@@ -4127,10 +4126,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">{net.donutTitle}</h3>
+              <h3 className="font-bold text-sm text-[#323232]">{net.donutTitle}</h3>
             </div>
             {(() => {
               // hovDonut state is at component level
@@ -4147,7 +4146,7 @@ export default function MarketingDash() {
                         <linearGradient id="odS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
                         <filter id="odGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                       </defs>
-                      <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="16" />
+                      <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
                       {(() => {
                         const r = 70, circ = 2 * Math.PI * r;
                         const gapAngle = 4;
@@ -4179,14 +4178,14 @@ export default function MarketingDash() {
                         const ch = net.donut.find((c) => c.name === hovDonut)!;
                         return (
                           <>
-                            <p className="text-xl font-bold text-white">{ch.pct}%</p>
-                            <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">{ch.name}</p>
+                            <p className="text-xl font-bold text-[#1A1A1A]">{ch.pct}%</p>
+                            <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">{ch.name}</p>
                           </>
                         );
                       })() : (
                         <>
-                          <p className="text-xl font-bold text-white">100%</p>
-                          <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">Total</p>
+                          <p className="text-xl font-bold text-[#1A1A1A]">100%</p>
+                          <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">Total</p>
                         </>
                       )}
                     </div>
@@ -4196,9 +4195,9 @@ export default function MarketingDash() {
                       <div key={ch.name} className="flex items-center justify-between text-sm cursor-default" onMouseEnter={() => setHovDonut(ch.name)} onMouseLeave={() => setHovDonut(null)}>
                         <div className="flex items-center gap-2">
                           <div className={`size-2.5 rounded-full ${ch.color}`} />
-                          <span className="text-slate-300 text-xs font-medium">{ch.name}</span>
+                          <span className="text-[#323232] text-xs font-medium">{ch.name}</span>
                         </div>
-                        <span className="font-bold text-white text-xs">{ch.pct}%</span>
+                        <span className="font-bold text-[#1A1A1A] text-xs">{ch.pct}%</span>
                       </div>
                     ))}
                   </div>
@@ -4216,14 +4215,14 @@ export default function MarketingDash() {
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="flex items-center justify-between mb-4 relative z-10">
             <div className="flex items-center gap-2">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 6-6"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Evolução Orgânica</h3>
+              <h3 className="font-bold text-sm text-[#323232]">Evolução Orgânica</h3>
             </div>
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-slate-300">{net.evolutionLabels[0]}</span></div>
-              <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-slate-400" /><span className="text-xs font-semibold text-slate-300">{net.evolutionLabels[1]}</span></div>
+              <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-[#323232]">{net.evolutionLabels[0]}</span></div>
+              <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-slate-400" /><span className="text-xs font-semibold text-[#323232]">{net.evolutionLabels[1]}</span></div>
             </div>
           </div>
           {(() => {
@@ -4276,7 +4275,7 @@ export default function MarketingDash() {
                     </clipPath>
                   </defs>
                   {[0, 0.25, 0.5, 0.75, 1].map((f) => (
-                    <line key={f} x1={0} x2={w} y1={padTop + f * (h - padTop - padBot)} y2={padTop + f * (h - padTop - padBot)} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+                    <line key={f} x1={0} x2={w} y1={padTop + f * (h - padTop - padBot)} y2={padTop + f * (h - padTop - padBot)} stroke="rgba(0,0,0,0.08)" strokeWidth="1" />
                   ))}
                   <g clipPath="url(#oeChartReveal)">
                     <path d={s1Area} fill="url(#oeAreaGrad)" />
@@ -4288,7 +4287,7 @@ export default function MarketingDash() {
                         <g key={`s1-${i}`}>
                           {isHov && <line x1={p.x} y1={padTop} x2={p.x} y2={h - padBot} stroke="rgba(52,211,153,0.2)" strokeWidth="1" strokeDasharray="4 3" />}
                           {isHov && <circle cx={p.x} cy={p.y} r="10" fill="rgba(52,211,153,0.12)" />}
-                          <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.3)"} strokeWidth="1.5" />
+                          <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.06)"} strokeWidth="1.5" />
                         </g>
                       );
                     })}
@@ -4336,7 +4335,7 @@ export default function MarketingDash() {
               </div>
             );
           })()}
-          <div className="flex justify-between -mx-6 px-6 py-2 border-t border-white/5 text-[10px] text-slate-400 font-bold tracking-widest uppercase relative z-10">
+          <div className="flex justify-between -mx-6 px-6 py-2 border-t border-[#E5E7EB] text-[10px] text-[#666666] font-bold tracking-widest uppercase relative z-10">
             {net.evolution.map((d) => <span key={d.month}>{d.month}</span>)}
           </div>
         </div>
@@ -4344,7 +4343,7 @@ export default function MarketingDash() {
         {/* ── Section Separator — Analytics ── */}
         <div className="flex items-center gap-4 mt-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-400/25 to-transparent" />
-          <span className="text-xs font-bold text-amber-400 uppercase tracking-[4px]">{net.analyticsTitle}</span>
+          <span className="text-xs font-bold text-[#F59E0B] uppercase tracking-[4px]">{net.analyticsTitle}</span>
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-400/25 to-transparent" />
         </div>
 
@@ -4359,10 +4358,10 @@ export default function MarketingDash() {
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center justify-between mb-4 relative z-10">
               <div className="flex items-center gap-2">
-                <span className="text-amber-400/60">
+                <span className="text-[#F59E0B]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">Curva de Retenção de Vídeo</h3>
+                <h3 className="font-bold text-sm text-[#323232]">Curva de Retenção de Vídeo</h3>
               </div>
             </div>
             {(() => {
@@ -4410,7 +4409,7 @@ export default function MarketingDash() {
                       </clipPath>
                     </defs>
                     {[0, 0.25, 0.5, 0.75, 1].map((f) => (
-                      <line key={f} x1={0} x2={w} y1={padTop + f * (h - padTop - padBot)} y2={padTop + f * (h - padTop - padBot)} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+                      <line key={f} x1={0} x2={w} y1={padTop + f * (h - padTop - padBot)} y2={padTop + f * (h - padTop - padBot)} stroke="rgba(0,0,0,0.08)" strokeWidth="1" />
                     ))}
                     {[100, 75, 50, 25, 0].map((v, i) => (
                       <text key={v} x={padX - 8} y={padTop + (i / 4) * (h - padTop - padBot) + 4} textAnchor="end" fill="rgba(255,255,255,0.25)" fontSize="10" fontFamily="monospace">{v}%</text>
@@ -4428,7 +4427,7 @@ export default function MarketingDash() {
                             <circle cx={p.x} cy={p.y} r="16" fill="transparent" />
                             {isHov && <circle cx={p.x} cy={p.y} r="10" fill="rgba(52,211,153,0.15)" />}
                             {isHov && <line x1={p.x} y1={padTop} x2={p.x} y2={h - padBot} stroke="rgba(52,211,153,0.2)" strokeWidth="1" strokeDasharray="4 3" />}
-                            <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.3)"} strokeWidth="1.5" />
+                            <circle cx={p.x} cy={p.y} r={isHov ? 6 : 4} fill="rgba(52,211,153,0.8)" stroke={isHov ? "rgba(52,211,153,0.6)" : "rgba(0,0,0,0.06)"} strokeWidth="1.5" />
                             <text x={p.x} y={p.y - 10} textAnchor="middle" fill={hovRet === null || isHov ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)"} fontSize="9" fontFamily="monospace">{retData[i].pct}%</text>
                           </g>
                         );
@@ -4452,7 +4451,7 @@ export default function MarketingDash() {
                 </div>
               );
             })()}
-            <div className="flex justify-between -mx-6 px-6 py-2 border-t border-white/5 text-[10px] text-slate-400 font-bold tracking-widest uppercase relative z-10">
+            <div className="flex justify-between -mx-6 px-6 py-2 border-t border-[#E5E7EB] text-[10px] text-[#666666] font-bold tracking-widest uppercase relative z-10">
               {(() => {
                 const maxS = net.retentionMaxSec;
                 const labels = maxS <= 30 ? ["0s","5s","10s","15s","20s","25s","30s"] : ["0s","30s","60s","120s","180s","240s","300s"];
@@ -4469,10 +4468,10 @@ export default function MarketingDash() {
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-pink-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center justify-between mb-2 px-2 relative z-10">
               <div className="flex items-center gap-2">
-                <span className="text-pink-400/60">
+                <span className="text-[#DB2777]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">{net.shareRateTitle}</h3>
+                <h3 className="font-bold text-sm text-[#323232]">{net.shareRateTitle}</h3>
               </div>
             </div>
             {(() => {
@@ -4483,9 +4482,9 @@ export default function MarketingDash() {
                     const pct = (item.rate / maxRate) * 100;
                     return (
                       <div key={item.name} className="flex items-center gap-2 group/bar cursor-pointer flex-1 min-h-0 relative">
-                        <span className="text-[10px] font-medium text-slate-400 w-24 shrink-0 truncate">{item.name}</span>
+                        <span className="text-[10px] font-medium text-[#666666] w-24 shrink-0 truncate">{item.name}</span>
                         <div className="flex-1 h-full py-[7px] relative">
-                          <div className="h-full relative rounded-sm overflow-hidden bg-white/[0.02] ring-1 ring-white/5">
+                          <div className="h-full relative rounded-sm overflow-hidden bg-[#F8F9FA] ring-1 ring-white/5">
                             <div
                               className="absolute top-0 left-0 h-full rounded-sm transition-all duration-500 group-hover/bar:brightness-125 overflow-hidden animate-bar-enter"
                               style={{
@@ -4503,7 +4502,7 @@ export default function MarketingDash() {
                             </div>
                           </div>
                         </div>
-                        <span className="text-xs font-extrabold text-pink-400 w-10 text-right shrink-0 drop-shadow-[0_0_6px_rgba(244,114,182,0.3)]">{item.rate}%</span>
+                        <span className="text-xs font-extrabold text-[#DB2777] w-10 text-right shrink-0 drop-shadow-[0_0_6px_rgba(244,114,182,0.3)]">{item.rate}%</span>
                       </div>
                     );
                   })}
@@ -4523,10 +4522,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-6 relative z-10">
-              <span className="text-pink-400/60">
+              <span className="text-[#DB2777]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">{net.reachOriginTitle}</h3>
+              <h3 className="font-bold text-sm text-[#323232]">{net.reachOriginTitle}</h3>
             </div>
             {(() => {
               // hovRO state is at component level
@@ -4543,7 +4542,7 @@ export default function MarketingDash() {
                         <linearGradient id="roS2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
                         <filter id="roGlow2"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                       </defs>
-                      <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="16" />
+                      <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
                       {(() => {
                         const r = 70, circ = 2 * Math.PI * r;
                         const gapAngle = 4;
@@ -4575,14 +4574,14 @@ export default function MarketingDash() {
                         const ch = net.reachOrigin.find((c) => c.name === hovRO)!;
                         return (
                           <>
-                            <p className="text-xl font-bold text-white">{ch.pct}%</p>
-                            <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">{ch.name}</p>
+                            <p className="text-xl font-bold text-[#1A1A1A]">{ch.pct}%</p>
+                            <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">{ch.name}</p>
                           </>
                         );
                       })() : (
                         <>
-                          <p className="text-xl font-bold text-white">100%</p>
-                          <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">Total</p>
+                          <p className="text-xl font-bold text-[#1A1A1A]">100%</p>
+                          <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">Total</p>
                         </>
                       )}
                     </div>
@@ -4592,9 +4591,9 @@ export default function MarketingDash() {
                       <div key={ch.name} className="flex items-center justify-between text-sm cursor-default" onMouseEnter={() => setHovRO(ch.name)} onMouseLeave={() => setHovRO(null)}>
                         <div className="flex items-center gap-2">
                           <div className={`size-2.5 rounded-full ${ch.color}`} />
-                          <span className="text-slate-300 text-xs font-medium">{ch.name}</span>
+                          <span className="text-[#323232] text-xs font-medium">{ch.name}</span>
                         </div>
-                        <span className="font-bold text-white text-xs">{ch.pct}%</span>
+                        <span className="font-bold text-[#1A1A1A] text-xs">{ch.pct}%</span>
                       </div>
                     ))}
                   </div>
@@ -4611,14 +4610,14 @@ export default function MarketingDash() {
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center justify-between mb-4 relative z-10">
               <div className="flex items-center gap-2">
-                <span className="text-amber-400/60">
+                <span className="text-[#F59E0B]/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </span>
-                <h3 className="font-bold text-sm text-slate-300">Crescimento de Seguidores</h3>
+                <h3 className="font-bold text-sm text-[#323232]">Crescimento de Seguidores</h3>
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-slate-300">Novos</span></div>
-                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-rose-400" /><span className="text-xs font-semibold text-slate-300">Unfollows</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-emerald-400" /><span className="text-xs font-semibold text-[#323232]">Novos</span></div>
+                <div className="flex items-center gap-1.5"><div className="size-2.5 rounded-full bg-rose-400" /><span className="text-xs font-semibold text-[#323232]">Unfollows</span></div>
               </div>
             </div>
             {(() => {
@@ -4627,17 +4626,17 @@ export default function MarketingDash() {
               return (
                 <div className="flex flex-col relative z-10 flex-1">
                   <div className="flex-1 flex items-end justify-between gap-8 relative">
-                    <div className="absolute top-0 left-0 right-0 h-px border-t border-dashed border-white/10 w-full z-0" />
-                    <div className="absolute top-1/3 left-0 right-0 h-px border-t border-dashed border-white/[0.04] w-full z-0" />
-                    <div className="absolute top-2/3 left-0 right-0 h-px border-t border-dashed border-white/[0.04] w-full z-0" />
+                    <div className="absolute top-0 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
+                    <div className="absolute top-1/3 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
+                    <div className="absolute top-2/3 left-0 right-0 h-px border-t border-dashed border-[#E5E7EB] w-full z-0" />
                     {fgData.map((d, mi) => {
                       const hNovos = (d.novos / maxVal) * 100;
                       const hUn = (d.unfollows / maxVal) * 100;
                       return (
                         <div key={d.week} className="flex items-end gap-2 w-full h-full z-10">
                           <div className="relative w-1/2 h-full flex flex-col justify-end group/bar cursor-pointer">
-                            <div className="text-[11px] font-extrabold text-emerald-400 text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.novos}</div>
-                            <div className="relative w-full rounded-t-lg overflow-hidden bg-white/[0.02] ring-1 ring-white/5" style={{ height: `${hNovos}%` }}>
+                            <div className="text-[11px] font-extrabold text-[#10B981] text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.novos}</div>
+                            <div className="relative w-full rounded-t-lg overflow-hidden bg-[#F8F9FA] ring-1 ring-white/5" style={{ height: `${hNovos}%` }}>
                               <div
                                 className="absolute bottom-0 left-0 right-0 h-full rounded-t-lg transition-all duration-500 group-hover/bar:brightness-125 overflow-hidden animate-bar-enter"
                                 style={{ background: "linear-gradient(to top, rgb(6,120,80), rgb(52,211,153))", boxShadow: "0 0 12px rgba(52,211,153,0.15)", animationDelay: `${mi * 100}ms` }}
@@ -4649,8 +4648,8 @@ export default function MarketingDash() {
                             </div>
                           </div>
                           <div className="relative w-1/2 h-full flex flex-col justify-end group/bar cursor-pointer">
-                            <div className="text-[11px] font-extrabold text-rose-400 text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.unfollows}</div>
-                            <div className="relative w-full rounded-t-lg overflow-hidden bg-white/[0.02] ring-1 ring-white/5" style={{ height: `${hUn}%` }}>
+                            <div className="text-[11px] font-extrabold text-[#EF4444] text-center mb-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">{d.unfollows}</div>
+                            <div className="relative w-full rounded-t-lg overflow-hidden bg-[#F8F9FA] ring-1 ring-white/5" style={{ height: `${hUn}%` }}>
                               <div
                                 className="absolute bottom-0 left-0 right-0 h-full rounded-t-lg transition-all duration-500 group-hover/bar:brightness-125 overflow-hidden animate-bar-enter"
                                 style={{ background: "linear-gradient(to top, rgb(150,40,50), rgb(251,113,133))", boxShadow: "0 0 12px rgba(251,113,133,0.15)", animationDelay: `${mi * 100 + 50}ms` }}
@@ -4665,9 +4664,9 @@ export default function MarketingDash() {
                       );
                     })}
                   </div>
-                  <div className="flex justify-between gap-8 -mx-6 px-6 py-2 border-t border-white/5">
+                  <div className="flex justify-between gap-8 -mx-6 px-6 py-2 border-t border-[#E5E7EB]">
                     {fgData.map((d) => (
-                      <span key={d.week} className="text-xs text-neutral-500 text-center w-full">{d.week}</span>
+                      <span key={d.week} className="text-xs text-[#999999] text-center w-full">{d.week}</span>
                     ))}
                   </div>
                 </div>
@@ -4686,10 +4685,10 @@ export default function MarketingDash() {
           >
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-5 relative z-10">
-              <span className="text-amber-400/60">
+              <span className="text-[#F59E0B]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">{net.bottomSection.title}</h3>
+              <h3 className="font-bold text-sm text-[#323232]">{net.bottomSection.title}</h3>
             </div>
             {(() => {
               // hovBS state is at component level
@@ -4705,7 +4704,7 @@ export default function MarketingDash() {
                         <linearGradient id="bsS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="rgb(148,163,184)" stopOpacity="0.5"/><stop offset="100%" stopColor="rgb(100,116,139)" stopOpacity="0.4"/></linearGradient>
                         <filter id="bsGlow"><feGaussianBlur stdDeviation="2.5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                       </defs>
-                      <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.03)" strokeWidth="16" />
+                      <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="16" />
                       {(() => {
                         const r = 70, circ = 2 * Math.PI * r;
                         const gapAngle = 5;
@@ -4737,14 +4736,14 @@ export default function MarketingDash() {
                         const ch = bsData.find((c) => c.label === hovBS)!;
                         return (
                           <>
-                            <p className="text-lg font-bold text-white">{ch.pct}%</p>
-                            <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">{ch.label}</p>
+                            <p className="text-lg font-bold text-[#1A1A1A]">{ch.pct}%</p>
+                            <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">{ch.label}</p>
                           </>
                         );
                       })() : (
                         <>
-                          <p className="text-lg font-bold text-white">{bsData[0].pct}%</p>
-                          <p className="text-[9px] text-slate-400 uppercase font-bold tracking-tighter">{bsData[0].label}</p>
+                          <p className="text-lg font-bold text-[#1A1A1A]">{bsData[0].pct}%</p>
+                          <p className="text-[9px] text-[#666666] uppercase font-bold tracking-tighter">{bsData[0].label}</p>
                         </>
                       )}
                     </div>
@@ -4754,20 +4753,20 @@ export default function MarketingDash() {
                       <div key={s.label} className="flex items-center justify-between cursor-default" onMouseEnter={() => setHovBS(s.label)} onMouseLeave={() => setHovBS(null)}>
                         <div className="flex items-center gap-2">
                           <div className={`size-2.5 rounded-full ${s.color}`} />
-                          <span className="text-xs font-semibold text-slate-300">{s.label}</span>
+                          <span className="text-xs font-semibold text-[#323232]">{s.label}</span>
                         </div>
-                        <span className="text-xs font-bold text-white">{s.pct}%</span>
+                        <span className="text-xs font-bold text-[#1A1A1A]">{s.pct}%</span>
                       </div>
                     ))}
                   </div>
                   {net.bottomSection.extra && (
-                    <div className="mt-5 pt-4 border-t border-white/5 relative z-10">
-                      <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-3">Detalhes</p>
+                    <div className="mt-5 pt-4 border-t border-[#E5E7EB] relative z-10">
+                      <p className="text-[10px] text-[#999999] font-bold uppercase tracking-wider mb-3">Detalhes</p>
                       <div className="grid grid-cols-2 gap-3">
                         {net.bottomSection.extra.map((e) => (
                           <div key={e.label} className="text-center p-3 rounded-xl" style={{ background: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.12)" }}>
-                            <div className="text-lg font-bold text-emerald-400">{e.value}</div>
-                            <div className="text-[9px] text-slate-500">{e.label}</div>
+                            <div className="text-lg font-bold text-[#10B981]">{e.value}</div>
+                            <div className="text-[9px] text-[#999999]">{e.label}</div>
                           </div>
                         ))}
                       </div>
@@ -4785,34 +4784,34 @@ export default function MarketingDash() {
           >
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-violet-500/5 rounded-full blur-[60px] pointer-events-none" />
             <div className="flex items-center gap-2 mb-5 relative z-10">
-              <span className="text-violet-400/60">
+              <span className="text-[#7C3AED]/60">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
               </span>
-              <h3 className="font-bold text-sm text-slate-300">Conversão de Perfil</h3>
+              <h3 className="font-bold text-sm text-[#323232]">Conversão de Perfil</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
               <div className="rounded-xl p-4 flex items-center justify-between" style={{ background: "rgba(244,114,182,0.06)", border: "1px solid rgba(244,114,182,0.15)" }}>
                 <div>
-                  <p className="text-xs font-medium text-slate-400">{net.profileConversion.left.label}</p>
-                  <p className="text-2xl font-bold text-pink-400 mt-1">{net.profileConversion.left.value}</p>
+                  <p className="text-xs font-medium text-[#666666]">{net.profileConversion.left.label}</p>
+                  <p className="text-2xl font-bold text-[#DB2777] mt-1">{net.profileConversion.left.value}</p>
                 </div>
-                <div className="text-pink-400/40">
+                <div className="text-[#DB2777]/40">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div className="flex flex-col items-center justify-center gap-1">
-                <div className="text-slate-500">
+                <div className="text-[#999999]">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </div>
-                <span className="text-sm font-bold text-white">{net.profileConversion.rate}</span>
-                <span className="text-[9px] text-slate-500 uppercase tracking-wider">Taxa de Conversão</span>
+                <span className="text-sm font-bold text-[#1A1A1A]">{net.profileConversion.rate}</span>
+                <span className="text-[9px] text-[#999999] uppercase tracking-wider">Taxa de Conversão</span>
               </div>
               <div className="rounded-xl p-4 flex items-center justify-between" style={{ background: "rgba(167,139,250,0.06)", border: "1px solid rgba(167,139,250,0.15)" }}>
                 <div>
-                  <p className="text-xs font-medium text-slate-400">{net.profileConversion.right.label}</p>
-                  <p className="text-2xl font-bold text-violet-400 mt-1">{net.profileConversion.right.value}</p>
+                  <p className="text-xs font-medium text-[#666666]">{net.profileConversion.right.label}</p>
+                  <p className="text-2xl font-bold text-[#7C3AED] mt-1">{net.profileConversion.right.value}</p>
                 </div>
-                <div className="text-violet-400/40">
+                <div className="text-[#7C3AED]/40">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
                 </div>
               </div>
@@ -4839,9 +4838,9 @@ export default function MarketingDash() {
       >
         <div className="flex items-center gap-2">
           <div className="size-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sistema Online - Dados em Tempo Real</span>
+          <span className="text-[10px] font-bold text-[#666666] uppercase tracking-wider">Sistema Online - Dados em Tempo Real</span>
         </div>
-        <div className="text-[10px] text-neutral-500">
+        <div className="text-[10px] text-[#999999]">
           Última atualização: hoje às {new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
         </div>
       </footer>
@@ -4852,11 +4851,11 @@ export default function MarketingDash() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setSelectedStory(null)}>
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
           <div
-            className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl border border-white/10 overflow-hidden flex flex-col md:flex-row"
+            className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl border border-[#E5E7EB] overflow-hidden flex flex-col md:flex-row"
             style={{ ...glassStyle, background: "linear-gradient(135deg, rgba(20,20,20,0.95) 0%, rgba(10,10,10,0.98) 100%)", animation: "animationIn 0.3s ease-out both" }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button onClick={() => setSelectedStory(null)} className="absolute top-4 right-4 z-20 text-slate-400 hover:text-white transition-colors">
+            <button onClick={() => setSelectedStory(null)} className="absolute top-4 right-4 z-20 text-[#666666] hover:text-[#1A1A1A] transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
 
@@ -4867,7 +4866,7 @@ export default function MarketingDash() {
               </div>
               {selectedStory.type.includes("Video") && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="size-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                  <div className="size-14 rounded-full bg-white/10 backdrop-blur-sm border border-[#E5E7EB] flex items-center justify-center">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="white" className="ml-0.5"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                   </div>
                 </div>
@@ -4877,10 +4876,10 @@ export default function MarketingDash() {
             {/* Right — Info */}
             <div className="flex-1 p-6 space-y-5 overflow-y-auto max-h-[80vh]">
               <div>
-                <h4 className="text-base font-bold text-white">Story {selectedStory.seq}</h4>
+                <h4 className="text-base font-bold text-[#1A1A1A]">Story {selectedStory.seq}</h4>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="text-sm font-semibold text-slate-300">{selectedStory.type}</span>
-                  <span className="text-sm font-bold text-amber-400">{selectedStory.time}</span>
+                  <span className="text-sm font-semibold text-[#323232]">{selectedStory.type}</span>
+                  <span className="text-sm font-bold text-[#F59E0B]">{selectedStory.time}</span>
                 </div>
               </div>
 
@@ -4896,16 +4895,16 @@ export default function MarketingDash() {
                 const circ = 2 * Math.PI * r;
                 const filled = (Math.min(rate, 100) / 100) * circ;
                 return (
-                  <div className="rounded-xl p-5 border border-white/5" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
                     <div className="flex items-center gap-6">
                       <div className="relative shrink-0">
                         <svg className="size-32" viewBox="0 0 120 120">
-                          <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(255,255,255,0.05)" strokeWidth="10" />
+                          <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(0,0,0,0.08)" strokeWidth="10" />
                           <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(251,113,133,0.8)" strokeWidth="10" strokeDasharray={`${filled} ${circ - filled}`} strokeDashoffset={circ / 4} strokeLinecap="round" style={{ transition: "stroke-dasharray 0.5s ease" }} />
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <p className="text-xl font-bold text-rose-400">{rate.toFixed(1)}%</p>
-                          <p className="text-[8px] text-slate-500 uppercase font-bold tracking-wider">Engajamento</p>
+                          <p className="text-xl font-bold text-[#EF4444]">{rate.toFixed(1)}%</p>
+                          <p className="text-[8px] text-[#999999] uppercase font-bold tracking-wider">Engajamento</p>
                         </div>
                       </div>
                       <div className="flex-1 space-y-2.5">
@@ -4916,17 +4915,17 @@ export default function MarketingDash() {
                         ].map(m => (
                           <div key={m.label}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">{m.label}</span>
-                              <span className="text-xs font-bold text-white">{m.val}</span>
+                              <span className="text-[10px] text-[#999999] uppercase font-bold tracking-wider">{m.label}</span>
+                              <span className="text-xs font-bold text-[#1A1A1A]">{m.val}</span>
                             </div>
                             <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
                               <div className={`h-full ${m.color} rounded-full`} style={{ width: `${(m.num / interNum) * 100}%` }} />
                             </div>
                           </div>
                         ))}
-                        <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                          <span className="text-[10px] text-slate-500">Total interações</span>
-                          <span className="text-sm font-bold text-white">{interNum.toLocaleString("pt-BR")}</span>
+                        <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between">
+                          <span className="text-[10px] text-[#999999]">Total interações</span>
+                          <span className="text-sm font-bold text-[#1A1A1A]">{interNum.toLocaleString("pt-BR")}</span>
                         </div>
                       </div>
                     </div>
@@ -4942,37 +4941,37 @@ export default function MarketingDash() {
                   { label: "Reações", value: selectedStory.reactions, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg> },
                   { label: "Shares", value: selectedStory.shares, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> },
                 ].map((m) => (
-                  <div key={m.label} className="rounded-xl p-3 border border-white/5" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
                     <div className="flex items-center gap-1.5 mb-1.5">
-                      <span className="text-rose-400/60">{m.icon}</span>
-                      <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">{m.label}</span>
+                      <span className="text-[#EF4444]/60">{m.icon}</span>
+                      <span className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">{m.label}</span>
                     </div>
-                    <p className="text-lg font-bold text-white">{m.value}</p>
+                    <p className="text-lg font-bold text-[#1A1A1A]">{m.value}</p>
                   </div>
                 ))}
               </div>
 
               {/* Interaction results */}
               {selectedStory.interaction && (
-                <div className="rounded-xl p-5 border border-white/5" style={{ background: "rgba(255,255,255,0.02)" }}>
-                  <h5 className="text-[10px] text-slate-500 uppercase font-bold tracking-wider mb-4">Resultado da Interação</h5>
+                <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <h5 className="text-[10px] text-[#999999] uppercase font-bold tracking-wider mb-4">Resultado da Interação</h5>
                   {(selectedStory.interaction.type === "poll" || selectedStory.interaction.type === "quiz") && "options" in selectedStory.interaction && (
                     <div className="space-y-3">
-                      <p className="text-sm font-bold text-white mb-3">{selectedStory.interaction.question}</p>
+                      <p className="text-sm font-bold text-[#1A1A1A] mb-3">{selectedStory.interaction.question}</p>
                       {selectedStory.interaction.options.map((opt) => {
                         const isCorrect = "correct" in opt && opt.correct;
                         return (
                           <div key={opt.label} className="space-y-1">
                             <div className="flex items-center justify-between">
-                              <span className={`text-xs font-medium ${isCorrect ? "text-emerald-400" : "text-slate-300"}`}>
+                              <span className={`text-xs font-medium ${isCorrect ? "text-[#10B981]" : "text-[#323232]"}`}>
                                 {isCorrect && "✓ "}{opt.label}
                               </span>
                               <div className="flex items-center gap-2">
-                                <span className="text-[10px] text-slate-500">{opt.votes} votos</span>
-                                <span className="text-xs font-bold text-white">{opt.pct}%</span>
+                                <span className="text-[10px] text-[#999999]">{opt.votes} votos</span>
+                                <span className="text-xs font-bold text-[#1A1A1A]">{opt.pct}%</span>
                               </div>
                             </div>
-                            <div className="h-2.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className="h-2.5 bg-[#F2F2F2] rounded-full overflow-hidden">
                               <div
                                 className="h-full rounded-full animate-bar-enter"
                                 style={{
@@ -4993,24 +4992,24 @@ export default function MarketingDash() {
                   )}
                   {selectedStory.interaction.type === "slider" && "avg" in selectedStory.interaction && (
                     <div className="space-y-3">
-                      <p className="text-sm font-bold text-white">{selectedStory.interaction.question}</p>
-                      <div className="h-4 bg-white/[0.04] rounded-full overflow-hidden">
+                      <p className="text-sm font-bold text-[#1A1A1A]">{selectedStory.interaction.question}</p>
+                      <div className="h-4 bg-[#F2F2F2] rounded-full overflow-hidden">
                         <div className="h-full rounded-full animate-bar-enter" style={{ width: `${selectedStory.interaction.avg}%`, background: "linear-gradient(90deg, rgb(251,191,36), rgb(245,158,11))", boxShadow: "0 0 12px rgba(251,191,36,0.3)" }} />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-amber-400">{selectedStory.interaction.avg}%</span>
-                        <span className="text-xs text-slate-500">{selectedStory.interaction.total} respostas</span>
+                        <span className="text-2xl font-bold text-[#F59E0B]">{selectedStory.interaction.avg}%</span>
+                        <span className="text-xs text-[#999999]">{selectedStory.interaction.total} respostas</span>
                       </div>
                     </div>
                   )}
                   {selectedStory.interaction.type === "countdown" && "reminders" in selectedStory.interaction && (
                     <div className="text-center space-y-3">
-                      <p className="text-sm font-bold text-white">{selectedStory.interaction.label}</p>
+                      <p className="text-sm font-bold text-[#1A1A1A]">{selectedStory.interaction.label}</p>
                       <div className="flex items-center justify-center gap-3">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-violet-400" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                        <span className="text-3xl font-bold text-violet-400">{selectedStory.interaction.reminders.toLocaleString("pt-BR")}</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#7C3AED]" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        <span className="text-3xl font-bold text-[#7C3AED]">{selectedStory.interaction.reminders.toLocaleString("pt-BR")}</span>
                       </div>
-                      <span className="text-xs text-slate-500">lembretes ativados</span>
+                      <span className="text-xs text-[#999999]">lembretes ativados</span>
                     </div>
                   )}
                 </div>
@@ -5024,11 +5023,11 @@ export default function MarketingDash() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setSelectedPost(null)}>
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
           <div
-            className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl border border-white/10 overflow-hidden flex flex-col md:flex-row"
+            className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl border border-[#E5E7EB] overflow-hidden flex flex-col md:flex-row"
             style={{ ...glassStyle, background: "linear-gradient(135deg, rgba(20,20,20,0.95) 0%, rgba(10,10,10,0.98) 100%)", animation: "animationIn 0.3s ease-out both" }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button onClick={() => setSelectedPost(null)} className="absolute top-4 right-4 z-20 text-slate-400 hover:text-white transition-colors">
+            <button onClick={() => setSelectedPost(null)} className="absolute top-4 right-4 z-20 text-[#666666] hover:text-[#1A1A1A] transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
 
@@ -5039,7 +5038,7 @@ export default function MarketingDash() {
               </div>
               {selectedPost.type.includes("Reels") && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="size-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                  <div className="size-14 rounded-full bg-white/10 backdrop-blur-sm border border-[#E5E7EB] flex items-center justify-center">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="white" className="ml-0.5"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                   </div>
                 </div>
@@ -5049,12 +5048,12 @@ export default function MarketingDash() {
             {/* Right — Info */}
             <div className="flex-1 p-6 space-y-5 overflow-y-auto max-h-[80vh]">
               <div>
-                <h4 className="text-base font-bold text-white">{selectedPost.title}</h4>
+                <h4 className="text-base font-bold text-[#1A1A1A]">{selectedPost.title}</h4>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="text-sm font-semibold text-slate-300">{selectedPost.type}</span>
-                  <span className="text-sm font-bold text-amber-400">{selectedPost.time}</span>
+                  <span className="text-sm font-semibold text-[#323232]">{selectedPost.type}</span>
+                  <span className="text-sm font-bold text-[#F59E0B]">{selectedPost.time}</span>
                 </div>
-                <p className="text-xs text-slate-400 mt-3 leading-relaxed">{selectedPost.caption}</p>
+                <p className="text-xs text-[#666666] mt-3 leading-relaxed">{selectedPost.caption}</p>
               </div>
 
               {/* Engagement ring */}
@@ -5070,16 +5069,16 @@ export default function MarketingDash() {
                 const circ = 2 * Math.PI * r;
                 const filled = (Math.min(rate, 100) / 100) * circ;
                 return (
-                  <div className="rounded-xl p-5 border border-white/5" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
                     <div className="flex items-center gap-6">
                       <div className="relative shrink-0">
                         <svg className="size-32" viewBox="0 0 120 120">
-                          <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(255,255,255,0.05)" strokeWidth="10" />
+                          <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(0,0,0,0.08)" strokeWidth="10" />
                           <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(52,211,153,0.8)" strokeWidth="10" strokeDasharray={`${filled} ${circ - filled}`} strokeDashoffset={circ / 4} strokeLinecap="round" style={{ transition: "stroke-dasharray 0.5s ease" }} />
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <p className="text-xl font-bold text-emerald-400">{rate.toFixed(1)}%</p>
-                          <p className="text-[8px] text-slate-500 uppercase font-bold tracking-wider">Engajamento</p>
+                          <p className="text-xl font-bold text-[#10B981]">{rate.toFixed(1)}%</p>
+                          <p className="text-[8px] text-[#999999] uppercase font-bold tracking-wider">Engajamento</p>
                         </div>
                       </div>
                       <div className="flex-1 space-y-2.5">
@@ -5091,17 +5090,17 @@ export default function MarketingDash() {
                         ].map(m => (
                           <div key={m.label}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">{m.label}</span>
-                              <span className="text-xs font-bold text-white">{m.val}</span>
+                              <span className="text-[10px] text-[#999999] uppercase font-bold tracking-wider">{m.label}</span>
+                              <span className="text-xs font-bold text-[#1A1A1A]">{m.val}</span>
                             </div>
                             <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
                               <div className={`h-full ${m.color} rounded-full`} style={{ width: `${(m.num / interNum) * 100}%` }} />
                             </div>
                           </div>
                         ))}
-                        <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                          <span className="text-[10px] text-slate-500">Total interações</span>
-                          <span className="text-sm font-bold text-white">{interNum.toLocaleString("pt-BR")}</span>
+                        <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between">
+                          <span className="text-[10px] text-[#999999]">Total interações</span>
+                          <span className="text-sm font-bold text-[#1A1A1A]">{interNum.toLocaleString("pt-BR")}</span>
                         </div>
                       </div>
                     </div>
@@ -5118,12 +5117,12 @@ export default function MarketingDash() {
                   { label: "Salvamentos", value: selectedPost.saves, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg> },
                   { label: "Shares", value: selectedPost.shares, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> },
                 ].map((m) => (
-                  <div key={m.label} className="rounded-xl p-3 border border-white/5" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
                     <div className="flex items-center gap-1.5 mb-1.5">
-                      <span className="text-emerald-400/60">{m.icon}</span>
-                      <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">{m.label}</span>
+                      <span className="text-[#10B981]/60">{m.icon}</span>
+                      <span className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">{m.label}</span>
                     </div>
-                    <p className="text-lg font-bold text-white">{m.value}</p>
+                    <p className="text-lg font-bold text-[#1A1A1A]">{m.value}</p>
                   </div>
                 ))}
               </div>
@@ -5139,12 +5138,12 @@ export default function MarketingDash() {
 
           {/* Modal – horizontal layout */}
           <div
-            className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl border border-white/10 overflow-hidden flex flex-col md:flex-row"
+            className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl border border-[#E5E7EB] overflow-hidden flex flex-col md:flex-row"
             style={{ ...glassStyle, background: "linear-gradient(135deg, rgba(20,20,20,0.95) 0%, rgba(10,10,10,0.98) 100%)", animation: "animationIn 0.3s ease-out both" }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
-            <button onClick={() => setSelectedAd(null)} className="absolute top-4 right-4 z-20 text-slate-400 hover:text-white transition-colors">
+            <button onClick={() => setSelectedAd(null)} className="absolute top-4 right-4 z-20 text-[#666666] hover:text-[#1A1A1A] transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
               </svg>
@@ -5157,7 +5156,7 @@ export default function MarketingDash() {
               </div>
               {selectedAd.type.includes("Video") && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="size-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                  <div className="size-14 rounded-full bg-white/10 backdrop-blur-sm border border-[#E5E7EB] flex items-center justify-center">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="white" className="ml-0.5"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                   </div>
                 </div>
@@ -5169,13 +5168,13 @@ export default function MarketingDash() {
               {/* Title + status */}
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h4 className="text-base font-bold text-white">{selectedAd.name}</h4>
-                  <p className="text-xs text-slate-500 mt-0.5">{selectedAd.type}</p>
+                  <h4 className="text-base font-bold text-[#1A1A1A]">{selectedAd.name}</h4>
+                  <p className="text-xs text-[#999999] mt-0.5">{selectedAd.type}</p>
                 </div>
                 <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold shrink-0 ${
                   selectedAd.status === "ATIVO"
-                    ? "bg-emerald-500/10 border border-emerald-500/20 text-emerald-400"
-                    : "bg-amber-500/10 border border-amber-500/20 text-amber-400"
+                    ? "bg-emerald-500/10 border border-emerald-500/20 text-[#10B981]"
+                    : "bg-amber-500/10 border border-amber-500/20 text-[#F59E0B]"
                 }`}>
                   {selectedAd.status}
                 </span>
@@ -5194,17 +5193,17 @@ export default function MarketingDash() {
                 const circ = 2 * Math.PI * r;
                 const filled = (rate / 100) * circ;
                 return (
-                  <div className="rounded-xl p-5 border border-white/5" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="rounded-xl p-5 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
                     <div className="flex items-center gap-6">
                       {/* Ring gauge */}
                       <div className="relative shrink-0">
                         <svg className="size-32" viewBox="0 0 120 120">
-                          <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(255,255,255,0.05)" strokeWidth="10" />
+                          <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(0,0,0,0.08)" strokeWidth="10" />
                           <circle cx="60" cy="60" r={r} fill="transparent" stroke="rgba(52,211,153,0.8)" strokeWidth="10" strokeDasharray={`${filled} ${circ - filled}`} strokeDashoffset={circ / 4} strokeLinecap="round" style={{ transition: "stroke-dasharray 0.5s ease" }} />
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <p className="text-xl font-bold text-emerald-400">{rate.toFixed(1)}%</p>
-                          <p className="text-[8px] text-slate-500 uppercase font-bold tracking-wider">Engajamento</p>
+                          <p className="text-xl font-bold text-[#10B981]">{rate.toFixed(1)}%</p>
+                          <p className="text-[8px] text-[#999999] uppercase font-bold tracking-wider">Engajamento</p>
                         </div>
                       </div>
 
@@ -5213,8 +5212,8 @@ export default function MarketingDash() {
                         <div className="space-y-2.5">
                           <div>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Curtidas</span>
-                              <span className="text-xs font-bold text-white">{selectedAd.likes}</span>
+                              <span className="text-[10px] text-[#999999] uppercase font-bold tracking-wider">Curtidas</span>
+                              <span className="text-xs font-bold text-[#1A1A1A]">{selectedAd.likes}</span>
                             </div>
                             <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
                               <div className="h-full bg-amber-400 rounded-full" style={{ width: `${(likesNum / interNum) * 100}%` }} />
@@ -5222,17 +5221,17 @@ export default function MarketingDash() {
                           </div>
                           <div>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Comentários</span>
-                              <span className="text-xs font-bold text-white">{selectedAd.comments}</span>
+                              <span className="text-[10px] text-[#999999] uppercase font-bold tracking-wider">Comentários</span>
+                              <span className="text-xs font-bold text-[#1A1A1A]">{selectedAd.comments}</span>
                             </div>
                             <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
                               <div className="h-full bg-emerald-400 rounded-full" style={{ width: `${(commentsNum / interNum) * 100}%` }} />
                             </div>
                           </div>
                         </div>
-                        <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                          <span className="text-[10px] text-slate-500">Total interações</span>
-                          <span className="text-sm font-bold text-white">{interNum.toLocaleString("pt-BR")}</span>
+                        <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between">
+                          <span className="text-[10px] text-[#999999]">Total interações</span>
+                          <span className="text-sm font-bold text-[#1A1A1A]">{interNum.toLocaleString("pt-BR")}</span>
                         </div>
                       </div>
                     </div>
@@ -5248,31 +5247,31 @@ export default function MarketingDash() {
                   { label: "Comentários", value: selectedAd.comments, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> },
                   { label: "Alcance", value: selectedAd.reach, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> },
                 ].map((m) => (
-                  <div key={m.label} className="rounded-xl p-3 border border-white/5" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={m.label} className="rounded-xl p-3 border border-[#E5E7EB]" style={{ background: "rgba(255,255,255,0.02)" }}>
                     <div className="flex items-center gap-1.5 mb-1.5">
-                      <span className="text-amber-400/60">{m.icon}</span>
-                      <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">{m.label}</span>
+                      <span className="text-[#F59E0B]/60">{m.icon}</span>
+                      <span className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">{m.label}</span>
                     </div>
-                    <p className="text-lg font-bold text-white">{m.value}</p>
+                    <p className="text-lg font-bold text-[#1A1A1A]">{m.value}</p>
                   </div>
                 ))}
               </div>
 
               {/* Performance row */}
-              <div className="flex items-center gap-4 pt-3 border-t border-white/5">
+              <div className="flex items-center gap-4 pt-3 border-t border-[#E5E7EB]">
                 <div className="flex-1 text-center">
-                  <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">CPM</p>
-                  <p className="text-sm font-bold text-slate-300 mt-1">{selectedAd.cpm}</p>
+                  <p className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">CPM</p>
+                  <p className="text-sm font-bold text-[#323232] mt-1">{selectedAd.cpm}</p>
                 </div>
                 <div className="w-px h-8 bg-white/5" />
                 <div className="flex-1 text-center">
-                  <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">CPC</p>
-                  <p className="text-sm font-bold text-slate-300 mt-1">{selectedAd.cpc}</p>
+                  <p className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">CPC</p>
+                  <p className="text-sm font-bold text-[#323232] mt-1">{selectedAd.cpc}</p>
                 </div>
                 <div className="w-px h-8 bg-white/5" />
                 <div className="flex-1 text-center">
-                  <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">ROAS</p>
-                  <p className={`text-sm font-bold mt-1 ${selectedAd.roasGood ? "text-emerald-400" : "text-slate-500"}`}>{selectedAd.roas}</p>
+                  <p className="text-[10px] text-[#999999] uppercase tracking-wider font-bold">ROAS</p>
+                  <p className={`text-sm font-bold mt-1 ${selectedAd.roasGood ? "text-[#10B981]" : "text-[#999999]"}`}>{selectedAd.roas}</p>
                 </div>
               </div>
             </div>
