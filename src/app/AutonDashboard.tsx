@@ -3151,7 +3151,7 @@ export default function AutonDashboard() {
       {/* CONTENT */}
       <div style={{ flex:1, minWidth:0, display:"flex", flexDirection:"column" }}>
         {/* GLOBAL KPI BAR */}
-        <div style={{ background:"#FFFFFF", borderBottom:"1px solid #E5E7EB", padding:"10px 40px", display:"flex", alignItems:"center", gap:28, flexWrap:"wrap", position:"sticky", top:0, zIndex:50, boxShadow:"0 2px 8px rgba(0,0,0,.05)" }}>
+        <div style={{ background:"#FFFFFF", borderBottom:"1px solid #E5E7EB", padding:"10px 40px", display:"flex", alignItems:"center", gap:28, flexWrap:"wrap", position:"sticky", top:0, zIndex:10, boxShadow:"0 2px 8px rgba(0,0,0,.05)" }}>
           {[
             { label:"MRR", value:"R$ 15.5k", delta:"+12%", ok:true },
             { label:"Clientes", value:"12", delta:"+1", ok:true },
