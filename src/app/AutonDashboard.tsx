@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
+import MarketingDash from "./MarketingDash";
 
 /* ═══════════════════════════════════════════════
    HELPERS
@@ -3118,6 +3119,7 @@ export default function AutonDashboard() {
     { id:"onboarding", label:"Onboarding", icon:"↗", sub:"Ativacao & funil" },
     { id:"dre", label:"DRE & Financas", icon:"$", sub:"Receita & SaaS" },
     { id:"analytics", label:"Product Analytics", icon:"⬡", sub:"Produto & Churn" },
+    { id:"marketing", label:"Marketing", icon:"◎", sub:"Pago & Organico" },
   ];
 
   return (
@@ -3270,6 +3272,7 @@ export default function AutonDashboard() {
           {section==="onboarding" && <OnboardingDash />}
           {section==="dre" && <DreDash />}
           {section==="analytics" && <AnalyticsDash />}
+          {section==="marketing" && <MarketingDash />}
         </div>
       </div>
     </div>
