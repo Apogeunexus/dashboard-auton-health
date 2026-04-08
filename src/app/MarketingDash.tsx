@@ -1078,6 +1078,9 @@ export default function MarketingDash() {
   const [hoveredEngagement, setHoveredEngagement] = useState<string | null>(null);
   const [mainTab, setMainTab] = useState<"pago" | "organico">("pago");
   const [socialNetwork, setSocialNetwork] = useState<SocialNetwork>("instagram");
+  const [selectedProfile, setSelectedProfile] = useState("auton_health");
+  const [showProfilePicker, setShowProfilePicker] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
   const [hoveredNewUsers, setHoveredNewUsers] = useState<string | null>(null);
   const [hoveredHeat, setHoveredHeat] = useState<{ day: string; hour: number; val: number; x: number; y: number } | null>(null);
   const [hoveredReach, setHoveredReach] = useState<string | null>(null);
@@ -1094,10 +1097,18 @@ export default function MarketingDash() {
   const [showEstrategia, setShowEstrategia] = useState(false);
   const estrategiaRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
+  const profiles = [
+    { id:"auton_health", name:"Auton Health", handle:"@autonhealth", avatar:"AH", color:"#1B4266" },
+    { id:"auton_medicos", name:"Auton Medicos", handle:"@autonmedicos", avatar:"AM", color:"#10B981" },
+    { id:"tria_company", name:"Tria Company", handle:"@triacompany", avatar:"TC", color:"#7C3AED" },
+  ];
+  const activeProfile = profiles.find(p => p.id === selectedProfile) || profiles[0];
+
+  // Close dropdowns on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (estrategiaRef.current && !estrategiaRef.current.contains(e.target as Node)) setShowEstrategia(false);
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) setShowProfilePicker(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -2666,8 +2677,79 @@ export default function MarketingDash() {
         {/* ════════════════ TRÁFEGO ORGÂNICO ════════════════ */}
         {mainTab === "organico" && (<>
 
-        {/* ── Social Network Selector (Organic) ── */}
-        <div className="flex items-center gap-2" style={{ animation: "animationIn 0.8s ease-out 0.05s both" }}>
+        {/* ── Profile Selector + Social Network Selector (Organic) ── */}
+        <div className="flex items-center gap-3 flex-wrap" style={{ animation: "animationIn 0.8s ease-out 0.05s both" }}>
+
+          {/* Profile Picker */}
+          <div ref={profileRef} style={{ position:"relative" }}>
+            <button
+              onClick={() => setShowProfilePicker(v => !v)}
+              style={{
+                display:"flex", alignItems:"center", gap:8, padding:"6px 14px 6px 8px",
+                borderRadius:8, border:`2px solid ${activeProfile.color}40`,
+                background:`${activeProfile.color}08`, cursor:"pointer",
+                transition:"all .15s",
+              }}
+            >
+              <div style={{
+                width:28, height:28, borderRadius:"50%", background:activeProfile.color,
+                display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0,
+              }}>
+                <span style={{ fontSize:10, fontWeight:700, color:"#fff" }}>{activeProfile.avatar}</span>
+              </div>
+              <div style={{ textAlign:"left" }}>
+                <div style={{ fontSize:12, fontWeight:600, color:"#1A1A1A", lineHeight:1.2 }}>{activeProfile.name}</div>
+                <div style={{ fontSize:10, color:"#999999" }}>{activeProfile.handle}</div>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2.5" style={{ marginLeft:4, transition:"transform .2s", transform:showProfilePicker?"rotate(180deg)":"" }}>
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+
+            {showProfilePicker && (
+              <div style={{
+                position:"absolute", top:"calc(100% + 6px)", left:0, zIndex:9999,
+                background:"#fff", border:"1px solid #E5E7EB", borderRadius:10,
+                boxShadow:"0 12px 40px rgba(0,0,0,0.12)", padding:6, minWidth:220,
+              }}>
+                <div style={{ padding:"6px 10px", fontSize:10, fontWeight:700, color:"#999", textTransform:"uppercase", letterSpacing:0.5 }}>
+                  Selecionar perfil
+                </div>
+                {profiles.map(p => (
+                  <button
+                    key={p.id}
+                    onClick={() => { setSelectedProfile(p.id); setShowProfilePicker(false); }}
+                    style={{
+                      display:"flex", alignItems:"center", gap:10, width:"100%",
+                      padding:"8px 10px", borderRadius:6, border:"none",
+                      background:selectedProfile===p.id?`${p.color}10`:"transparent",
+                      cursor:"pointer", transition:"background .1s",
+                    }}
+                    onMouseEnter={e => { if(selectedProfile!==p.id) (e.currentTarget as HTMLButtonElement).style.background="#F8F9FA"; }}
+                    onMouseLeave={e => { if(selectedProfile!==p.id) (e.currentTarget as HTMLButtonElement).style.background="transparent"; }}
+                  >
+                    <div style={{
+                      width:32, height:32, borderRadius:"50%", background:p.color,
+                      display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0,
+                    }}>
+                      <span style={{ fontSize:11, fontWeight:700, color:"#fff" }}>{p.avatar}</span>
+                    </div>
+                    <div style={{ flex:1, textAlign:"left" }}>
+                      <div style={{ fontSize:13, fontWeight:600, color:"#1A1A1A" }}>{p.name}</div>
+                      <div style={{ fontSize:11, color:"#999" }}>{p.handle}</div>
+                    </div>
+                    {selectedProfile===p.id && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={p.color} strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div style={{ width:1, height:28, background:"#E5E7EB" }} />
+
+          {/* Social Network buttons */}
           {(["instagram", "tiktok", "youtube", "facebook"] as SocialNetwork[]).map((sn) => {
             const isActive = socialNetwork === sn;
             const color = socialNetworkColors[sn];

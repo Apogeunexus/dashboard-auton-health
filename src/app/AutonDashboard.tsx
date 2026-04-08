@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import MarketingDash from "./MarketingDash";
+import ConcorrentesDash from "./ConcorrentesDash";
 
 /* ═══════════════════════════════════════════════
    HELPERS
@@ -3113,6 +3114,7 @@ function AnalyticsDash() {
 
 export default function AutonDashboard() {
   const [section, setSection] = React.useState("overview");
+  const [sidebarOpen, setSidebarOpen] = React.useState(true);
 
   const NAV = [
     { id:"overview", label:"Visao Geral", icon:"◈", sub:"KPIs executivos" },
@@ -3120,31 +3122,47 @@ export default function AutonDashboard() {
     { id:"dre", label:"DRE & Financas", icon:"$", sub:"Receita & SaaS" },
     { id:"analytics", label:"Product Analytics", icon:"⬡", sub:"Produto & Churn" },
     { id:"marketing", label:"Marketing", icon:"◎", sub:"Pago & Organico" },
+    { id:"concorrentes", label:"Concorrentes", icon:"◉", sub:"Monitoramento" },
   ];
 
   return (
     <div style={{ display:"flex", minHeight:"100vh", background:"#EBF3F6", fontFamily:"'Inter',system-ui,sans-serif" }}>
       {/* SIDEBAR */}
-      <aside style={{ width:220, flexShrink:0, background:"#1B4266", display:"flex", flexDirection:"column", position:"sticky", top:0, height:"100vh", zIndex:100 }}>
-        <div style={{ padding:"24px 20px 20px", borderBottom:"1px solid rgba(255,255,255,.12)" }}>
-          <p style={{ fontSize:16, fontWeight:700, color:"#fff", margin:0 }}>Auton Health</p>
-          <p style={{ fontSize:11, color:"rgba(255,255,255,.45)", margin:"3px 0 0", textTransform:"uppercase", letterSpacing:1 }}>Tria Company</p>
+      <aside style={{ width:sidebarOpen?220:56, flexShrink:0, background:"#1B4266", display:"flex", flexDirection:"column", position:"sticky", top:0, height:"100vh", zIndex:100, transition:"width .25s ease" }}>
+        <div style={{ padding:sidebarOpen?"24px 20px 20px":"16px 10px 16px", borderBottom:"1px solid rgba(255,255,255,.12)", display:"flex", alignItems:"center", justifyContent:"space-between", minHeight:60 }}>
+          {sidebarOpen && (
+            <div>
+              <p style={{ fontSize:16, fontWeight:700, color:"#fff", margin:0 }}>Auton Health</p>
+              <p style={{ fontSize:11, color:"rgba(255,255,255,.45)", margin:"3px 0 0", textTransform:"uppercase", letterSpacing:1 }}>Tria Company</p>
+            </div>
+          )}
+          <button onClick={() => setSidebarOpen(v => !v)} style={{ background:"rgba(255,255,255,.1)", border:"none", borderRadius:6, padding:6, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginLeft:sidebarOpen?0:"auto", marginRight:sidebarOpen?0:"auto" }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transition:"transform .25s", transform:sidebarOpen?"":"rotate(180deg)" }}>
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
         </div>
-        <nav style={{ flex:1, padding:"16px 10px" }}>
+        <nav style={{ flex:1, padding:sidebarOpen?"16px 10px":"12px 6px" }}>
           {NAV.map(n => (
-            <button key={n.id} onClick={() => setSection(n.id)}
-              style={{ display:"flex", alignItems:"center", gap:10, width:"100%", padding:"10px 12px", borderRadius:6, border:"none", background:section===n.id?"rgba(255,255,255,.15)":"transparent", cursor:"pointer", marginBottom:4, textAlign:"left", transition:"background .15s" }}>
-              <span style={{ fontSize:14, color:section===n.id?"#fff":"rgba(255,255,255,.55)", flexShrink:0 }}>{n.icon}</span>
-              <div style={{ minWidth:0 }}>
-                <div style={{ fontSize:13, fontWeight:section===n.id?600:400, color:section===n.id?"#fff":"rgba(255,255,255,.7)", lineHeight:1.3 }}>{n.label}</div>
-                <div style={{ fontSize:10, color:"rgba(255,255,255,.4)", marginTop:1 }}>{n.sub}</div>
-              </div>
-              {section===n.id && <div style={{ marginLeft:"auto", width:3, height:18, background:"#fff", borderRadius:2, flexShrink:0 }}/>}
+            <button key={n.id} onClick={() => setSection(n.id)} title={sidebarOpen?undefined:n.label}
+              style={{ display:"flex", alignItems:"center", gap:sidebarOpen?10:0, width:"100%", padding:sidebarOpen?"10px 12px":"10px 0", borderRadius:6, border:"none", background:section===n.id?"rgba(255,255,255,.15)":"transparent", cursor:"pointer", marginBottom:4, textAlign:"left", transition:"all .15s", justifyContent:sidebarOpen?"flex-start":"center" }}>
+              <span style={{ fontSize:sidebarOpen?14:18, color:section===n.id?"#fff":"rgba(255,255,255,.55)", flexShrink:0 }}>{n.icon}</span>
+              {sidebarOpen && (
+                <div style={{ minWidth:0 }}>
+                  <div style={{ fontSize:13, fontWeight:section===n.id?600:400, color:section===n.id?"#fff":"rgba(255,255,255,.7)", lineHeight:1.3 }}>{n.label}</div>
+                  <div style={{ fontSize:10, color:"rgba(255,255,255,.4)", marginTop:1 }}>{n.sub}</div>
+                </div>
+              )}
+              {sidebarOpen && section===n.id && <div style={{ marginLeft:"auto", width:3, height:18, background:"#fff", borderRadius:2, flexShrink:0 }}/>}
             </button>
           ))}
         </nav>
-        <div style={{ padding:"16px 20px", borderTop:"1px solid rgba(255,255,255,.12)" }}>
-          <p style={{ fontSize:11, color:"rgba(255,255,255,.35)", margin:0 }}>Abril 2026 · Dados estimados</p>
+        <div style={{ padding:sidebarOpen?"16px 20px":"12px 6px", borderTop:"1px solid rgba(255,255,255,.12)", textAlign:"center" }}>
+          {sidebarOpen ? (
+            <p style={{ fontSize:11, color:"rgba(255,255,255,.35)", margin:0 }}>Abril 2026 · Dados estimados</p>
+          ) : (
+            <p style={{ fontSize:9, color:"rgba(255,255,255,.3)", margin:0 }}>2026</p>
+          )}
         </div>
       </aside>
 
@@ -3273,6 +3291,7 @@ export default function AutonDashboard() {
           {section==="dre" && <DreDash />}
           {section==="analytics" && <AnalyticsDash />}
           {section==="marketing" && <MarketingDash />}
+          {section==="concorrentes" && <ConcorrentesDash />}
         </div>
       </div>
     </div>
