@@ -254,6 +254,59 @@ const organicKpis = [
   { label: "Impressões GSC", value: "485.200", delta: "+15.2%", up: true, icon: "payments", tooltip: "Impressões GSC — Número de vezes que páginas do site apareceram nos resultados do Google, sem custo. Cálculo: contagem total de exibições no Search Console. Complementa o tráfego pago e demonstra o valor real do SEO. Fonte: Google Search Console." },
 ];
 
+/* ── SEO REFINED DATA ── */
+const seoKpis = [
+  { label: "Posicao Media Google", value: "7.8", delta: "↑ 1.4 pos", up: true, status: "warn" as const, tooltip: "Media ponderada das posicoes das suas top keywords no Google. Menor = melhor. Verde <5, Amarelo 5-10, Vermelho >10. Fonte: Google Search Console." },
+  { label: "Keywords no Top 10", value: "18/32", delta: "+3 vs semana", up: true, status: "ok" as const, tooltip: "Quantas das suas keywords monitoradas estao na primeira pagina do Google (posicoes 1-10). Fonte: Rank tracker diario." },
+  { label: "Share of Voice", value: "23.4%", delta: "+2.1pp", up: true, status: "ok" as const, sparkline: [18,19,20,21,23], tooltip: "Percentual de visibilidade da sua marca nas SERPs vs concorrentes. Calculado como: suas impressoes / total de impressoes do setor. Fonte: SEMrush/GSC." },
+  { label: "Gap de Conteudo", value: "34", delta: "", up: false, status: "warn" as const, badge: "34 oportunidades", tooltip: "Keywords que pelo menos 1 concorrente ranqueia no top 20 e voce NAO tem pagina otimizada. Cada gap = oportunidade de criar conteudo. Fonte: Comparativo de keywords." },
+];
+
+const sovTimeline = [
+  { week: "Sem 1", voce: 18, comp1: 25, comp2: 20, comp3: 15 },
+  { week: "Sem 2", voce: 19, comp1: 24, comp2: 21, comp3: 16 },
+  { week: "Sem 3", voce: 20, comp1: 23, comp2: 19, comp3: 17 },
+  { week: "Sem 4", voce: 21, comp1: 22, comp2: 20, comp3: 16 },
+  { week: "Sem 5", voce: 22, comp1: 21, comp2: 21, comp3: 15 },
+  { week: "Sem 6", voce: 22, comp1: 21, comp2: 20, comp3: 16 },
+  { week: "Sem 7", voce: 23, comp1: 20, comp2: 19, comp3: 17 },
+  { week: "Sem 8", voce: 23, comp1: 20, comp2: 20, comp3: 16 },
+];
+const sovSeries = [
+  { key: "voce", label: "Auton Health", color: "#378ADD" },
+  { key: "comp1", label: "@drajulianasaude", color: "#EF4444" },
+  { key: "comp2", label: "@drmarcosfuncional", color: "#F59E0B" },
+  { key: "comp3", label: "@clinicavidaintegra", color: "#10B981" },
+];
+
+const seoKeywords = [
+  { kw: "medicina integrativa online", pos: 3, bestComp: "@drajulianasaude", compPos: 1, volume: 12400, action: "Otimizar pagina" },
+  { kw: "consulta funcional telemedicina", pos: 7, bestComp: "@drmarcosfuncional", compPos: 2, volume: 8900, action: "Construir links" },
+  { kw: "saude integrativa plataforma", pos: 2, bestComp: "@clinicavidaintegra", compPos: 5, volume: 6200, action: "Monitorar" },
+  { kw: "diagnostico integrativo IA", pos: 1, bestComp: "—", compPos: 0, volume: 4800, action: "Monitorar" },
+  { kw: "plano terapeutico digital", pos: 12, bestComp: "@drajulianasaude", compPos: 4, volume: 3200, action: "Criar conteudo" },
+  { kw: "exames funcionais online", pos: 18, bestComp: "@drmarcosfuncional", compPos: 3, volume: 5100, action: "Criar conteudo" },
+  { kw: "nutricao funcional app", pos: 25, bestComp: "@nutridrapaula", compPos: 6, volume: 9800, action: "Criar conteudo" },
+  { kw: "teleconsulta medicina integrativa", pos: 5, bestComp: "@drajulianasaude", compPos: 2, volume: 7400, action: "Otimizar pagina" },
+  { kw: "protocolo destox digital", pos: 0, bestComp: "@drmarcosfuncional", compPos: 8, volume: 2900, action: "Criar conteudo" },
+  { kw: "saude hormonal telemedicina", pos: 9, bestComp: "@clinicavidaintegra", compPos: 3, volume: 4300, action: "Construir links" },
+];
+
+const seoScatter = [
+  { kw: "nutricao funcional app", volume: 9800, difficulty: 28, comp: "@nutridrapaula" },
+  { kw: "protocolo destox digital", volume: 2900, difficulty: 15, comp: "@drmarcosfuncional" },
+  { kw: "exames funcionais online", volume: 5100, difficulty: 35, comp: "@drmarcosfuncional" },
+  { kw: "suplementacao inteligente", volume: 7200, difficulty: 22, comp: "@drajulianasaude" },
+  { kw: "microbioma saude mental", volume: 8400, difficulty: 18, comp: "ninguem" },
+  { kw: "jejum intermitente mulheres", volume: 14200, difficulty: 55, comp: "@nutridrapaula" },
+  { kw: "eixo HPA tratamento", volume: 3600, difficulty: 12, comp: "ninguem" },
+  { kw: "longevidade medicina funcional", volume: 6800, difficulty: 42, comp: "@drajulianasaude" },
+  { kw: "fitoterapia evidencia", volume: 4100, difficulty: 30, comp: "@clinicavidaintegra" },
+  { kw: "detox hepatico natural", volume: 11200, difficulty: 48, comp: "@drmarcosfuncional" },
+  { kw: "ansiedade tratamento integrativo", volume: 15600, difficulty: 62, comp: "@drajulianasaude" },
+  { kw: "imunidade suplementos", volume: 18400, difficulty: 71, comp: "@nutridrapaula" },
+];
+
 const topKeywords = [
   { keyword: "plano de saúde empresarial", posicao: 2, volume: "12.400", cliques: "1.840", ctr: "14.8%" },
   { keyword: "benefícios corporativos", posicao: 5, volume: "8.900", cliques: "890", ctr: "10.0%" },
@@ -2675,6 +2728,7 @@ export default function MarketingDash() {
         </>)}
 
         {/* ════════════════ TRÁFEGO ORGÂNICO ════════════════ */}
+
         {mainTab === "organico" && (<>
 
         {/* ── Profile Selector + Social Network Selector (Organic) ── */}
@@ -2771,11 +2825,13 @@ export default function MarketingDash() {
           })}
         </div>
 
+
+
         {/* ═══ Instagram Organic ═══ */}
         {socialNetwork === "instagram" && (<>
 
-        {/* ── Organic KPIs ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {/* ── SECAO ORIGINAL: Sessions, Evolution, etc (mantida) ── */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4" style={{ display:"none" }}>
           {organicKpis.map((kpi, idx) => {
             const isRight = idx >= 2;
             return (
